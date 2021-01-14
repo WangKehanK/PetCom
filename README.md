@@ -4,7 +4,7 @@
 ## Tech Stack
 
 ### Front end
-React Native
+React Native w/ expo
 
 ### Server?
 
