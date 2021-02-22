@@ -4,14 +4,17 @@
 ## Tech Stack
 
 ### Front end
-React Native w/ expo
+Flutter
 
 ```
-npm install --global expo-cli
-expo init my-project
-cd
-....
-npm start
+# flutter doctor
+flutter run
 ```
-### Server?
+### Server
+Spring, Maven
+```
+```
 
+### Database
+
+Mysql 5.7
