@@ -31,6 +31,7 @@ dependencies:
 
 dev_dependencies:
   font_awesome_flutter: ^8.11.0
+  flutter_svg: ^0.19.1
   flutter_test:
     sdk: flutter
 
@@ -44,6 +45,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
