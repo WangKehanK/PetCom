@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/pages/Welcome/components/body.dart';
+import 'package:petcom/pages/Account/Login/components/body.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

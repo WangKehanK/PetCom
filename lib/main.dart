@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:petcom/pages/main_screen.dart';
-import 'package:petcom/pages/welcome/welcome_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +14,7 @@ class MainTheme extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: WelcomeScreen(),
+        home: MainScreen(),
         routes: {
           MainScreen.routeName: (ctx) => MainScreen(),
         },

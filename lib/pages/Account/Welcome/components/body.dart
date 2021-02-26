@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/pages/Login/login_screen.dart';
-import 'package:petcom/pages/Signup/signup_screen.dart';
-import 'package:petcom/pages/Welcome/components/background.dart';
+import 'package:petcom/pages/Account//Login/login_screen.dart';
+import 'package:petcom/pages/Account//Signup/signup_screen.dart';
+import 'package:petcom/pages/Account//Welcome/components/background.dart';
 import 'package:petcom/components/rounded_button.dart';
 import 'package:petcom/components/constants.dart';
 import 'package:flutter_svg/svg.dart';
