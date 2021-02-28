@@ -17,7 +17,7 @@ Spring, Maven
 
 ### Database
 
-Mysql 5.7
+Mysql 8.0
 
 
 ## Team Member
