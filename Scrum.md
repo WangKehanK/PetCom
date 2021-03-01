@@ -1,3 +1,7 @@
+Jira Board: 
+
+https://buspark.atlassian.net/jira/software/projects/PET/boards/17/backlog
+
 # 2.28 Daily Scrum
 
 b.
