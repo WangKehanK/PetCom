@@ -1,5 +1,12 @@
 # PetCom
 
+## Sprint #1
+
+We estimate we can finish three stories during the first sprint. Those are: 
+
+- Homepage
+- Login
+- Signup
 
 ## Tech Stack
 
@@ -17,7 +24,7 @@ Spring, Maven
 
 ### Database
 
-Mysql 5.7
+Mysql 8.0
 
 
 ## Team Member
