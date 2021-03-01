@@ -1,8 +1,15 @@
 Jira Board: 
 
 https://buspark.atlassian.net/jira/software/projects/PET/boards/17/backlog
+# Sprint #1
 
-# 2.28 Daily Scrum
+We estimate we can finish three stories during the first sprint. Those are: 
+
+- Homepage
+- Login
+- Signup
+
+### 2.28 Daily Scrum
 
 b.
 
