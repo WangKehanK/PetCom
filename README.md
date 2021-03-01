@@ -1,5 +1,12 @@
 # PetCom
 
+## Sprint #1
+
+We estimate we can finish three stories during the first sprint. Those are: 
+
+- Homepage
+- Login
+- Signup
 
 ## Tech Stack
 
