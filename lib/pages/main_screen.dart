@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/pages/screens/profile.dart';
-import 'package:petcom/pages/screens/trending.dart';
-import 'package:petcom/pages/screens/pet.dart';
+import 'package:petcom/pages/Screens/home_screen.dart';
+import 'package:petcom/pages/Screens/pet_screen.dart';
+import 'package:petcom/pages/Screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   static const routeName = '/main_screen';
@@ -24,9 +24,9 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: IndexedStack(
         children: <Widget>[
-          Trending(),
-          Pet(),
-          Profile(),
+          HomeScreen(),
+          PetScreen(),
+          ProfileScreen(),
         ],
         index: _selectedPageIndex,
       ),
@@ -44,8 +44,10 @@ class _MainScreenState extends State<MainScreen> {
                 Center(
                   heightFactor: 0.6,
                   child: FloatingActionButton(
-                      backgroundColor: Colors.blue,
-                      child: Icon(Icons.playlist_play),
+                      backgroundColor: _selectedPageIndex == 0
+                          ? Colors.grey.shade400
+                          : Colors.brown,
+                      child: Icon(Icons.pets),
                       elevation: 0.1,
                       onPressed: () {
                         _selectPage(1);
@@ -59,9 +61,9 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       IconButton(
                         icon: Icon(
-                          Icons.trending_up,
+                          Icons.home,
                           color: _selectedPageIndex == 0
-                              ? Colors.blue
+                              ? Colors.brown
                               : Colors.grey.shade400,
                         ),
                         onPressed: () {
@@ -74,8 +76,8 @@ class _MainScreenState extends State<MainScreen> {
                       IconButton(
                           icon: Icon(
                             Icons.people,
-                            color: _selectedPageIndex == 3
-                                ? Colors.blue
+                            color: _selectedPageIndex == 2
+                                ? Colors.brown
                                 : Colors.grey.shade400,
                           ),
                           onPressed: () {
@@ -111,7 +113,7 @@ class BNBCustomPainter extends CustomPainter {
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.lineTo(0, 20);
-    canvas.drawShadow(path, Colors.black, 5, true);
+    canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 10, true);
     canvas.drawPath(path, paint);
   }
 

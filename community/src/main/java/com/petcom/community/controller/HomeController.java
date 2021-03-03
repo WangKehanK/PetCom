@@ -63,10 +63,10 @@ public class HomeController {
 
     /**
      * For Flutter
-     * @api http://localhost:8080/community/articles?current=1
-     * @api http://localhost:8080/community/articles?current=2
+     * @api http://localhost:8080/community/index?current=1
+     * @api http://localhost:8080/community/index?current=2
      */
-    @RequestMapping(path = "/articles", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/index", method = RequestMethod.GET)
     @ResponseBody
     public List getArticles(Model model, Page page) {
         return getIndexPageBasic(model, page);
