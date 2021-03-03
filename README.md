@@ -20,10 +20,13 @@ flutter run
 #build_runner
 flutter pub run build_runner build
 ```
+
+Useful tools for Dart: 
+- [Json_to_dart](https://javiercbk.github.io/json_to_dart/)
+
+
 ### Server
 Spring, Maven
-```
-```
 
 ### Database
 
