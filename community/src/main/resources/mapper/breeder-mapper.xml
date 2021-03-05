@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.petcom.community.dao.BreederMapper">
+
+    <sql id="selectFields">
+        id, title, score, type, description, create_time, address, city, state, contact
+    </sql>
+
+    <select id="selectBreederList" resultType="Breeder">
+        select <include refid="selectFields"></include>
+        from breeder
+        <if test="id!=0">
+            and id = #{id}
+        </if>
+        order by create_time desc
+        limit #{offset}, #{limit}
+    </select>
+    
+</mapper>

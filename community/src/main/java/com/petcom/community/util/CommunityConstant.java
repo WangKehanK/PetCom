@@ -15,4 +15,18 @@ public interface CommunityConstant {
      * activation failed
      */
     int ACTIVATION_FAILURE = 2;
+
+
+    /**
+     * RESTFUL response
+     */
+    String SUCCESS = "SUCCESS";
+
+    String FAIL = "FAIL";
+
+    String ERROR = "ERROR";
+
+    String STATUS = "status";
+
+    String MESSAGE = "message";
 }
