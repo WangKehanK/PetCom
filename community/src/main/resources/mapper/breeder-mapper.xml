@@ -5,7 +5,7 @@
 <mapper namespace="com.petcom.community.dao.BreederMapper">
 
     <sql id="selectFields">
-        id, title, score, type, description, create_time, address, city, state, contact
+        id, title, score, type, description, create_time, address, city, state, contact, website
     </sql>
 
     <select id="selectBreederList" resultType="Breeder">

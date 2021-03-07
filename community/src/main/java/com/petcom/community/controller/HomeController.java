@@ -59,7 +59,7 @@ public class HomeController {
      */
     @RequestMapping(path = "/api/index", method = RequestMethod.GET)
     @ResponseBody
-    public List getArticles(Page page) {
+    public List articlesAPI(Page page) {
         page.setRows(discussPostService.findDiscussPostRows(0));
         page.setPath("/index");
         List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());

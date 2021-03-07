@@ -29,4 +29,13 @@ public interface CommunityConstant {
     String STATUS = "status";
 
     String MESSAGE = "message";
+
+    /**
+     * login expired time
+     */
+
+    int DEFAULT_EXPIRED_SECOND = 3600 * 12; // 12 hours
+
+    int REMEBER_EXPIRED_SECOND = 3600 * 24 * 100; // over 3 month
+
 }

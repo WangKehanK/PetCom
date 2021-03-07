@@ -13,21 +13,14 @@ public class Breeder {
     private String city;
     private String state;
     private String contact;
+    private String website;
 
-    @Override
-    public String toString() {
-        return "Breeder{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", score=" + score +
-                ", type=" + type +
-                ", description='" + description + '\'' +
-                ", createTime=" + createTime +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", contact='" + contact + '\'' +
-                '}';
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public String getContact() {
@@ -108,6 +101,23 @@ public class Breeder {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Breeder{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", score=" + score +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", createTime=" + createTime +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", contact='" + contact + '\'' +
+                ", website='" + website + '\'' +
+                '}';
     }
 
 }

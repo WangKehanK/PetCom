@@ -2,8 +2,10 @@ package com.petcom.community;
 
 
 import com.petcom.community.dao.DiscussPostMapper;
+import com.petcom.community.dao.LoginTicketMapper;
 import com.petcom.community.dao.UserMapper;
 import com.petcom.community.entity.DiscussPost;
+import com.petcom.community.entity.LoginTicket;
 import com.petcom.community.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +27,9 @@ public class MapperTest {
     private UserMapper userMapper;
     @Autowired
     private DiscussPostMapper DiscussPostMapper;
+
+    @Autowired
+    private LoginTicketMapper loginTicketMapper;
 
     @Test
     public void testSelectUser() {
@@ -73,5 +78,25 @@ public class MapperTest {
         int rows = DiscussPostMapper.selectDiscussPostRows(149);
         System.out.println(rows);
 
+    }
+    @Test
+    public void testInsertLoginTicket() {
+        LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(101);
+        loginTicket.setTicket("abc");
+        loginTicket.setStatus(0);
+        loginTicket.setExpired(new Date(System.currentTimeMillis() + 1000 * 60 * 10));
+
+        loginTicketMapper.insertLoginTicket(loginTicket);
+    }
+
+    @Test
+    public void testSelectLoginTicket() {
+        LoginTicket loginTicket = loginTicketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+
+        loginTicketMapper.updateStatus("abc", 1);
+        loginTicket = loginTicketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
     }
 }

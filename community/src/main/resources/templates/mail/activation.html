@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href=""/>
+    <title>PetCom-account activation-noreply</title>
+</head>
+<body>
+	<div>
+		<p>
+			<b th:text="${email}">xxx@xxx.com</b>, Hello!
+		</p>
+		<p>
+			You are registering PetCom. This is an activation email, please click the
+			<a th:href="${url}">following link</a>,
+			to activate your account!
+		</p>
+	</div>
+</body>
+</html>
