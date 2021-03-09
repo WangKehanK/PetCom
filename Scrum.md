@@ -3,11 +3,9 @@ Jira Board:
 https://buspark.atlassian.net/jira/software/projects/PET/boards/17/backlog
 # Sprint #1
 
-We estimate we can finish three stories during the first sprint. Those are: 
+We estimate we can finish one stories during the first sprint. Those are: 
 
 - Homepage
-- Login
-- Signup
 
 ### 2.28 Daily Scrum
 
@@ -45,6 +43,10 @@ Yes, Remote communication is hard, it has the potential to prevent us from meeti
 
 
 # Sprint #2
+
+We estimate we can finish one stories during the first sprint. Those are: 
+
+- Login
 
 - In your daily scrums, you discussed: what did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? In your README, document which team members did which activities. (1 point for each team member's response, up to a maximum of 5 points) (5 pts)
 
