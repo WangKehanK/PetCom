@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DrawerScreen extends StatefulWidget {
   static String routeName = "/drawer";
 
-  DrawerScreen({Key key}) : super(key: key);
+  DrawerScreen({Key? key}) : super(key: key);
 
   @override
   _DrawerScreenState createState() => _DrawerScreenState();

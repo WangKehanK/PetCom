@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Administrator/Documents/PetCom/lib/constants.dart';
+import 'package:petcom/constants.dart';
 
 class TextFieldContainer extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   const TextFieldContainer({
-    Key key,
+    Key? key,
     this.child,
   }) : super(key: key);
 

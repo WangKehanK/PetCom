@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Administrator/Documents/PetCom/lib/constants.dart';
+import 'package:petcom/constants.dart';
 
 class RoundButton extends StatelessWidget {
-  final String text;
-  final Function press;
+  final String? text;
+  final Function? press;
   final Color color, textColor;
   const RoundButton({
-    Key key,
+    Key? key,
     this.text,
     this.press,
     this.color = kPrimaryColor,
@@ -24,9 +24,9 @@ class RoundButton extends StatelessWidget {
         child: FlatButton(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
           color: color,
-          onPressed: press,
+          onPressed: press as void Function()?,
           child: Text(
-            text,
+            text!,
             style: TextStyle(color: textColor),
           ),
         ),

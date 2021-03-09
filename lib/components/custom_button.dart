@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   var onTap;
-  String label;
+  String? label;
 
   CustomButton({this.onTap, this.label});
 
@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
           ],
         ),
         child: Text(
-          label,
+          label!,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,

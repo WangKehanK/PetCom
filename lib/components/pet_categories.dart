@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../configuration.dart';
 
 class PetCategories extends StatefulWidget {
-  PetCategories({Key key}) : super(key: key);
+  PetCategories({Key? key}) : super(key: key);
 
   @override
   _PetCategoriesState createState() => _PetCategoriesState();

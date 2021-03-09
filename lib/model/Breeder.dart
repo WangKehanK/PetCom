@@ -1,7 +1,7 @@
 class BreederList {
-  String msg;
-  int code;
-  List<Breeder> breeder;
+  String? msg;
+  int? code;
+  List<Breeder>? breeder;
 
   BreederList({this.msg, this.code, this.breeder});
 
@@ -9,9 +9,10 @@ class BreederList {
     msg = json['msg'];
     code = json['code'];
     if (json['breeder'] != null) {
-      breeder = new List<Breeder>();
+      // breeder = new List<Breeder>();
+      breeder = [];
       json['breeder'].forEach((v) {
-        breeder.add(new Breeder.fromJson(v));
+        breeder!.add(new Breeder.fromJson(v));
       });
     }
   }
@@ -21,24 +22,24 @@ class BreederList {
     data['msg'] = this.msg;
     data['code'] = this.code;
     if (this.breeder != null) {
-      data['breeder'] = this.breeder.map((v) => v.toJson()).toList();
+      data['breeder'] = this.breeder!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Breeder {
-  String address;
-  String city;
-  String contact;
-  int createTime;
-  String description;
-  int id;
-  double score;
-  String state;
-  String title;
-  int type;
-  String website;
+  String? address;
+  String? city;
+  String? contact;
+  int? createTime;
+  String? description;
+  int? id;
+  double? score;
+  String? state;
+  String? title;
+  int? type;
+  String? website;
 
   Breeder(
       {this.address,

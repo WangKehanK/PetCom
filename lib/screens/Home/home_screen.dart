@@ -12,15 +12,15 @@ import 'package:dio/dio.dart';
 class HomeScreen extends StatefulWidget {
   static String routeName = "/index";
 
-  HomeScreen({Key key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HttpService http;
-  BreederList breederList;
+  HttpService? http;
+  BreederList? breederList;
 
   Future getBreeder() async {
     Response response;

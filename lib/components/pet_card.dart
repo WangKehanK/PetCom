@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import '../configuration.dart';
 
 class PetCard extends StatelessWidget {
-  String petId;
-  String petName = '';
-  String breed = '';
-  String age = '';
-  String distance = '';
-  String gender = '';
-  String imagePath = '';
+  String? petId;
+  String? petName = '';
+  String? breed = '';
+  String? age = '';
+  String? distance = '';
+  String? gender = '';
+  String? imagePath = '';
 
   PetCard({
     this.petId,
@@ -79,7 +79,7 @@ class PetCard extends StatelessWidget {
                             children: [
                               Flexible(
                                 child: new Text(
-                                  petName,
+                                  petName!,
                                   softWrap: true,
                                   style: TextStyle(
                                     fontSize: 16,
@@ -93,7 +93,7 @@ class PetCard extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            breed,
+                            breed!,
                             style: TextStyle(
                               fontSize: 12,
                               color: fadedBlack,
@@ -136,9 +136,9 @@ class PetCard extends StatelessWidget {
                   ),
                   Align(
                     child: Hero(
-                      tag: petId,
+                      tag: petId!,
                       child: Image.asset(
-                        imagePath,
+                        imagePath!,
                       ),
                     ),
                   ),

@@ -1,6 +1,6 @@
 class PostList {
-  Post post;
-  User user;
+  Post? post;
+  User? user;
 
   PostList({this.post, this.user});
 
@@ -12,25 +12,25 @@ class PostList {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.post != null) {
-      data['post'] = this.post.toJson();
+      data['post'] = this.post!.toJson();
     }
     if (this.user != null) {
-      data['user'] = this.user.toJson();
+      data['user'] = this.user!.toJson();
     }
     return data;
   }
 }
 
 class Post {
-  int id;
-  int userId;
-  String title;
-  String content;
-  int type;
-  int status;
-  String createTime;
-  int commentCount;
-  double score;
+  int? id;
+  int? userId;
+  String? title;
+  String? content;
+  int? type;
+  int? status;
+  String? createTime;
+  int? commentCount;
+  double? score;
 
   Post(
       {this.id,
@@ -71,16 +71,16 @@ class Post {
 }
 
 class User {
-  int id;
-  String username;
-  String password;
-  String salt;
-  String email;
-  int type;
-  int status;
+  int? id;
+  String? username;
+  String? password;
+  String? salt;
+  String? email;
+  int? type;
+  int? status;
   Null activationCode;
-  String headerUrl;
-  String createTime;
+  String? headerUrl;
+  String? createTime;
 
   User(
       {this.id,

@@ -1,11 +1,12 @@
 import 'package:petcom/components/pet_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../configuration.dart';
 
 class PetCategoryDisplay extends StatelessWidget {
-  const PetCategoryDisplay({Key key}) : super(key: key);
+  const PetCategoryDisplay({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +15,21 @@ class PetCategoryDisplay extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         itemCount: dogs.length,
         itemBuilder: (context, index) {
-          return Container(
-            margin: EdgeInsets.symmetric(vertical: 5),
-            child: PetCard(
-              petId: dogs[index]['id'],
-              petName: dogs[index]['name'],
-              age: dogs[index]['age'],
-              breed: dogs[index]['breed'],
-              gender: dogs[index]['gender'],
-              distance: dogs[index]['distance'],
-              imagePath: dogs[index]['imagePath'],
+          return AnimationConfiguration.staggeredList(
+            position: index,
+            child: SlideAnimation(
+              verticalOffset: 50.0,
+              child: ScaleAnimation(
+                child: PetCard(
+                  petId: dogs[index]['id'],
+                  petName: dogs[index]['name'],
+                  age: dogs[index]['age'],
+                  breed: dogs[index]['breed'],
+                  gender: dogs[index]['gender'],
+                  distance: dogs[index]['distance'],
+                  imagePath: dogs[index]['imagePath'],
+                ),
+              ),
             ),
           );
         },

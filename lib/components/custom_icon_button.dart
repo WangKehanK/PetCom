@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
   var onTap;
-  IconData iconData;
+  IconData? iconData;
 
   CustomIconButton({this.onTap, this.iconData});
 

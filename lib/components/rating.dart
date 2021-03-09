@@ -2,9 +2,9 @@ import 'package:petcom/constants.dart';
 import 'package:flutter/material.dart';
 
 class Rating extends StatelessWidget {
-  final double score;
+  final double? score;
   const Rating({
-    Key key,
+    Key? key,
     this.score,
   }) : super(key: key);
 

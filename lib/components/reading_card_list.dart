@@ -4,15 +4,15 @@ import 'package:petcom/components/two_side_rounded_button.dart';
 import 'package:flutter/material.dart';
 
 class ReadingListCard extends StatelessWidget {
-  final String image;
-  final String title;
-  final String auth;
-  final double rating;
-  final Function pressDetails;
-  final Function pressRead;
+  final String? image;
+  final String? title;
+  final String? auth;
+  final double? rating;
+  final Function? pressDetails;
+  final Function? pressRead;
 
   const ReadingListCard({
-    Key key,
+    Key? key,
     this.image,
     this.title,
     this.auth,
@@ -42,14 +42,14 @@ class ReadingListCard extends StatelessWidget {
                   BoxShadow(
                     offset: Offset(0, 10),
                     blurRadius: 33,
-                    color: Colors.grey[300],
+                    color: Colors.grey[300]!,
                   ),
                 ],
               ),
             ),
           ),
           Image.asset(
-            image,
+            image!,
             width: 150,
           ),
           Positioned(

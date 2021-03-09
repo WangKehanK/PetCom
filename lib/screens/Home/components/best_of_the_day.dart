@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HeaderLine extends StatelessWidget {
-  const HeaderLine({Key key}) : super(key: key);
+  const HeaderLine({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

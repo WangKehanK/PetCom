@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DetailsScreen extends StatelessWidget {
-  String id;
-  Color color;
+  String? id;
+  Color? color;
   DetailsScreen({this.id, this.color});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    String petName = '';
-    String breed = '';
-    String age = '';
-    String gender = '';
-    String imagePath = '';
+    String? petName = '';
+    String? breed = '';
+    String? age = '';
+    String? gender = '';
+    String? imagePath = '';
     dogs.forEach((dog) {
       if (dog['id'] == id) {
         petName = dog['name'];
@@ -42,9 +42,9 @@ class DetailsScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.center,
                           child: Hero(
-                            tag: id,
+                            tag: id!,
                             child: Image.asset(
-                              imagePath,
+                              imagePath!,
                               width: size.width * 0.7,
                             ),
                           ),
@@ -171,7 +171,7 @@ class DetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        petName,
+                        petName!,
                         style: TextStyle(
                           color: fadedBlack,
                           fontSize: 22,
@@ -191,7 +191,7 @@ class DetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        breed,
+                        breed!,
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.black,
@@ -199,7 +199,7 @@ class DetailsScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        age + ' years',
+                        age! + ' years',
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.black,

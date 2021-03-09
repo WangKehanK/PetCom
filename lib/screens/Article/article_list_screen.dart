@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 class ArticleList extends StatefulWidget {
   ArticleList({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -13,11 +13,11 @@ class ArticleList extends StatefulWidget {
 }
 
 class _ArticleListPageState extends State<ArticleList> {
-  HttpService http;
-  PostList postList;
+  late HttpService http;
+  PostList? postList;
   bool isLoading = false;
 
-  List<PostList> posts;
+  List<PostList>? posts;
   dynamic data;
   Future getPost() async {
     Response response;
