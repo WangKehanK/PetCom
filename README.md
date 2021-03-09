@@ -8,9 +8,6 @@ Flutter
 ```
 # flutter doctor
 flutter run
-
-#build_runner
-flutter pub run build_runner build
 ```
 
 Useful tools for Dart: 
