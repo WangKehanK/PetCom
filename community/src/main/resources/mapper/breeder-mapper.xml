@@ -17,5 +17,14 @@
         order by create_time desc
         limit #{offset}, #{limit}
     </select>
+
+    <select id="selectBreederRows" resultType="int">
+        select count(id)
+        from discuss_post
+        where status != 2
+        <if test="id!=0">
+            and id = #{id}
+        </if>
+    </select>
     
 </mapper>

@@ -25,6 +25,18 @@ class HttpService {
     return response;
   }
 
+  Future<Response> postRequest(String endPoint) async {
+    Response response;
+    try {
+      response = await _dio.post(endPoint);
+    } on DioError catch (e) {
+      print(e.message);
+      throw Exception(e.message);
+    }
+
+    return response;
+  }
+
   initializaInterceptors() {
     _dio.interceptors.add(InterceptorsWrapper(onError: (error) {
       print(error.message);

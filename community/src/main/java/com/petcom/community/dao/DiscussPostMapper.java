@@ -18,4 +18,5 @@ public interface DiscussPostMapper {
     // @Param was used to name the parameter, if there is only one parameter, and used in <If>, this name has to be used
     int selectDiscussPostRows(@Param("userId") int userId);
 
+    int insertDiscussPost(DiscussPost discussPost);
 }

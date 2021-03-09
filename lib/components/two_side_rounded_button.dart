@@ -1,4 +1,4 @@
-import 'package:petcom/components/constants.dart';
+import 'file:///C:/Users/Administrator/Documents/PetCom/lib/constants.dart';
 import 'package:flutter/material.dart';
 
 class TwoSideRoundedButton extends StatelessWidget {

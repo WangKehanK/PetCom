@@ -1,4 +1,4 @@
-import 'package:petcom/components/constants.dart';
+import 'package:petcom/constants.dart';
 import 'package:flutter/material.dart';
 
 class Rating extends StatelessWidget {

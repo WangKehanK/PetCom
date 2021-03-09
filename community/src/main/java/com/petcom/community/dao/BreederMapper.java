@@ -2,6 +2,7 @@ package com.petcom.community.dao;
 
 import com.petcom.community.entity.Breeder;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ import java.util.List;
 public interface BreederMapper {
 
     List<Breeder> selectBreederList(int id, int offset, int limit);
-    
+
+    int selectBreederRows(@Param("id") int id);
+
 }
 

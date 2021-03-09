@@ -1,10 +1,13 @@
 package com.petcom.community.controller;
 
+import com.petcom.community.entity.Breeder;
 import com.petcom.community.entity.DiscussPost;
 import com.petcom.community.entity.Page;
 import com.petcom.community.entity.User;
+import com.petcom.community.service.BreederService;
 import com.petcom.community.service.DiscussPostService;
 import com.petcom.community.service.UserService;
+import com.petcom.community.util.CommunityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +28,9 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BreederService breederService;
 
 
     /**
@@ -57,11 +63,11 @@ public class HomeController {
      * @api http://localhost:8080/community/index?current=1
      * @api http://localhost:8080/community/index?current=2
      */
-    @RequestMapping(path = "/api/index", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/article", method = RequestMethod.GET)
     @ResponseBody
     public List articlesAPI(Page page) {
         page.setRows(discussPostService.findDiscussPostRows(0));
-        page.setPath("/index");
+        page.setPath("/article");
         List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
         List<Map<String, Object>> discussPosts = new ArrayList<>();
         if (list != null) {
@@ -74,6 +80,20 @@ public class HomeController {
             }
         }
         return discussPosts;
+    }
+
+    @RequestMapping(path = "/api/breeder", method = RequestMethod.GET)
+    @ResponseBody
+    public String breederAPI(Page page) {
+        page.setRows(breederService.findBreederRows(0));
+        page.setPath("/breeder");
+
+        List<Breeder> list = breederService.findBreeders(0, page.getOffset(), page.getLimit());
+        Map<String, Object> map = new HashMap<>();
+        if (list != null) {
+            map.put("breeder", list);
+        }
+        return CommunityUtil.getJSONString(200, "success", map);
     }
 
     /****************************************************************/

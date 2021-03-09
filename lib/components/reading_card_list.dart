@@ -1,4 +1,4 @@
-import 'package:petcom/components/constants.dart';
+import 'package:petcom/constants.dart';
 import 'package:petcom/components/rating.dart';
 import 'package:petcom/components/two_side_rounded_button.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class ReadingListCard extends StatelessWidget {
                   BoxShadow(
                     offset: Offset(0, 10),
                     blurRadius: 33,
-                    color: kShadowColor,
+                    color: Colors.grey[300],
                   ),
                 ],
               ),
