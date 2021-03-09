@@ -48,6 +48,7 @@ We estimate we can finish one stories during the first sprint. Those are:
 
 - Login
 
+## Daily Scrum 3.6
 - In your daily scrums, you discussed: what did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? In your README, document which team members did which activities. (1 point for each team member's response, up to a maximum of 5 points) (5 pts)
 
 Kehan Wang: Backend & frontend development
