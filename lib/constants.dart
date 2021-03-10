@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/size_config.dart';
 
 const kPrimaryColor = Color(0xFFF9A825);
 const kPrimaryLightColor = Color(0xFFFFF8E1);
@@ -10,13 +9,6 @@ const kProgressIndicator = Color(0xFFBE7066);
 const kTextColor = Color(0xFF757575);
 
 final kShadowColor = Color(0xFFD3D3D3).withOpacity(.84);
-
-final headingStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(28),
-  fontWeight: FontWeight.bold,
-  color: Colors.black,
-  height: 1.5,
-);
 
 const defaultDuration = Duration(milliseconds: 250);
 
@@ -31,18 +23,3 @@ const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
-
-final otpInputDecoration = InputDecoration(
-  contentPadding:
-      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
-  border: outlineInputBorder(),
-  focusedBorder: outlineInputBorder(),
-  enabledBorder: outlineInputBorder(),
-);
-
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
-    borderSide: BorderSide(color: kTextColor),
-  );
-}

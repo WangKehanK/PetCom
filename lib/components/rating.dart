@@ -11,7 +11,7 @@ class Rating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 2),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),

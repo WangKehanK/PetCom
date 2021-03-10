@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/screens/Account/Login/login_screen.dart';
 import 'package:petcom/screens/Account/Profile/components/profile_pic.dart';
 import 'profile_menu.dart';
 
@@ -13,14 +12,12 @@ class Body extends StatelessWidget {
           ProfilePic(),
           SizedBox(height: 20),
           ProfileMenu(
-            text: "My Account",
+            text: "Submit a Breeder/Shelter",
             icon: "assets/icons/User Icon.svg",
-            press: () {
-              Navigator.pushNamed(context, LoginScreen.routeName);
-            },
+            press: () {},
           ),
           ProfileMenu(
-            text: "Log Out",
+            text: "Share your experience",
             icon: "assets/icons/Log out.svg",
             press: () {},
           ),
