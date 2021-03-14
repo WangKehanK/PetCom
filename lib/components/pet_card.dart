@@ -6,22 +6,43 @@ import 'package:flutter/material.dart';
 import '../configuration.dart';
 
 class PetCard extends StatelessWidget {
-  String? petId;
-  String? petName = '';
-  String? breed = '';
-  String? age = '';
-  String? distance = '';
-  String? gender = '';
-  String? imagePath = '';
-
+  // String? petId;
+  // String? petName = '';
+  // String? breed = '';
+  // String? age = '';
+  // String? distance = '';
+  // String? gender = '';
+  // String? imagePath = '';
+  int? id = 0;
+  String? title = "Unknown";
+  double? score = 0.0;
+  int? type = 0;
+  String? description = "Unknown";
+  String? createTime = "Unknown";
+  String? address = "Unknown";
+  String? city = "Unknown";
+  String? state = "Unknown";
+  String? contact = "Unknown";
+  String? website = "Unknown";
   PetCard({
-    this.petId,
-    this.petName,
-    this.breed,
-    this.age,
-    this.distance,
-    this.gender,
-    this.imagePath,
+    // this.petId,
+    // this.petName,
+    // this.breed,
+    // this.age,
+    // this.distance,
+    // this.gender,
+    // this.imagePath,
+    this.id,
+    this.title,
+    this.score,
+    this.type,
+    this.description,
+    this.createTime,
+    this.address,
+    this.city,
+    this.state,
+    this.contact,
+    this.website,
   });
 
   final colors = [
@@ -43,7 +64,7 @@ class PetCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return DetailsScreen(
-                id: petId,
+                id: id.toString(),
                 color: randomColor,
               );
             },
@@ -79,7 +100,7 @@ class PetCard extends StatelessWidget {
                             children: [
                               Flexible(
                                 child: new Text(
-                                  petName!,
+                                  title!,
                                   softWrap: true,
                                   style: TextStyle(
                                     fontSize: 16,
@@ -88,12 +109,12 @@ class PetCard extends StatelessWidget {
                                 ),
                               ),
                               Rating(
-                                score: 4.6,
+                                score: score,
                               ),
                             ],
                           ),
                           Text(
-                            breed!,
+                            address == null ? "Unknown" : address!,
                             style: TextStyle(
                               fontSize: 12,
                               color: fadedBlack,
@@ -101,7 +122,7 @@ class PetCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'MA',
+                            state == null ? "Unknown" : state!,
                             style: TextStyle(
                               fontSize: 12,
                               color: fadedBlack,
@@ -136,9 +157,10 @@ class PetCard extends StatelessWidget {
                   ),
                   Align(
                     child: Hero(
-                      tag: petId!,
+                      tag: id.toString(),
+                      //TODO: pet type
                       child: Image.asset(
-                        imagePath!,
+                        imagePaths[_random.nextInt(imagePaths.length)],
                       ),
                     ),
                   ),

@@ -32,7 +32,7 @@ class Rating extends StatelessWidget {
           ),
           SizedBox(height: 5),
           Text(
-            "$score",
+            score == null ? "*" : "$score",
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
