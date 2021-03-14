@@ -85,12 +85,18 @@ public class HomeController {
     @RequestMapping(path = "/api/breeder", method = RequestMethod.GET)
     @ResponseBody
     public String breederAPI(Page page) {
-        page.setRows(breederService.findBreederRows(0));
+        int rows = breederService.findBreederRows(0);
+        page.setRows(rows);
         page.setPath("/breeder");
 
         List<Breeder> list = breederService.findBreeders(0, page.getOffset(), page.getLimit());
         Map<String, Object> map = new HashMap<>();
+        if (page.getCurrent() > page.getTotal()){
+            return CommunityUtil.getJSONString(204, "exceeded the total number of page");
+        }
         if (list != null) {
+            map.put("total_page", page.getTotal());
+            map.put("current_page", page.getCurrent());
             map.put("breeder", list);
         }
         return CommunityUtil.getJSONString(200, "success", map);

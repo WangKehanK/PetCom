@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/discuss")
@@ -21,18 +22,16 @@ public class DiscussPostController {
     @Autowired
     DiscussPostService discussPostService;
 
-    @Autowired
-    private HostHolder hostHolder;
-
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public String addDiscussPost(String title, String content, int userId){
-        User user = hostHolder.getUser();
-        if(user == null || userId == 0) {
-            return CommunityUtil.getJSONString(403, "You haven't login yet");
-        }
+    public String addDiscussPost(String title, String content){
+//        User user = hostHolder.getUser();
+//        if(user == null || userId == 0) {
+//            return CommunityUtil.getJSONString(403, "You haven't login yet");
+//        }
         DiscussPost post = new DiscussPost();
-        post.setUserId(userId);
+        Random random = new Random();
+        post.setUserId(random.nextInt(150));
         post.setTitle(title);
         post.setContent(content);
         post.setCreateTime(new Date());
