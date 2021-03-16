@@ -11,14 +11,30 @@ class Body extends StatelessWidget {
         children: [
           ProfilePic(),
           SizedBox(height: 20),
+          // Center(
+          //   child: ElevatedButton(
+          //     style: ElevatedButton.styleFrom(
+          //       // primary: Colors.red,
+          //       // onPrimary: Colors.white,
+          //       onSurface: Colors.blue,
+          //     ),
+          //     child: Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: Text(
+          //         'Submit a Breeder/Shelter',
+          //         style: TextStyle(fontSize: 20),
+          //       ),
+          //     ),
+          //     onPressed: null,
+          //     // onPressed: () {},
+          //   ),
+          // ),
           ProfileMenu(
             text: "Submit a Breeder/Shelter",
-            icon: "assets/icons/User Icon.svg",
             press: () {},
           ),
           ProfileMenu(
             text: "Share your experience",
-            icon: "assets/icons/Log out.svg",
             press: () {},
           ),
         ],
