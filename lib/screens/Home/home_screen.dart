@@ -1,14 +1,11 @@
 import 'package:petcom/components/article_card.dart';
 import 'package:petcom/components/search_bar.dart';
 import 'package:petcom/model/Breeder.dart';
+import 'package:petcom/screens/Article/article_list_screen.dart';
 import 'package:petcom/screens/Breeder/details_screen.dart';
 import 'package:petcom/components/reading_card_list.dart';
-import 'package:petcom/components/article_card.dart';
-
 import 'package:flutter/material.dart';
-import 'package:petcom/constants.dart';
-import 'package:petcom/components/rating.dart';
-import 'package:petcom/components/two_side_rounded_button.dart';
+import 'package:petcom/screens/Breeder/pet_screen.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
 import 'dart:math';
@@ -56,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   SearchBar(),
                   SizedBox(height: size.height * .04),
 
-                  buildTitle(context, "Featured ", "Article"),
+                  buildTitleWithPush(
+                      context, "Featured ", "Article", ArticleList.routeName),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -70,12 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ArticleCard(
                           size: size,
                         ),
-                        SizedBox(width: 30),
                       ],
                     ),
                   ),
+                  //TODO Update link
                   buildTitle(context, "Recommend ", "Owners"),
-                  SizedBox(height: 30),
+                  // SizedBox(height: 30),
 
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -123,12 +121,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Padding buildTitle(BuildContext context, String s1, String s2) {
+  Padding buildTitleWithPush(
+      BuildContext context, String s1, String s2, String routeName) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: GestureDetector(
         onTap: () {
-          print("direct!");
+          try {
+            Navigator.pushNamed(context, routeName);
+          } on Exception catch (e) {
+            print(e);
+          }
         },
         child: Row(
           children: <Widget>[
@@ -145,16 +148,43 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(width: 60),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.black,
-            ),
+            Container(
+              child: (routeName == '')
+                  ? Icon(Icons.pets)
+                  : Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.black,
+                    ),
+            )
           ],
         ),
       ),
     );
   }
 
+  Padding buildTitle(BuildContext context, String s1, String s2) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Container(
+        child: Row(
+          children: <Widget>[
+            RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.headline5,
+                children: [
+                  TextSpan(text: s1),
+                  TextSpan(
+                    text: s2,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
   // Container bestOfTheDayCard(Size size, BuildContext context) {
   //   return Container(
   //     margin: EdgeInsets.only(left: 24, bottom: 40),

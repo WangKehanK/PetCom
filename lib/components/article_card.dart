@@ -11,9 +11,9 @@ class ArticleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 24, bottom: 40),
+      margin: EdgeInsets.only(left: 24, bottom: 20),
       width: 300,
-      height: 245,
+      height: 215,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -26,41 +26,48 @@ class ArticleCard extends StatelessWidget {
                 top: 24,
                 right: size!.width * .35,
               ),
-              height: 230,
+              height: 200,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xFFEAEAEA).withOpacity(.45),
+                color: Color(0xFFEAEAEA).withOpacity(1),
                 borderRadius: BorderRadius.circular(29),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                    child: Text(
-                      "New York Time Best For 11th March 2020",
-                      style: TextStyle(
-                        fontSize: 9,
-                        color: kLightBlackColor,
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  //   child: Text(
+                  //     "New York Time Best For 11th March 2020",
+                  //     style: TextStyle(
+                  //       fontSize: 9,
+                  //       color: kLightBlackColor,
+                  //     ),
+                  //   ),
+                  // ),
                   Text(
-                    "How To Win \nFriends &  Influence",
+                    "Tips to Pet Your Puppy",
                     style: Theme.of(context).textTheme.title,
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
-                    "Gary Venchuk",
-                    style: TextStyle(color: kLightBlackColor),
+                    "User 001",
+                    style: TextStyle(
+                        color: kLightBlackColor, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10.0),
                     child: Row(
                       children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(right: 10.0),
-                          child: Rating(score: 4.9),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(right: 10.0),
+                        //   child: Rating(score: 4.9),
+                        // ),
                         Expanded(
                           child: Text(
                             "When the earth was flat and everyone wanted to win the game of the best and people….",
@@ -94,7 +101,7 @@ class ArticleCard extends StatelessWidget {
               height: 40,
               width: size!.width * .3,
               child: TwoSideRoundedButton(
-                text: "Read",
+                text: "Detail",
                 radious: 24,
                 press: () {},
               ),

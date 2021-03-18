@@ -36,15 +36,15 @@ class ReadingListCard extends StatelessWidget {
             child: Container(
               height: 221,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xFFEAEAEA).withOpacity(1),
                 borderRadius: BorderRadius.circular(29),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 33,
-                    color: Colors.grey[300]!,
-                  ),
-                ],
+                // boxShadow: [
+                //   BoxShadow(
+                //     offset: Offset(0, 10),
+                //     blurRadius: 33,
+                //     color: Colors.grey[600]!,
+                //   ),
+                // ],
               ),
             ),
           ),
@@ -57,12 +57,12 @@ class ReadingListCard extends StatelessWidget {
             right: 10,
             child: Column(
               children: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.favorite_border,
-                  ),
-                  onPressed: () {},
-                ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.favorite_border,
+                //   ),
+                //   onPressed: () {},
+                // ),
                 Rating(score: rating),
               ],
             ),

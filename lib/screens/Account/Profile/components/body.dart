@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:petcom/screens/Account/Profile/components/breeder_form.dart';
+import 'package:petcom/screens/Account/Profile/components/experience_form.dart';
 import 'package:petcom/screens/Account/Profile/components/profile_pic.dart';
 import 'profile_menu.dart';
 
@@ -31,11 +33,15 @@ class Body extends StatelessWidget {
           // ),
           ProfileMenu(
             text: "Submit a Breeder/Shelter",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, BreederFormScreen.routeName);
+            },
           ),
           ProfileMenu(
             text: "Share your experience",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, ExperienceFormScreen.routeName);
+            },
           ),
         ],
       ),

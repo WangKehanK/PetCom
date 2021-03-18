@@ -4,6 +4,8 @@ import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
 
 class ArticleList extends StatefulWidget {
+  static String routeName = "/articles";
+
   ArticleList({
     Key? key,
   }) : super(key: key);
