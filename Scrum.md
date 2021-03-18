@@ -80,3 +80,36 @@ Duo Xu: Continue work on the Interactive Wireframe
 - In your daily scrums, you discussed: do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? What are the impediments? What is your impediment removal plan? (1 point for each question answered) (3 pts)
 
 We had diffculties on finishing user stories. It is not helpful for us to manage all the developing tasks. We discussed with TA and James. Now, we have a much better understanding. We should be able to move forward much easier.
+
+# Sprint #2
+
+We estimate we can finish one stories during the first sprint. Those are: 
+
+- Login
+
+## Daily Scrum 3.13
+- In your daily scrums, you discussed: what did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? In your README, document which team members did which activities. (1 point for each team member's response, up to a maximum of 5 points) (5 pts)
+
+Kehan Wang: Backend & frontend development
+
+Zhaoyi Lin: Help with collecting data
+
+Minna Fang, Yixuan Lu: Start produce content
+
+Duo Xu：Design, Spotlight feedback
+
+- In your daily scrums, you discussed: what will you do in the next 24 hours to help the Development Team meet the Sprint Goal? In your README, document which team members plan to do which activities. (1 point for each team member's response, up to a maximum of 5 points) (5 pts)
+
+Kehan Wang: Continue my development work
+
+Xiaoxin Gan: help development
+
+Zhaoyi Lin: Continue helping data collection
+
+Minna Fang, Yixuan Lu: Continue with producing content
+
+Duo Xu: Continue work on the design
+
+- In your daily scrums, you discussed: do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? What are the impediments? What is your impediment removal plan? (1 point for each question answered) (3 pts)
+
+We thought our authentication is way too complex, we decides remove it temporply, so we can speed our development up!
