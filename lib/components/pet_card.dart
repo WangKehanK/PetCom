@@ -6,13 +6,6 @@ import 'package:flutter/material.dart';
 import '../configuration.dart';
 
 class PetCard extends StatelessWidget {
-  // String? petId;
-  // String? petName = '';
-  // String? breed = '';
-  // String? age = '';
-  // String? distance = '';
-  // String? gender = '';
-  // String? imagePath = '';
   int? id = 0;
   String? title = "Unknown";
   double? score = 0.0;
@@ -25,13 +18,6 @@ class PetCard extends StatelessWidget {
   String? contact = "Unknown";
   String? website = "Unknown";
   PetCard({
-    // this.petId,
-    // this.petName,
-    // this.breed,
-    // this.age,
-    // this.distance,
-    // this.gender,
-    // this.imagePath,
     this.id,
     this.title,
     this.score,

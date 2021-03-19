@@ -61,12 +61,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: <Widget>[
                         ArticleCard(
                           size: size,
+                          id: 1,
                         ),
                         ArticleCard(
                           size: size,
+                          id: 1,
                         ),
                         ArticleCard(
                           size: size,
+                          id: 1,
                         ),
                       ],
                     ),
@@ -89,7 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return DetailsScreen();
+                                  return DetailsScreen(
+                                    id: "1",
+                                  );
                                 },
                               ),
                             );
