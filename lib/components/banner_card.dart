@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:petcom/screens/Article/article_detail_screen.dart';
 import '../configuration.dart';
 
-class ArticleCard extends StatelessWidget {
+class BannerCard extends StatelessWidget {
   Size? size;
   int? id = 0;
   String? title = "Unknown";
@@ -19,7 +19,7 @@ class ArticleCard extends StatelessWidget {
   String? state = "Unknown";
   String? contact = "Unknown";
   String? website = "Unknown";
-  ArticleCard({
+  BannerCard({
     this.size,
     this.id,
     this.title,
@@ -127,7 +127,7 @@ class ArticleCard extends StatelessWidget {
             right: 0,
             top: 0,
             child: Image.asset(
-              "assets/images/dog10.png",
+              "assets/images/banner img.png",
               width: size!.width * .37,
             ),
           ),

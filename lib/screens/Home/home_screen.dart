@@ -1,11 +1,10 @@
-import 'package:petcom/components/article_card.dart';
 import 'package:petcom/components/search_bar.dart';
 import 'package:petcom/model/Breeder.dart';
 import 'package:petcom/screens/Article/article_list_screen.dart';
 import 'package:petcom/screens/Breeder/details_screen.dart';
-import 'package:petcom/components/reading_card_list.dart';
+import 'package:petcom/components/square_banner_card.dart';
 import 'package:flutter/material.dart';
-import 'package:petcom/screens/Breeder/pet_screen.dart';
+import 'package:petcom/components/banner_card.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
 import 'dart:math';
@@ -59,15 +58,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: <Widget>[
-                        ArticleCard(
+                        BannerCard(
                           size: size,
                           id: 1,
                         ),
-                        ArticleCard(
+                        BannerCard(
                           size: size,
                           id: 1,
                         ),
-                        ArticleCard(
+                        BannerCard(
                           size: size,
                           id: 1,
                         ),
@@ -82,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: <Widget>[
-                        ReadingListCard(
+                        SquareBannerCard(
                           image: "assets/images/cat-1.png",
                           title: "Sunshine Kitten House",
                           auth: "",
@@ -100,13 +99,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                           },
                         ),
-                        ReadingListCard(
+                        SquareBannerCard(
                           image: "assets/images/cat-1.png",
                           title: "Sunshine Puppy House",
                           auth: "",
                           rating: 4.8,
                         ),
-                        ReadingListCard(
+                        SquareBannerCard(
                           image: "assets/images/cat-1.png",
                           title: "Sunshine Puppy House",
                           auth: "",

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/screens/Breeder/drawer_screen.dart';
 import 'package:petcom/screens/Home/home_screen.dart';
 import 'package:petcom/screens/Breeder/pet_screen.dart';
 import 'package:petcom/screens/Account/Profile/profile_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
   static String routeName = '/main_screen';
@@ -76,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       IconButton(
                           icon: Icon(
-                            Icons.people,
+                            Icons.person_sharp,
                             color: _selectedPageIndex == 2
                                 ? Colors.brown
                                 : Colors.grey.shade400,

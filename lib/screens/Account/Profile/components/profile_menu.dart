@@ -21,7 +21,7 @@ class ProfileMenu extends StatelessWidget {
         style: TextButton.styleFrom(
           primary: Colors.white,
           shadowColor: Colors.brown,
-          elevation: 3,
+          elevation: 1,
           padding: EdgeInsets.all(20),
           backgroundColor: Colors.transparent,
           shape:
@@ -32,7 +32,7 @@ class ProfileMenu extends StatelessWidget {
           children: [
             Icon(Icons.pets),
             SizedBox(width: 20),
-            Expanded(child: Text(text)),
+            Expanded(child: Text(text)), //TODO: font
             Icon(Icons.arrow_forward_ios),
           ],
         ),

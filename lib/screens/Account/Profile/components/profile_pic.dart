@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
@@ -8,15 +7,15 @@ class ProfilePic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 115,
-      width: 115,
+    return Container(
+      height: 300,
+      width: 500,
       child: Stack(
         fit: StackFit.expand,
         children: [
           FittedBox(
             child: Image.asset(
-              "assets/images/dog10.png",
+              "assets/images/logo.png",
             ),
             fit: BoxFit.contain,
           ),

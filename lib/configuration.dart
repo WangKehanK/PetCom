@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Color primaryGreen = Color(0xff416d6d);
 Color secondaryGreen = Color(0xff16a085);
@@ -13,14 +12,6 @@ List<BoxShadow> customShadow = [
   ),
 ];
 
-List<Map> categories = [
-  {"name": "Cats", "iconPath": "assets/images/cat.png"},
-  {"name": "Dogs", "iconPath": "assets/images/dog.png"},
-  {"name": "Bunnies", "iconPath": "assets/images/bunny.png"},
-  {"name": "Birds", "iconPath": "assets/images/bird.png"},
-  {"name": "Horses", "iconPath": "assets/images/horse.png"},
-];
-
 List<String> imagePaths = [
   "assets/images/dog1.png",
   "assets/images/dog2.png",
@@ -31,7 +22,21 @@ List<String> imagePaths = [
   "assets/images/dog7.png",
   "assets/images/dog8.png",
   "assets/images/dog9.png",
+  "assets/images/dog10.png",
   "assets/images/dog0.png",
+];
+
+List<String> cloudImagePaths = [
+  "https://storage.googleapis.com/petcom/images/dog0.png",
+  "https://storage.googleapis.com/petcom/images/dog1.png",
+  "https://storage.googleapis.com/petcom/images/dog2.png",
+  "https://storage.googleapis.com/petcom/images/dog3.png",
+  "https://storage.googleapis.com/petcom/images/dog4.png",
+  "https://storage.googleapis.com/petcom/images/dog5.png",
+  "https://storage.googleapis.com/petcom/images/dog6.png",
+  "https://storage.googleapis.com/petcom/images/dog7.png",
+  "https://storage.googleapis.com/petcom/images/dog8.png",
+  "https://storage.googleapis.com/petcom/images/dog9.png",
 ];
 
 List<Map> breeder = [

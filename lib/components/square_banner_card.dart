@@ -3,7 +3,7 @@ import 'package:petcom/components/rating.dart';
 import 'package:petcom/components/two_side_rounded_button.dart';
 import 'package:flutter/material.dart';
 
-class ReadingListCard extends StatelessWidget {
+class SquareBannerCard extends StatelessWidget {
   final String? image;
   final String? title;
   final String? auth;
@@ -11,7 +11,7 @@ class ReadingListCard extends StatelessWidget {
   final Function? pressDetails;
   final Function? pressRead;
 
-  const ReadingListCard({
+  const SquareBannerCard({
     Key? key,
     this.image,
     this.title,

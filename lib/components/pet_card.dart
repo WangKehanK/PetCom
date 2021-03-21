@@ -144,10 +144,16 @@ class PetCard extends StatelessWidget {
                   Align(
                     child: Hero(
                       tag: id.toString(),
-                      //TODO: pet type
+                      //TODO: Pet Images from Google Cloud
                       child: Image.asset(
                         imagePaths[_random.nextInt(imagePaths.length)],
                       ),
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //       image: DecorationImage(
+                      //           image: NetworkImage(imagePaths[
+                      //               _random.nextInt(imagePaths.length)]))),
+                      // ),
                     ),
                   ),
                 ],

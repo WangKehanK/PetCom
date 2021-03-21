@@ -188,7 +188,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     height: 20,
                   ),
                   Text(
-                    "Gallery",
+                    "Information",
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(
