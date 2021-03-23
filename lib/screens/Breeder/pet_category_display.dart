@@ -1,6 +1,4 @@
-import 'dart:io';
-
-import 'package:petcom/components/pet_card.dart';
+import 'package:petcom/screens/Breeder/pet_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -9,6 +7,7 @@ import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
 
+//TODO: ERROR network
 class PetCategoryDisplay extends StatefulWidget {
   PetCategoryDisplay({
     Key? key,
@@ -22,11 +21,11 @@ class _PetCategoryDisplayPageState extends State<PetCategoryDisplay> {
   // http request
   late HttpService http;
   // json to dart
-  BreederList? data;
+  BreederResponse? data;
   List<Breeder> _breeder = <Breeder>[];
   // helper
   bool _isLoading = false;
-  bool _hasmore = false;
+  bool _hasMore = false;
 
   int? _statusCode;
   int? _nextPage;
@@ -43,7 +42,7 @@ class _PetCategoryDisplayPageState extends State<PetCategoryDisplay> {
           .getRequest("/api/breeder?current=" + _currentPage.toString());
       // if (response.data['code'] == '200') {}
       setState(() {
-        data = BreederList.fromJson(jsonDecode(response.data));
+        data = BreederResponse.fromJson(jsonDecode(response.data));
         _breeder += data!.breeder!;
         // 200: success
         // 204: exceed the total numebr of page
@@ -81,7 +80,7 @@ class _PetCategoryDisplayPageState extends State<PetCategoryDisplay> {
         this._isLoading = true;
         sleep1();
         if (this._nextPage! > this._totalPage!) {
-          _hasmore = false;
+          _hasMore = false;
         } else {
           getBreeder(this._nextPage);
         }

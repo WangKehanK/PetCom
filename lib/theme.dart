@@ -4,14 +4,13 @@ import 'constants.dart';
 
 ThemeData theme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: kWhiteColor,
     fontFamily: "Muli",
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
 }
-
 
 TextTheme textTheme() {
   return TextTheme(

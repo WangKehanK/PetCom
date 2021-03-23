@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:petcom/constants.dart';
-import 'package:petcom/components/rating.dart';
 import 'package:petcom/components/two_side_rounded_button.dart';
 import 'dart:math';
 import 'package:petcom/screens/Article/article_detail_screen.dart';
-import '../configuration.dart';
 
 class BannerCard extends StatelessWidget {
   Size? size;
@@ -84,7 +82,7 @@ class BannerCard extends StatelessWidget {
                   // ),
                   Text(
                     "Tips to Pet Your Puppy",
-                    style: Theme.of(context).textTheme.title,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   SizedBox(
                     height: 20,

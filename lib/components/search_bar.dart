@@ -1,4 +1,4 @@
-import 'package:petcom/configuration.dart';
+import 'package:petcom/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,7 @@ class SearchBar extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20),
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: kWhiteColor,
         borderRadius: BorderRadius.circular(20),
         boxShadow: customShadow,
       ),

@@ -3,7 +3,8 @@ import 'package:petcom/components/rating.dart';
 import 'package:petcom/screens/Breeder/details_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../configuration.dart';
+import '../../configuration.dart';
+import 'package:petcom/constants.dart';
 
 class PetCard extends StatelessWidget {
   int? id = 0;
@@ -121,7 +122,7 @@ class PetCard extends StatelessWidget {
                 ],
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: kWhiteColor,
                 boxShadow: customShadow,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),

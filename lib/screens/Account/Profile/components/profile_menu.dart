@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:petcom/constants.dart';
 
 class ProfileMenu extends StatelessWidget {
@@ -19,7 +17,7 @@ class ProfileMenu extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: Colors.white,
+          primary: kWhiteColor,
           shadowColor: Colors.brown,
           elevation: 1,
           padding: EdgeInsets.all(20),
@@ -32,7 +30,7 @@ class ProfileMenu extends StatelessWidget {
           children: [
             Icon(Icons.pets),
             SizedBox(width: 20),
-            Expanded(child: Text(text)), //TODO: font
+            Expanded(child: Text(text)),
             Icon(Icons.arrow_forward_ios),
           ],
         ),

@@ -21,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HttpService? http;
-  BreederList? breederList;
+  BreederResponse? breederList;
 
   Future getBreeder() async {
     Response response;

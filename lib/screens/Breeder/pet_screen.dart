@@ -1,5 +1,5 @@
-import 'package:petcom/configuration.dart';
-import 'package:petcom/components/pet_category_display.dart';
+import 'package:petcom/constants.dart';
+import 'package:petcom/screens/Breeder/pet_category_display.dart';
 import 'package:petcom/components/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +65,7 @@ class _PetScreenState extends State<PetScreen> {
                   ],
                 ),
                 CircleAvatar(
-                  backgroundColor: Colors.white,
+                  backgroundColor: kWhiteColor,
                 ),
               ],
             ),

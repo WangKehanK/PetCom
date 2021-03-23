@@ -28,7 +28,7 @@ class TwoSideRoundedButton extends StatelessWidget {
         ),
         child: Text(
           text!,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: kWhiteColor),
         ),
       ),
     );

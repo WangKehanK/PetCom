@@ -4,6 +4,8 @@ import 'package:petcom/screens/Breeder/pet_screen.dart';
 import 'package:petcom/screens/Account/Profile/profile_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../constants.dart';
+
 class MainScreen extends StatefulWidget {
   static String routeName = '/main_screen';
   @override
@@ -100,7 +102,7 @@ class BNBCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = new Paint()
-      ..color = Colors.white
+      ..color = kWhiteColor
       ..style = PaintingStyle.fill;
 
     Path path = Path();

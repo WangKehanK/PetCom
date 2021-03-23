@@ -13,7 +13,7 @@ class Rating extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4, horizontal: 2),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: kWhiteColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(

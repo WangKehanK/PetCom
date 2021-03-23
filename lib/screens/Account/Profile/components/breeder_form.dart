@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petcom/constants.dart';
 
 class BreederFormScreen extends StatefulWidget {
   static String routeName = "/breeder_form";
@@ -15,7 +16,6 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   String? _password;
   String? _url;
   String? _phoneNumber;
-  String? _calories;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -130,7 +130,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                 ElevatedButton(
                   child: Text(
                     'Submit',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: TextStyle(color: kWhiteColor, fontSize: 16),
                   ),
                   onPressed: () {
                     if (!_formKey.currentState!.validate()) {

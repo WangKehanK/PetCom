@@ -1,4 +1,4 @@
-import 'package:petcom/configuration.dart';
+import 'package:petcom/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
@@ -32,7 +32,7 @@ class CustomIconButton extends StatelessWidget {
         ),
         child: Icon(
           iconData,
-          color: Colors.white,
+          color: kWhiteColor,
         ),
       ),
     );

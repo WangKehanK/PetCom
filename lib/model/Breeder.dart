@@ -1,14 +1,14 @@
-class BreederList {
+class BreederResponse {
   String? msg;
   int? code;
   int? totalPage;
   int? currentPage;
   List<Breeder>? breeder;
 
-  BreederList(
+  BreederResponse(
       {this.msg, this.code, this.totalPage, this.currentPage, this.breeder});
 
-  BreederList.fromJson(Map<String, dynamic> json) {
+  BreederResponse.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     code = json['code'];
     totalPage = json['total_page'];
