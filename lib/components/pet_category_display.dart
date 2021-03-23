@@ -1,14 +1,13 @@
+import 'dart:io';
+
 import 'package:petcom/components/pet_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:loadmore/loadmore.dart';
 import 'package:petcom/model/Breeder.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
-
-import '../configuration.dart';
 
 class PetCategoryDisplay extends StatefulWidget {
   PetCategoryDisplay({
@@ -20,69 +19,115 @@ class PetCategoryDisplay extends StatefulWidget {
 }
 
 class _PetCategoryDisplayPageState extends State<PetCategoryDisplay> {
+  // http request
   late HttpService http;
-  BreederList? breederList;
+  // json to dart
+  BreederList? data;
+  List<Breeder> _breeder = <Breeder>[];
+  // helper
+  bool _isLoading = false;
+  bool _hasmore = false;
 
-  bool isLoading = false;
-  int currentPage = 1;
-  dynamic data;
+  int? _statusCode;
+  int? _nextPage;
+  int? _currentPage;
+  int? _totalPage;
+  ScrollController _scrollController = new ScrollController();
 
+  //fetch a list of breeder from page i
   Future getBreeder(_currentPage) async {
     Response response;
     try {
-      isLoading = true;
+      _isLoading = true;
       response = await http
           .getRequest("/api/breeder?current=" + _currentPage.toString());
       // if (response.data['code'] == '200') {}
       setState(() {
-        data = json.decode(response.data);
-        print(data);
+        data = BreederList.fromJson(jsonDecode(response.data));
+        _breeder += data!.breeder!;
+        // 200: success
+        // 204: exceed the total numebr of page
+        this._statusCode = data!.code!;
+        this._totalPage = data!.totalPage!;
+        this._currentPage = data!.currentPage!;
+        this._nextPage = this._currentPage! + 1;
       });
-      isLoading = false;
+      _isLoading = false;
     } on Exception catch (e) {
-      isLoading = false;
+      _isLoading = false;
       print(e);
     }
   }
 
-  @override
-  void initState() {
-    http = HttpService();
-    getBreeder(currentPage);
-    super.initState();
+  Future sleep1() {
+    return new Future.delayed(const Duration(seconds: 1), () => "1");
   }
 
-  //TODO: GET Request to /api/breeder
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    http = HttpService();
+    getBreeder(1);
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        //if we are at bottom of page
+        this._isLoading = true;
+        sleep1();
+        if (this._nextPage! > this._totalPage!) {
+          _hasmore = false;
+        } else {
+          getBreeder(this._nextPage);
+        }
+        print("current page: " + this._nextPage.toString());
+        this._isLoading = false;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
         child: Container(
-          child: isLoading
+          child: _isLoading
               ? Center(
-                  child: CircularProgressIndicator(),
+                  child: Center(
+                    child: SizedBox(
+                      child: CircularProgressIndicator(),
+                      height: 24,
+                      width: 24,
+                    ),
+                  ),
                 )
               : ListView.builder(
+                  controller: _scrollController,
                   physics: BouncingScrollPhysics(),
-                  itemCount: data['breeder'].length,
+                  itemCount: _breeder.length, // data['breeder] == _pairList
                   itemBuilder: (context, index) {
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       child: SlideAnimation(
-                        verticalOffset: 50.0,
+                        verticalOffset: 20.0,
                         child: ScaleAnimation(
                           child: PetCard(
-                            id: breeder[index]['id'],
-                            title: breeder[index]['title'],
-                            score: breeder[index]['score'],
-                            type: breeder[index]['type'],
-                            description: breeder[index]['description'],
-                            createTime: breeder[index]['create_time'],
-                            address: breeder[index]['address'],
-                            city: breeder[index]['city'],
-                            state: breeder[index]['state'],
-                            contact: breeder[index]['contact'],
-                            website: breeder[index]['website'],
+                            id: _breeder[index].id,
+                            title: _breeder[index].title,
+                            score: _breeder[index].score,
+                            type: _breeder[index].type,
+                            description: _breeder[index].description,
+                            createTime: _breeder[index].createTime.toString(),
+                            address: _breeder[index].address,
+                            city: _breeder[index].city,
+                            state: _breeder[index].state,
+                            contact: _breeder[index].contact,
+                            website: _breeder[index].website,
                           ),
                         ),
                       ),

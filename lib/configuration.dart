@@ -42,7 +42,7 @@ List<String> cloudImagePaths = [
 List<Map> breeder = [
   {
     "id": 1,
-    "title": "Rhetorical Ragdoll",
+    "title": "Rhetorical Ragdolls",
     "score": null,
     "type": 0,
     "description":

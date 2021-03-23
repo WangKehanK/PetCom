@@ -95,6 +95,7 @@ public class HomeController {
             return CommunityUtil.getJSONString(204, "exceeded the total number of page");
         }
         if (list != null) {
+            map.put("total", page.getRows());
             map.put("total_page", page.getTotal());
             map.put("current_page", page.getCurrent());
             map.put("breeder", list);

@@ -1,13 +1,18 @@
 class BreederList {
   String? msg;
   int? code;
+  int? totalPage;
+  int? currentPage;
   List<Breeder>? breeder;
 
-  BreederList({this.msg, this.code, this.breeder});
+  BreederList(
+      {this.msg, this.code, this.totalPage, this.currentPage, this.breeder});
 
   BreederList.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     code = json['code'];
+    totalPage = json['total_page'];
+    currentPage = json['current_page'];
     if (json['breeder'] != null) {
       // breeder = new List<Breeder>();
       breeder = [];
@@ -21,6 +26,8 @@ class BreederList {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['msg'] = this.msg;
     data['code'] = this.code;
+    data['total_page'] = this.totalPage;
+    data['current_page'] = this.currentPage;
     if (this.breeder != null) {
       data['breeder'] = this.breeder!.map((v) => v.toJson()).toList();
     }
