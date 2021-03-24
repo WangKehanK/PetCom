@@ -12,8 +12,6 @@ flutter run
 
 Useful tools for Dart: 
 - [Json_to_dart](https://javiercbk.github.io/json_to_dart/)
-- [Json to dart](https://app.quicktype.io/)
-
 ```
 How to convert json to dart list?
   // http request
