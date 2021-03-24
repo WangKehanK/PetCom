@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:petcom/constants.dart';
 import 'package:petcom/model/PostList.dart';
+import 'package:petcom/screens/Article/article_card.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class ArticleList extends StatefulWidget {
   static String routeName = "/articles";
@@ -39,30 +42,37 @@ class _ArticleListPageState extends State<ArticleList> {
   @override
   void initState() {
     http = HttpService();
-    getPost();
+    // getPost();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+        color: kWhiteColor,
         child: Center(
-            child: isLoading
-                ? Center(child: CircularProgressIndicator())
-                : data != null
-                    ? ListView.builder(
-                        itemBuilder: (context, index) {
-                          final p = data[index];
-                          return ListTile(
-                            title: Text(p['post']['title']),
-                            leading: Image.network(p['user']['headerUrl']),
-                            subtitle: Text(p['post']['content']),
-                          );
-                        },
-                        itemCount: data.length,
-                      )
-                    : Center(
-                        child: Text("No User Object"),
-                      )));
+          child: isLoading
+              ? Center(child: CircularProgressIndicator())
+              : ListView.separated(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 20, // data['breeder] == _pairList
+                  itemBuilder: (context, index) {
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      child: SlideAnimation(
+                        verticalOffset: 50.0,
+                        child: ScaleAnimation(
+                          child: ArticleCard(),
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Divider(
+                    height: 16.0,
+                    color: kPrimaryLightColor,
+                  ),
+                ),
+        ));
   }
 }
