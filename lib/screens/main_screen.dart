@@ -47,9 +47,9 @@ class _MainScreenState extends State<MainScreen> {
                 Center(
                   heightFactor: 0.6,
                   child: FloatingActionButton(
-                      backgroundColor: _selectedPageIndex == 0
-                          ? Colors.grey.shade400
-                          : Colors.brown,
+                      backgroundColor: _selectedPageIndex == 1
+                          ? kIconColor
+                          : Colors.grey.shade400,
                       child: Icon(Icons.pets),
                       elevation: 0.1,
                       onPressed: () {
@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
                         icon: Icon(
                           Icons.home,
                           color: _selectedPageIndex == 0
-                              ? Colors.brown
+                              ? kIconColor
                               : Colors.grey.shade400,
                         ),
                         onPressed: () {
@@ -80,7 +80,7 @@ class _MainScreenState extends State<MainScreen> {
                           icon: Icon(
                             Icons.person_sharp,
                             color: _selectedPageIndex == 2
-                                ? Colors.brown
+                                ? kIconColor
                                 : Colors.grey.shade400,
                           ),
                           onPressed: () {

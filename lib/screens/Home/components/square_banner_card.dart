@@ -36,15 +36,15 @@ class SquareBannerCard extends StatelessWidget {
             child: Container(
               height: 221,
               decoration: BoxDecoration(
-                color: Color(0xFFEAEAEA).withOpacity(1),
-                borderRadius: BorderRadius.circular(29),
-                // boxShadow: [
-                //   BoxShadow(
-                //     offset: Offset(0, 10),
-                //     blurRadius: 33,
-                //     color: Colors.grey[600]!,
-                //   ),
-                // ],
+                color: kWhiteColor,
+                // borderRadius: BorderRadius.circular(29),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 10),
+                    blurRadius: 50,
+                    color: Color(0xFFEAEAEA).withOpacity(1),
+                  ),
+                ],
               ),
             ),
           ),
@@ -111,6 +111,7 @@ class SquareBannerCard extends StatelessWidget {
                       ),
                       Expanded(
                         child: TwoSideRoundedButton(
+                          radious: 0,
                           text: "Detail",
                           press: pressDetails,
                         ),

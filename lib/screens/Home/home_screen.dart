@@ -1,10 +1,15 @@
 import 'package:petcom/components/search_bar.dart';
+import 'package:petcom/constants.dart';
 import 'package:petcom/model/Breeder.dart';
+import 'package:petcom/screens/Article/article_list_display.dart';
 import 'package:petcom/screens/Article/article_list_screen.dart';
 import 'package:petcom/screens/Breeder/details_screen.dart';
-import 'package:petcom/components/square_banner_card.dart';
+import 'package:petcom/screens/Home/components/square_banner_card.dart';
 import 'package:flutter/material.dart';
 import 'package:petcom/components/banner_card.dart';
+import 'package:petcom/screens/Home/components/header_with_searchbox.dart';
+import 'package:petcom/screens/Home/components/new_banner_card.dart';
+import 'package:petcom/screens/Home/components/new_square_banner_card.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
 import 'dart:math';
@@ -37,8 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+      // backgroundColor: kPrimaryLightColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,35 +54,51 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: size.height * .05),
-                  SearchBar(),
-                  SizedBox(height: size.height * .04),
-
+                  // SearchBar(),
+                  HeaderWithSearchBox(size: size),
                   buildTitleWithPush(
-                      context, "Featured ", "Article", ArticleList.routeName),
+                      context, "Featured ", "Article", ArticleScreen.routeName),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: <Widget>[
-                        BannerCard(
+                        // BannerCard(
+                        //   size: size,
+                        //   id: 1,
+                        //   imagePath: "assets/images/banner1.png",
+                        // ),
+                        NewBannerCard(
                           size: size,
                           id: 1,
+                          imagePath: "assets/images/banner3.png",
                         ),
-                        BannerCard(
+                        NewBannerCard(
                           size: size,
                           id: 1,
+                          imagePath: "assets/images/banner4.png",
                         ),
-                        BannerCard(
+                        NewBannerCard(
                           size: size,
                           id: 1,
+                          imagePath: "assets/images/banner4.png",
                         ),
+                        // NewBannerCard(),
+                        // BannerCard(
+                        //   size: size,
+                        //   id: 1,
+                        //   imagePath: "assets/images/banner2.png",
+                        // ),
+                        // BannerCard(
+                        //   size: size,
+                        //   id: 1,
+                        //   imagePath: "assets/images/banner2.png",
+                        // ),
                       ],
                     ),
                   ),
                   //TODO Update link
                   buildTitle(context, "Recommend ", "Owners"),
                   // SizedBox(height: 30),
-
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -129,8 +151,8 @@ class _HomeScreenState extends State<HomeScreen> {
       BuildContext context, String s1, String s2, String routeName) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: GestureDetector(
-        onTap: () {
+      child: TextButton(
+        onPressed: () {
           try {
             Navigator.pushNamed(context, routeName);
           } on Exception catch (e) {

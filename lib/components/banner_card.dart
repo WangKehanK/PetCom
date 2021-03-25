@@ -17,6 +17,7 @@ class BannerCard extends StatelessWidget {
   String? state = "Unknown";
   String? contact = "Unknown";
   String? website = "Unknown";
+  String? imagePath = "assets/images/banner1.png";
   BannerCard({
     this.size,
     this.id,
@@ -30,6 +31,7 @@ class BannerCard extends StatelessWidget {
     this.state,
     this.contact,
     this.website,
+    this.imagePath,
   });
 
   final colors = [
@@ -44,11 +46,10 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final randomColor = colors[_random.nextInt(colors.length)];
-
     return Container(
       margin: EdgeInsets.only(left: 24, bottom: 20),
       width: 300,
-      height: 215,
+      height: size!.width * 0.3,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -61,7 +62,7 @@ class BannerCard extends StatelessWidget {
                 top: 24,
                 right: size!.width * .35,
               ),
-              height: 200,
+              height: 100,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Color(0xFFEAEAEA).withOpacity(1),
@@ -87,45 +88,45 @@ class BannerCard extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "User 001",
-                    style: TextStyle(
-                        color: kLightBlackColor, fontWeight: FontWeight.bold),
-                  ),
+                  // Text(
+                  //   "User 001",
+                  //   style: TextStyle(
+                  //       color: kLightBlackColor, fontWeight: FontWeight.bold),
+                  // ),
                   SizedBox(
                     height: 10,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10.0),
-                    child: Row(
-                      children: <Widget>[
-                        // Padding(
-                        //   padding: EdgeInsets.only(right: 10.0),
-                        //   child: Rating(score: 4.9),
-                        // ),
-                        Expanded(
-                          child: Text(
-                            "When the earth was flat and everyone wanted to win the game of the best and people….",
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: kLightBlackColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 10, bottom: 10.0),
+                  //   child: Row(
+                  //     children: <Widget>[
+                  //       // Padding(
+                  //       //   padding: EdgeInsets.only(right: 10.0),
+                  //       //   child: Rating(score: 4.9),
+                  //       // ),
+                  //       Expanded(
+                  //         child: Text(
+                  //           "When the earth was flat and everyone wanted to win the game of the best and people….",
+                  //           maxLines: 3,
+                  //           overflow: TextOverflow.ellipsis,
+                  //           style: TextStyle(
+                  //             fontSize: 10,
+                  //             color: kLightBlackColor,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),
           ),
           Positioned(
-            right: 0,
-            top: 0,
+            right: 10,
+            top: -10,
             child: Image.asset(
-              "assets/images/banner img.png",
+              imagePath!,
               width: size!.width * .37,
             ),
           ),

@@ -14,7 +14,7 @@ final Map<String, WidgetBuilder> routes = {
   HomeScreen.routeName: (context) => HomeScreen(),
 
   // Article
-  ArticleList.routeName: (context) => ArticleList(),
+  ArticleScreen.routeName: (context) => ArticleScreen(),
   // Breeder
   PetScreen.routeName: (context) => PetScreen(),
   DrawerScreen.routeName: (context) => DrawerScreen(),
