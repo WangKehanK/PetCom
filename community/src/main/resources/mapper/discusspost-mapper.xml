@@ -23,6 +23,20 @@
         limit #{offset}, #{limit}
     </select>
 
+    <select id="findFeaturedPosts" resultType="DiscussPost">
+        select <include refid="selectFields"></include>
+        from discuss_post
+        where status != 2
+        and type = 1
+        order by create_time desc
+    </select>
+
+    <select id="findPostById" resultType="DiscussPost">
+        select <include refid="selectFields"></include>
+        from discuss_post
+        where id = #{id}
+    </select>
+
     <select id="selectDiscussPostRows" resultType="int">
         select count(id)
         from discuss_post

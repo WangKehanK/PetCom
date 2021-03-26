@@ -36,7 +36,7 @@ class HeaderWithSearchBox extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Text(
-                  'Welcome!',
+                  'Welcome to PetCom!',
                   style: Theme.of(context).textTheme.headline5!.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -56,7 +56,6 @@ class HeaderWithSearchBox extends StatelessWidget {
               height: 54,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
                     offset: Offset(0, 10),

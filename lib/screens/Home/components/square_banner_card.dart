@@ -10,6 +10,34 @@ class SquareBannerCard extends StatelessWidget {
   final double? rating;
   final Function? pressDetails;
   final Function? pressRead;
+  // Size? size;
+  // int? id = 0;
+  // String? title = "Unknown";
+  // double? score = 0.0;
+  // int? type = 0;
+  // String? description = "Unknown";
+  // String? createTime = "Unknown";
+  // String? address = "Unknown";
+  // String? city = "Unknown";
+  // String? state = "Unknown";
+  // String? contact = "Unknown";
+  // String? website = "Unknown";
+  // String? imagePath = "assets/images/banner1.png";
+  // NewBannerCard({
+  //   this.size,
+  //   this.id,
+  //   this.title,
+  //   this.score,
+  //   this.type,
+  //   this.description,
+  //   this.createTime,
+  //   this.address,
+  //   this.city,
+  //   this.state,
+  //   this.contact,
+  //   this.website,
+  //   this.imagePath,
+  // });
 
   const SquareBannerCard({
     Key? key,
@@ -24,6 +52,15 @@ class SquareBannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 15),
+            blurRadius: 10,
+            color: Color(0xFFEAEAEA).withOpacity(1),
+          ),
+        ],
+      ),
       margin: EdgeInsets.only(left: 24, bottom: 40),
       height: 245,
       width: 202,
@@ -37,14 +74,6 @@ class SquareBannerCard extends StatelessWidget {
               height: 221,
               decoration: BoxDecoration(
                 color: kWhiteColor,
-                // borderRadius: BorderRadius.circular(29),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: Color(0xFFEAEAEA).withOpacity(1),
-                  ),
-                ],
               ),
             ),
           ),

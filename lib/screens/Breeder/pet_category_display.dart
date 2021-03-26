@@ -39,7 +39,7 @@ class _PetCategoryDisplayPageState extends State<PetCategoryDisplay> {
     try {
       _isLoading = true;
       response = await http
-          .getRequest("/api/breeder?current=" + _currentPage.toString());
+          .getRequest("/api/breeder/all?current=" + _currentPage.toString());
       // if (response.data['code'] == '200') {}
       setState(() {
         data = BreederResponse.fromJson(jsonDecode(response.data));

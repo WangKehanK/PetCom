@@ -41,4 +41,12 @@ public class DiscussPostService {
         return discussPostMapper.insertDiscussPost(post);
     }
 
+    public List<DiscussPost> findFeaturedPosts(){
+        return discussPostMapper.findFeaturedPosts();
+    }
+
+    public DiscussPost findPostById(int id){
+        return discussPostMapper.findPostById(id);
+    }
+
 }

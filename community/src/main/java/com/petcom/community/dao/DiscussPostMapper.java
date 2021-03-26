@@ -19,4 +19,9 @@ public interface DiscussPostMapper {
     int selectDiscussPostRows(@Param("userId") int userId);
 
     int insertDiscussPost(DiscussPost discussPost);
+
+    List<DiscussPost> findFeaturedPosts();
+
+    DiscussPost findPostById(int id);
+
 }

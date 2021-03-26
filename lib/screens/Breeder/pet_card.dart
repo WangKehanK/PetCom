@@ -124,10 +124,6 @@ class PetCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: kWhiteColor,
                 boxShadow: customShadow,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
               ),
             ),
             Container(
@@ -138,7 +134,7 @@ class PetCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: randomColor,
                       boxShadow: customShadow,
-                      borderRadius: BorderRadius.circular(22),
+                      // borderRadius: BorderRadius.circular(22),
                     ),
                     margin: EdgeInsets.only(top: 50),
                   ),

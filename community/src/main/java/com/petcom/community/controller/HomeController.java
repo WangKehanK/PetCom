@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class HomeController {
      * @api http://localhost:8080/community/index?current=1
      * @api http://localhost:8080/community/index?current=2
      */
-    @RequestMapping(path = "/api/article", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/article/all", method = RequestMethod.GET)
     @ResponseBody
     public List articlesAPI(Page page) {
         page.setRows(discussPostService.findDiscussPostRows(0));
@@ -82,7 +83,29 @@ public class HomeController {
         return discussPosts;
     }
 
-    @RequestMapping(path = "/api/breeder", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/article/feature", method = RequestMethod.GET)
+    @ResponseBody
+    public String featuredarticleAPI(){
+        List<DiscussPost> list = discussPostService.findFeaturedPosts();
+        Map<String, Object> map = new HashMap<>();
+        if (list!= null){
+            map.put("post", list);
+        }
+        return CommunityUtil.getJSONString(200, "success", map);
+    }
+
+    @RequestMapping(path = "/api/article", params = {"id"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String findPostByID(@RequestParam(value = "id") int id){
+        DiscussPost discussPost = discussPostService.findPostById(id);
+        Map<String, Object> map = new HashMap<>();
+        if(discussPost != null) {
+            map.put("post", discussPost);
+        }
+        return CommunityUtil.getJSONString(200, "success", map);
+    }
+
+    @RequestMapping(path = "/api/breeder/all", method = RequestMethod.GET)
     @ResponseBody
     public String breederAPI(Page page) {
         int rows = breederService.findBreederRows(0);
