@@ -3,18 +3,24 @@ class BreederResponse {
   int? code;
   int? totalPage;
   int? currentPage;
+  int? total;
   List<Breeder>? breeder;
 
   BreederResponse(
-      {this.msg, this.code, this.totalPage, this.currentPage, this.breeder});
+      {this.msg,
+      this.code,
+      this.totalPage,
+      this.total,
+      this.currentPage,
+      this.breeder});
 
   BreederResponse.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     code = json['code'];
     totalPage = json['total_page'];
     currentPage = json['current_page'];
+    total = json['total'];
     if (json['breeder'] != null) {
-      // breeder = new List<Breeder>();
       breeder = [];
       json['breeder'].forEach((v) {
         breeder!.add(new Breeder.fromJson(v));
@@ -28,6 +34,7 @@ class BreederResponse {
     data['code'] = this.code;
     data['total_page'] = this.totalPage;
     data['current_page'] = this.currentPage;
+    data['total'] = this.total;
     if (this.breeder != null) {
       data['breeder'] = this.breeder!.map((v) => v.toJson()).toList();
     }
@@ -47,19 +54,22 @@ class Breeder {
   String? title;
   int? type;
   String? website;
+  int? status;
 
-  Breeder(
-      {this.address,
-      this.city,
-      this.contact,
-      this.createTime,
-      this.description,
-      this.id,
-      this.score,
-      this.state,
-      this.title,
-      this.type,
-      this.website});
+  Breeder({
+    this.address,
+    this.city,
+    this.contact,
+    this.createTime,
+    this.description,
+    this.id,
+    this.score,
+    this.state,
+    this.title,
+    this.type,
+    this.website,
+    this.status,
+  });
 
   Breeder.fromJson(Map<String, dynamic> json) {
     address = json['address'];
@@ -73,6 +83,7 @@ class Breeder {
     title = json['title'];
     type = json['type'];
     website = json['website'];
+    status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
@@ -88,6 +99,8 @@ class Breeder {
     data['title'] = this.title;
     data['type'] = this.type;
     data['website'] = this.website;
+    data['status'] = this.status;
+
     return data;
   }
 }

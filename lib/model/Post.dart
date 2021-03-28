@@ -1,13 +1,27 @@
 class PostResponse {
   String? msg;
   int? code;
+  int? totalPage;
+  int? currentPage;
+  int? total;
+
   List<Post>? post;
 
-  PostResponse({this.msg, this.code, this.post});
+  PostResponse(
+      {this.msg,
+      this.code,
+      this.totalPage,
+      this.total,
+      this.currentPage,
+      this.post});
 
   PostResponse.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     code = json['code'];
+    totalPage = json['total_page'];
+    currentPage = json['current_page'];
+    total = json['total'];
+
     if (json['post'] != null) {
       post = [];
       json['post'].forEach((v) {
@@ -20,6 +34,10 @@ class PostResponse {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['msg'] = this.msg;
     data['code'] = this.code;
+    data['total_page'] = this.totalPage;
+    data['current_page'] = this.currentPage;
+    data['total'] = this.total;
+
     if (this.post != null) {
       data['post'] = this.post!.map((v) => v.toJson()).toList();
     }

@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:petcom/constants.dart';
-import 'package:petcom/model/PostList.dart';
+import 'package:petcom/model/Post.dart';
 import 'package:petcom/screens/Article/article_card.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
@@ -17,31 +18,36 @@ class ArticleListDisplay extends StatefulWidget {
 
 class _ArticleListDisplayPageState extends State<ArticleListDisplay> {
   late HttpService http;
-  PostList? postList;
-  bool isLoading = false;
+  bool _isLoading = false;
 
-  List<PostList>? posts;
-  dynamic data;
+  PostResponse? _postResponse;
+  List<Post> _post = <Post>[];
+  int? _totalPage;
+
   Future getPost() async {
     Response response;
     try {
-      isLoading = true;
-      response = await http.getRequest("/api/index?current=1");
-      isLoading = false;
+      _isLoading = true;
+      response = await http.getRequest("/api/article/all?current=1");
+      _postResponse = PostResponse.fromJson(jsonDecode(response.data));
+      // if (_postResponse!.code == 200) {
       setState(() {
-        data = response.data;
+        _post += _postResponse!.post!;
+        _totalPage = _postResponse!.totalPage!;
       });
+      _isLoading = false;
+      // }
     } on Exception catch (e) {
-      isLoading = false;
+      _isLoading = false;
       print(e);
     }
   }
 
   @override
   void initState() {
-    http = HttpService();
-    // getPost();
     super.initState();
+    http = HttpService();
+    getPost();
   }
 
   @override
@@ -49,18 +55,22 @@ class _ArticleListDisplayPageState extends State<ArticleListDisplay> {
     return Container(
         color: kWhiteColor,
         child: Center(
-          child: isLoading
+          child: _isLoading
               ? Center(child: CircularProgressIndicator())
               : ListView.separated(
                   physics: BouncingScrollPhysics(),
-                  itemCount: 20, // data['breeder] == _pairList
+                  itemCount: _post.length,
                   itemBuilder: (context, index) {
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       child: SlideAnimation(
                         verticalOffset: 50.0,
                         child: ScaleAnimation(
-                          child: ArticleCard(),
+                          child: ArticleCard(
+                            title: _post[index].title,
+                            creatTime: DateTime.fromMicrosecondsSinceEpoch(
+                                _post[index].createTime!),
+                          ),
                         ),
                       ),
                     );

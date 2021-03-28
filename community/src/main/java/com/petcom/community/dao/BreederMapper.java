@@ -13,5 +13,7 @@ public interface BreederMapper {
 
     int selectBreederRows(@Param("id") int id);
 
+    List<Breeder> findFeatureBreeder();
+
 }
 

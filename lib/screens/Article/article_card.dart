@@ -7,8 +7,9 @@ import '../../configuration.dart';
 import 'package:petcom/constants.dart';
 
 class ArticleCard extends StatelessWidget {
-  // int? id = 0;
-  // String? title = "Unknown";
+  int? id = 0;
+  String? title = "Unknown";
+  DateTime? creatTime;
   // double? score = 0.0;
   // int? type = 0;
   // String? description = "Unknown";
@@ -18,8 +19,11 @@ class ArticleCard extends StatelessWidget {
   // String? state = "Unknown";
   // String? contact = "Unknown";
   // String? website = "Unknown";
-  // ArticleCard({
-  // });
+  ArticleCard({
+    this.id,
+    this.title,
+    this.creatTime,
+  });
 
   final colors = [
     Colors.blueGrey[200],
@@ -77,7 +81,7 @@ class ArticleCard extends StatelessWidget {
                               children: [
                                 Flexible(
                                   child: new Text(
-                                    "This is a title",
+                                    title!,
                                     softWrap: true,
                                     style: TextStyle(
                                       fontSize: 16,
@@ -90,7 +94,7 @@ class ArticleCard extends StatelessWidget {
                               ],
                             ),
                             Text(
-                              "createTime",
+                              "$creatTime!",
                               style: TextStyle(
                                 fontSize: 10,
                                 color: fadedBlack,

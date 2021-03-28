@@ -66,21 +66,26 @@ public class HomeController {
      */
     @RequestMapping(path = "/api/article/all", method = RequestMethod.GET)
     @ResponseBody
-    public List articlesAPI(Page page) {
+    public String articlesAPI(Page page) {
         page.setRows(discussPostService.findDiscussPostRows(0));
         page.setPath("/article");
         List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
-        List<Map<String, Object>> discussPosts = new ArrayList<>();
+//        List<Map<String, Object>> discussPosts = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
         if (list != null) {
-            for (DiscussPost post : list) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("post", post);
-                User user = userService.findUserById(post.getUserId());
-                map.put("user", user);
-                discussPosts.add(map);
-            }
+            map.put("total", page.getRows());
+            map.put("total_page", page.getTotal());
+            map.put("current_page", page.getCurrent());
+            map.put("post", list);
+//            for (DiscussPost post : list) {
+//                map.put("post", post);
+//                User user = userService.findUserById(post.getUserId());
+//                map.put("user", user);
+//                discussPosts.add(map);
+//            }
         }
-        return discussPosts;
+//        return discussPosts;
+        return CommunityUtil.getJSONString(200, "success", map);
     }
 
     @RequestMapping(path = "/api/article/feature", method = RequestMethod.GET)
@@ -89,6 +94,8 @@ public class HomeController {
         List<DiscussPost> list = discussPostService.findFeaturedPosts();
         Map<String, Object> map = new HashMap<>();
         if (list!= null){
+            map.put("total_page", 1);
+            map.put("current_page", 1);
             map.put("post", list);
         }
         return CommunityUtil.getJSONString(200, "success", map);
@@ -100,6 +107,8 @@ public class HomeController {
         DiscussPost discussPost = discussPostService.findPostById(id);
         Map<String, Object> map = new HashMap<>();
         if(discussPost != null) {
+            map.put("total_page", 1);
+            map.put("current_page", 1);
             map.put("post", discussPost);
         }
         return CommunityUtil.getJSONString(200, "success", map);
@@ -126,6 +135,18 @@ public class HomeController {
         return CommunityUtil.getJSONString(200, "success", map);
     }
 
+    @RequestMapping(path = "/api/breeder/feature", method = RequestMethod.GET)
+    @ResponseBody
+    public String fearturedBreeder() {
+        List<Breeder> list = breederService.findFeaturedBreeder();
+        Map<String, Object> map = new HashMap<>();
+        if (list!= null){
+            map.put("total_page", 1);
+            map.put("current_page", 1);
+            map.put("breeder", list);
+        }
+        return CommunityUtil.getJSONString(200, "success", map);
+    }
     /****************************************************************/
 
 

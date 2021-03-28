@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 class ArticleDetailsScreen extends StatefulWidget {
   String? id;
+  String? title;
   Color? color;
-  ArticleDetailsScreen({this.id, this.color});
+  ArticleDetailsScreen({this.id, this.title, this.color});
 
   @override
   _ArticleDetailsScreenState createState() => _ArticleDetailsScreenState();

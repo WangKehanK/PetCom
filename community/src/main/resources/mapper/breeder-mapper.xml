@@ -25,5 +25,12 @@
             and id = #{id}
         </if>
     </select>
+
+    <select id="findFeatureBreeder" resultType="DiscussPost">
+        select <include refid="selectFields"></include>
+        from breeder
+        where type = 1
+        order by create_time desc
+    </select>
     
 </mapper>

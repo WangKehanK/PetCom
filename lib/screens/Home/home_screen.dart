@@ -30,21 +30,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //json to dart
   BreederResponse? _breederResponse;
-
   PostResponse? _postResponse;
-  List<Post> _post = <Post>[];
 
-  Future getFeaturePost() async {
-    Response response;
+  List<Post> _post = <Post>[];
+  List<Breeder> _breeder = <Breeder>[];
+
+  Future getFeatureContent() async {
+    Response articleData;
+    Response breederData;
     try {
       _isLoading = true;
-      response = await http!.getRequest("/api/article/feature");
-      _postResponse = PostResponse.fromJson(jsonDecode(response.data));
-      if (_postResponse!.code == 200) {
+      articleData = await http!.getRequest("/api/article/feature");
+      breederData = await http!.getRequest("/api/breeder/feature");
+
+      _postResponse = PostResponse.fromJson(jsonDecode(articleData.data));
+      _breederResponse = BreederResponse.fromJson(jsonDecode(breederData.data));
+      if (_postResponse!.code == 200 && _breederResponse!.code == 200) {
         setState(() {
           _post += _postResponse!.post!;
+          _breeder += _breederResponse!.breeder!;
         });
-        print(_post);
       }
       _isLoading = false;
     } on Exception catch (e) {
@@ -57,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     http = HttpService();
-    getFeaturePost();
+    getFeatureContent();
   }
 
   @override
@@ -131,7 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               SquareBannerCard(
                                 image: "assets/images/cat-1.png",
-                                title: "Sunshine Kitten House",
+                                title: smallSentence(
+                                    _breeder.elementAt(0).title ?? ""),
                                 auth: "",
                                 rating: 4.9,
                                 pressDetails: () {
@@ -149,13 +155,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SquareBannerCard(
                                 image: "assets/images/cat-1.png",
-                                title: "Sunshine Puppy House",
+                                title: smallSentence(
+                                    _breeder.elementAt(1).title ?? ""),
                                 auth: "",
                                 rating: 4.8,
                               ),
                               SquareBannerCard(
                                 image: "assets/images/cat-1.png",
-                                title: "Sunshine Puppy House",
+                                title: smallSentence(
+                                    _breeder.elementAt(2).title ?? ""),
                                 auth: "",
                                 rating: 4.8,
                               ),
