@@ -100,7 +100,6 @@ class Breeder {
     data['type'] = this.type;
     data['website'] = this.website;
     data['status'] = this.status;
-
     return data;
   }
 }

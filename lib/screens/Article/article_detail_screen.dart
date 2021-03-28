@@ -1,41 +1,63 @@
+import 'dart:convert';
+
 import 'package:petcom/configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:petcom/model/Post.dart';
+import 'package:petcom/service/http_serivce.dart';
+import 'package:dio/dio.dart';
 
 class ArticleDetailsScreen extends StatefulWidget {
   String? id;
-  String? title;
   Color? color;
-  ArticleDetailsScreen({this.id, this.title, this.color});
+  ArticleDetailsScreen({this.id, this.color});
 
   @override
   _ArticleDetailsScreenState createState() => _ArticleDetailsScreenState();
 }
 
 class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
+  late HttpService http;
+  bool _isLoading = false;
+
+  PostResponse? _postResponse;
+  List<Post> _post = <Post>[];
+  Future getPostbyID(String? id) async {
+    Response response;
+    try {
+      _isLoading = true;
+      response = await http.getRequest("/api/article?id=$id");
+      _postResponse = PostResponse.fromJson(jsonDecode(response.data));
+      if (_postResponse!.code == 200) {
+        setState(() {
+          _post += _postResponse!.post!;
+        });
+        _isLoading = false;
+      }
+    } on Exception catch (e) {
+      _isLoading = false;
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    http = HttpService();
+    getPostbyID(widget.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: getBody(),
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : getBody(_post[0]),
     );
   }
 
-  Widget getBody() {
-    String? petName = '';
-    String? breed = '';
-    String? age = '';
-    String? gender = '';
-    String? imagePath = '';
-    dogs.forEach((dog) {
-      if (dog['id'] == widget.id) {
-        petName = dog['name'];
-        breed = dog['breed'];
-        age = dog['age'];
-        gender = dog['gender'];
-        imagePath = dog['imagePath'];
-      }
-    });
+  Widget getBody(Post post) {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Stack(
@@ -45,7 +67,7 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
             height: size.height * 0.5,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(imagePath!), fit: BoxFit.contain),
+                  image: AssetImage(imagePaths[0]), fit: BoxFit.contain),
               color: widget.color,
             ),
             child: SafeArea(
@@ -56,7 +78,6 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    // buildAppbar(context),
                     InkWell(
                         onTap: () {
                           Navigator.pop(context);
@@ -98,91 +119,17 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                   //   height: 20,
                   // ),
                   Text(
-                    "10 best interior ideas for your\nliving room",
+                    "${post.title!}",
                     style: TextStyle(fontSize: 20, height: 1.5),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://images.nowcoder.com/head/108m.png"),
-                                fit: BoxFit.cover)),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            petName!,
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text(
-                            "Shelter",
-                            style: TextStyle(fontSize: 13),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(3)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: Text("Contact"),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(3)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: Text("Instagram"),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(3)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: Text("Something else"),
-                        ),
-                      )
-                    ],
-                  ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    "Nobody wants to stare at a blank wall all day long, which is why wall art is such a crucial step in the decorating process. And once you start brainstorming, the rest is easy. From gallery walls to DIY pieces like framing your accessories and large-scale photography, we've got plenty of wall art ideas to spark your creativity. And where better to look for inspiration that interior designer-decorated walls",
+                    "${post.content!}",
                     style: TextStyle(height: 1.6),
                   ),
                   SizedBox(

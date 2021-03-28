@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:petcom/components/rating.dart';
 import 'package:petcom/screens/Breeder/details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:petcom/util.dart';
 
 import '../../configuration.dart';
 import 'package:petcom/constants.dart';
@@ -32,19 +33,10 @@ class PetCard extends StatelessWidget {
     this.website,
   });
 
-  final colors = [
-    Colors.blueGrey[200],
-    Colors.green[200],
-    Colors.pink[100],
-    Colors.brown[200],
-    Colors.lightBlue[200],
-  ];
-
   Random _random = new Random();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final randomColor = colors[_random.nextInt(colors.length)];
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -52,7 +44,7 @@ class PetCard extends StatelessWidget {
             builder: (context) {
               return DetailsScreen(
                 id: id.toString(),
-                color: randomColor,
+                color: randomColor(),
               );
             },
           ),
@@ -132,7 +124,7 @@ class PetCard extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: randomColor,
+                      color: randomColor(),
                       boxShadow: customShadow,
                       // borderRadius: BorderRadius.circular(22),
                     ),

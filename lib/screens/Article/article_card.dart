@@ -1,15 +1,17 @@
 import 'dart:math';
-import 'package:petcom/components/rating.dart';
-import 'package:petcom/screens/Breeder/details_screen.dart';
+import 'package:petcom/model/Post.dart';
+import 'package:petcom/screens/Article/article_detail_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../../configuration.dart';
+import 'package:petcom/util.dart';
 import 'package:petcom/constants.dart';
+import 'package:petcom/util.dart';
 
 class ArticleCard extends StatelessWidget {
   int? id = 0;
   String? title = "Unknown";
   DateTime? creatTime;
+  String? content;
+  Post? post;
   // double? score = 0.0;
   // int? type = 0;
   // String? description = "Unknown";
@@ -19,33 +21,19 @@ class ArticleCard extends StatelessWidget {
   // String? state = "Unknown";
   // String? contact = "Unknown";
   // String? website = "Unknown";
-  ArticleCard({
-    this.id,
-    this.title,
-    this.creatTime,
-  });
+  ArticleCard({this.post});
 
-  final colors = [
-    Colors.blueGrey[200],
-    Colors.green[200],
-    Colors.pink[100],
-    Colors.brown[200],
-    Colors.lightBlue[200],
-  ];
-
-  Random _random = new Random();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final randomColor = colors[_random.nextInt(colors.length)];
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return DetailsScreen(
-                id: '1',
-                color: randomColor,
+              return ArticleDetailsScreen(
+                id: post!.id!.toString(),
+                color: randomColor(),
               );
             },
           ),
@@ -81,7 +69,7 @@ class ArticleCard extends StatelessWidget {
                               children: [
                                 Flexible(
                                   child: new Text(
-                                    title!,
+                                    "${post!.title!}",
                                     softWrap: true,
                                     style: TextStyle(
                                       fontSize: 16,
@@ -94,7 +82,7 @@ class ArticleCard extends StatelessWidget {
                               ],
                             ),
                             Text(
-                              "$creatTime!",
+                              "${DateTime.fromMicrosecondsSinceEpoch(post!.createTime!)}",
                               style: TextStyle(
                                 fontSize: 10,
                                 color: fadedBlack,
@@ -102,7 +90,7 @@ class ArticleCard extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "First few words...",
+                              "${mediumSentence(post!.content!)}",
                               style: TextStyle(
                                 fontSize: 12,
                                 color: fadedBlack,
@@ -117,9 +105,6 @@ class ArticleCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: kWhiteColor,
                   boxShadow: customShadow,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
                 ),
               ),
             ],

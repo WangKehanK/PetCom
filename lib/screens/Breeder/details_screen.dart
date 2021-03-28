@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:petcom/configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'package:petcom/model/Breeder.dart';
+import 'package:petcom/service/http_serivce.dart';
 
 class DetailsScreen extends StatefulWidget {
   String? id;
@@ -12,29 +17,47 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  late HttpService http;
+  bool _isLoading = false;
+
+  BreederResponse? _breederResponse;
+  List<Breeder> _breeder = <Breeder>[];
+  Future getBreederByID(String? id) async {
+    Response response;
+    try {
+      _isLoading = true;
+      response = await http.getRequest("/api/breeder?id=$id");
+      _breederResponse = BreederResponse.fromJson(jsonDecode(response.data));
+      if (_breederResponse!.code == 200) {
+        setState(() {
+          _breeder += _breederResponse!.breeder!;
+        });
+        _isLoading = false;
+      }
+    } on Exception catch (e) {
+      _isLoading = false;
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    http = HttpService();
+    getBreederByID(widget.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: getBody(),
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : getBody(_breeder[0]),
     );
   }
 
-  Widget getBody() {
-    String? petName = '';
-    String? breed = '';
-    String? age = '';
-    String? gender = '';
-    String? imagePath = '';
-    dogs.forEach((dog) {
-      if (dog['id'] == widget.id) {
-        petName = dog['name'];
-        breed = dog['breed'];
-        age = dog['age'];
-        gender = dog['gender'];
-        imagePath = dog['imagePath'];
-      }
-    });
+  Widget getBody(Breeder breeder) {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Stack(
@@ -44,7 +67,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             height: size.height * 0.5,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(imagePath!), fit: BoxFit.contain),
+                  image: AssetImage(imagePaths[0]), fit: BoxFit.contain),
               color: widget.color,
             ),
             child: SafeArea(
@@ -122,7 +145,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            petName!,
+                            "${breeder.title}",
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),

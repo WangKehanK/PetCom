@@ -15,5 +15,6 @@ public interface BreederMapper {
 
     List<Breeder> findFeatureBreeder();
 
+    List<Breeder> findBreederById(int id);
 }
 

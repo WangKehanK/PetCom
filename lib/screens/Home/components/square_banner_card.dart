@@ -6,44 +6,14 @@ import 'package:flutter/material.dart';
 class SquareBannerCard extends StatelessWidget {
   final String? image;
   final String? title;
-  final String? auth;
   final double? rating;
   final Function? pressDetails;
   final Function? pressRead;
-  // Size? size;
-  // int? id = 0;
-  // String? title = "Unknown";
-  // double? score = 0.0;
-  // int? type = 0;
-  // String? description = "Unknown";
-  // String? createTime = "Unknown";
-  // String? address = "Unknown";
-  // String? city = "Unknown";
-  // String? state = "Unknown";
-  // String? contact = "Unknown";
-  // String? website = "Unknown";
-  // String? imagePath = "assets/images/banner1.png";
-  // NewBannerCard({
-  //   this.size,
-  //   this.id,
-  //   this.title,
-  //   this.score,
-  //   this.type,
-  //   this.description,
-  //   this.createTime,
-  //   this.address,
-  //   this.city,
-  //   this.state,
-  //   this.contact,
-  //   this.website,
-  //   this.imagePath,
-  // });
 
   const SquareBannerCard({
     Key? key,
     this.image,
     this.title,
-    this.auth,
     this.rating,
     this.pressDetails,
     this.pressRead,
@@ -118,7 +88,7 @@ class SquareBannerCard extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: auth,
+                            text: "",
                             style: TextStyle(
                               color: kLightBlackColor,
                             ),

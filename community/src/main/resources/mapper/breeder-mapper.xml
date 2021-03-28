@@ -26,11 +26,18 @@
         </if>
     </select>
 
-    <select id="findFeatureBreeder" resultType="DiscussPost">
+    <select id="findFeatureBreeder" resultType="Breeder">
         select <include refid="selectFields"></include>
         from breeder
         where type = 1
         order by create_time desc
     </select>
+
+    <select id="findBreederById" resultType="Breeder">
+        select <include refid="selectFields"></include>
+        from breeder
+        where id = #{id}
+    </select>
+
     
 </mapper>

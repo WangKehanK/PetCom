@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcom/screens/Article/article_detail_screen.dart';
+import 'package:petcom/util.dart';
 import '../../../constants.dart';
 
 class NewBannerCard extends StatelessWidget {
@@ -7,7 +8,7 @@ class NewBannerCard extends StatelessWidget {
   int? commentCount;
   String? content;
   int? createTime;
-  int? id;
+  String? id;
   double? score;
   int? status;
   String? title;
@@ -32,34 +33,34 @@ class NewBannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 10),
-            blurRadius: 10,
-            color: Color(0xFFEAEAEA).withOpacity(1),
-          ),
-        ],
-      ),
-      margin: EdgeInsets.only(
-        left: kDefaultPadding,
-        top: kDefaultPadding / 2,
-        bottom: kDefaultPadding * 1.3,
-      ),
-      width: size.width * 0.4,
-      child: Column(
-        children: <Widget>[
-          Image.asset(imagePath!),
-          GestureDetector(
-            onTap: () =>
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return ArticleDetailsScreen(
-                id: "1",
-                color: Colors.blue,
-              );
-            })),
-            child: Container(
+    return GestureDetector(
+      onTap: () =>
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return ArticleDetailsScreen(
+          id: id,
+          color: randomColor(),
+        );
+      })),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 10),
+              blurRadius: 10,
+              color: Color(0xFFEAEAEA).withOpacity(1),
+            ),
+          ],
+        ),
+        margin: EdgeInsets.only(
+          left: kDefaultPadding,
+          top: kDefaultPadding / 2,
+          bottom: kDefaultPadding * 1.3,
+        ),
+        width: size.width * 0.4,
+        child: Column(
+          children: <Widget>[
+            Image.asset(imagePath!),
+            Container(
               padding: EdgeInsets.all(kDefaultPadding / 2),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -95,8 +96,8 @@ class NewBannerCard extends StatelessWidget {
                 ],
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

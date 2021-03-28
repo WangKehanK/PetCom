@@ -23,4 +23,6 @@ public class BreederService {
     public List<Breeder> findFeaturedBreeder() {
         return breederMapper.findFeatureBreeder();
     }
+
+    public List<Breeder> findBreederById(int id) {return breederMapper.findBreederById(id); }
 }

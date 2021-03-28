@@ -101,27 +101,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               NewBannerCard(
                                 size: size,
-                                id: 1,
+                                id: _post[0].id.toString(),
                                 imagePath: "assets/images/banner3.png",
                                 title: _post.elementAt(0).title ?? "",
                               ),
                               NewBannerCard(
                                 size: size,
-                                id: 1,
+                                id: _post[1].id.toString(),
                                 imagePath: "assets/images/banner3.png",
                                 title: smallSentence(
                                     _post.elementAt(1).title ?? ""),
                               ),
                               NewBannerCard(
                                 size: size,
-                                id: 2,
+                                id: _post[2].id.toString(),
                                 imagePath: "assets/images/banner4.png",
                                 title: smallSentence(
                                     _post.elementAt(2).title ?? ""),
                               ),
                               NewBannerCard(
                                 size: size,
-                                id: 3,
+                                id: _post[3].id.toString(),
                                 imagePath: "assets/images/banner4.png",
                                 title: smallSentence(
                                     _post.elementAt(3).title ?? ""),
@@ -138,7 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 image: "assets/images/cat-1.png",
                                 title: smallSentence(
                                     _breeder.elementAt(0).title ?? ""),
-                                auth: "",
                                 rating: 4.9,
                                 pressDetails: () {
                                   Navigator.push(
@@ -146,7 +145,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MaterialPageRoute(
                                       builder: (context) {
                                         return DetailsScreen(
-                                          id: "1",
+                                          id: _breeder
+                                              .elementAt(0)
+                                              .id
+                                              .toString(),
                                         );
                                       },
                                     ),
@@ -157,14 +159,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 image: "assets/images/cat-1.png",
                                 title: smallSentence(
                                     _breeder.elementAt(1).title ?? ""),
-                                auth: "",
                                 rating: 4.8,
                               ),
                               SquareBannerCard(
                                 image: "assets/images/cat-1.png",
                                 title: smallSentence(
                                     _breeder.elementAt(2).title ?? ""),
-                                auth: "",
                                 rating: 4.8,
                               ),
                               SizedBox(width: 30),
