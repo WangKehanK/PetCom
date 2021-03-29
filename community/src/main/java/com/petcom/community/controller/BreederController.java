@@ -1,6 +1,7 @@
 package com.petcom.community.controller;
 
 import com.petcom.community.entity.Breeder;
+import com.petcom.community.entity.DiscussPost;
 import com.petcom.community.entity.Page;
 import com.petcom.community.service.BreederService;
 import com.petcom.community.util.CommunityUtil;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Controller
@@ -71,4 +70,23 @@ public class BreederController {
         return CommunityUtil.getJSONString(200, "success", map);
     }
 
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public String addDiscussPost(String title, int type, String description){
+//        User user = hostHolder.getUser();
+//        if(user == null || userId == 0) {
+//            return CommunityUtil.getJSONString(403, "You haven't login yet");
+//        }
+        Breeder breeder = new Breeder();
+        Random random = new Random();
+        breeder.setId(random.nextInt(150));
+        breeder.setTitle(title);
+        breeder.setType(type);
+        breeder.setDescription(description);
+        breeder.setCreateTime(new Date());
+        breederService.addBreeder(breeder);
+        //TODO: any other error
+        return CommunityUtil.getJSONString(200, "Post successfully, please waiting to be approved");
+        // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
+    }
 }

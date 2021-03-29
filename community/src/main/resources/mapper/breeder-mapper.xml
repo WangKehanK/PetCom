@@ -8,6 +8,10 @@
         id, title, score, type, description, create_time, address, city, state, contact, website
     </sql>
 
+    <sql id="insertFields">
+        id, title, score, type, description, create_time, address, city, state, contact, website, status
+    </sql>
+
     <select id="selectBreederList" resultType="Breeder">
         select <include refid="selectFields"></include>
         from breeder
@@ -38,6 +42,11 @@
         from breeder
         where id = #{id}
     </select>
+
+    <insert id="insertBreeder" parameterType="Breeder">
+        insert into breeder(<include refid="insertFields"></include>)
+        values(#{id},#{title},#{score},#{type},#{description},#{createTime},#{address},#{city},#{state},#{contact},#{website},2)
+    </insert>
 
     
 </mapper>

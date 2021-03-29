@@ -95,6 +95,7 @@ public class DiscussPostController {
         post.setCreateTime(new Date());
         discussPostService.addDiscussPost(post);
         //TODO: any other error
-        return CommunityUtil.getJSONString(200, "Post successfully");
+        return CommunityUtil.getJSONString(200, "Post successfully, please waiting to be approved");
+        // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
     }
 }
