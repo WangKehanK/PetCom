@@ -10,7 +10,7 @@ class HttpService {
       baseUrl: baseUrl,
     ));
 
-    // initializaInterceptors();
+    initializaInterceptors();
   }
 
   Future<Response> getRequest(String endPoint) async {
@@ -38,13 +38,16 @@ class HttpService {
   }
 
   initializaInterceptors() {
-    //   _dio.interceptors.add(InterceptorsWrapper(onError: (error) {
-    //     print(error.message);
-    //   }, onRequest: (request) {
-    //     print("${request.method} ${request.path}");
-    //   }, onResponse: (response) {
-    //     print(response.data);
-    //   }));
-    // }
+    //https://pub.dev/documentation/dio/latest/dio/InterceptorsWrapper-class.html
+    _dio.interceptors.add(InterceptorsWrapper(onError: (error, handler) {
+      print(error.message);
+      handler.next(error);
+    }, onRequest: (request, handler) {
+      print("${request.method} ${request.path}");
+      handler.next(request);
+    }, onResponse: (Response response, handler) {
+      print(response.data);
+      handler.next(response);
+    }));
   }
 }
