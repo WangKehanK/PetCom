@@ -100,27 +100,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: <Widget>[
                               NewBannerCard(
-                                size: size,
-                                id: _post[0].id.toString(),
+                                id: _post[3].id.toString(),
                                 imagePath: "assets/images/banner3.png",
-                                title: _post.elementAt(0).title ?? "",
+                                title: smallSentence(
+                                    _post.elementAt(3).title ?? ""),
                               ),
                               NewBannerCard(
-                                size: size,
                                 id: _post[1].id.toString(),
                                 imagePath: "assets/images/banner3.png",
                                 title: smallSentence(
                                     _post.elementAt(1).title ?? ""),
                               ),
                               NewBannerCard(
-                                size: size,
                                 id: _post[2].id.toString(),
                                 imagePath: "assets/images/banner4.png",
                                 title: smallSentence(
                                     _post.elementAt(2).title ?? ""),
                               ),
                               NewBannerCard(
-                                size: size,
                                 id: _post[3].id.toString(),
                                 imagePath: "assets/images/banner4.png",
                                 title: smallSentence(

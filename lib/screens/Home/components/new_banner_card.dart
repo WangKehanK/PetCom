@@ -4,7 +4,6 @@ import 'package:petcom/util.dart';
 import '../../../constants.dart';
 
 class NewBannerCard extends StatelessWidget {
-  Size? size;
   int? commentCount;
   String? content;
   int? createTime;
@@ -17,7 +16,6 @@ class NewBannerCard extends StatelessWidget {
   String? imagePath = "assets/images/banner1.png";
 
   NewBannerCard({
-    this.size,
     this.commentCount,
     this.content,
     this.createTime,
