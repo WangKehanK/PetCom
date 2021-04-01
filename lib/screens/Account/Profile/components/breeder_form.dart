@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:petcom/constants.dart';
 import 'package:direct_select/direct_select.dart';
 
@@ -13,17 +14,20 @@ class BreederFormScreen extends StatefulWidget {
 
 class BreederFormScreenState extends State<BreederFormScreen> {
   String? _name;
-  String? _email;
-  String? _password;
   String? _url;
   String? _phoneNumber;
   String? _description;
+  String? _city;
+  String? _state;
+
   final elements1 = [
-    "Dog",
-    "Cat",
+    "Dog Breeder",
+    "Cat Breeder",
     "Shelter",
   ];
-  int selectedIndex1 = 0;
+
+  int _category = 0;
+
   List<Widget> _buildItems1() {
     return elements1
         .map((val) => MySelectionItem(
@@ -32,15 +36,26 @@ class BreederFormScreenState extends State<BreederFormScreen> {
         .toList();
   }
 
+  _NumberTextInputFormatter _phoneNumberFormatter =
+      _NumberTextInputFormatter(1);
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildName() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Enter here'),
-      maxLength: 10,
+      decoration: InputDecoration(
+        // labelText: 'Enter here',
+        fillColor: Colors.white,
+        border: new OutlineInputBorder(
+          // borderRadius: new BorderRadius.circular(25.0),
+          borderSide: new BorderSide(),
+        ),
+      ),
+      maxLength: 50,
+      maxLines: 1,
       validator: (String? value) {
         if (value!.isEmpty) {
-          return 'Name is Required';
+          return 'Title is Required';
         }
 
         return null;
@@ -51,48 +66,16 @@ class BreederFormScreenState extends State<BreederFormScreen> {
     );
   }
 
-  Widget _buildEmail() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Email'),
-      validator: (String? value) {
-        if (value!.isEmpty) {
-          return 'Email is Required';
-        }
-
-        if (!RegExp(
-                r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-            .hasMatch(value)) {
-          return 'Please enter a valid email Address';
-        }
-
-        return null;
-      },
-      onSaved: (String? value) {
-        _email = value;
-      },
-    );
-  }
-
-  Widget _buildPassword() {
-    return TextFormField(
-      decoration: InputDecoration(labelText: 'Password'),
-      keyboardType: TextInputType.visiblePassword,
-      validator: (String? value) {
-        if (value!.isEmpty) {
-          return 'Password is Required';
-        }
-
-        return null;
-      },
-      onSaved: (String? value) {
-        _password = value;
-      },
-    );
-  }
-
   Widget _builURL() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Url'),
+      maxLength: 100,
+      decoration: InputDecoration(
+        fillColor: Colors.white,
+        border: new OutlineInputBorder(
+          // borderRadius: new BorderRadius.circular(25.0),
+          borderSide: new BorderSide(),
+        ),
+      ),
       keyboardType: TextInputType.url,
       validator: (String? value) {
         if (value!.isEmpty) {
@@ -106,13 +89,70 @@ class BreederFormScreenState extends State<BreederFormScreen> {
     );
   }
 
+  Widget _builCity() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: TextFormField(
+            maxLength: 10,
+            decoration: InputDecoration(
+              labelText: "city",
+              fillColor: Colors.white,
+              border: new OutlineInputBorder(
+                // borderRadius: new BorderRadius.circular(25.0),
+                borderSide: new BorderSide(),
+              ),
+            ),
+            keyboardType: TextInputType.name,
+            validator: (String? value) {
+              if (value!.isEmpty) {
+                return 'Location is Required';
+              }
+              return null;
+            },
+            onSaved: (String? value) {
+              _city = value;
+            },
+          ),
+        ),
+        Flexible(
+          child: TextFormField(
+            maxLength: 2,
+            decoration: InputDecoration(
+              labelText: "state",
+              fillColor: Colors.white,
+              border: new OutlineInputBorder(
+                borderSide: new BorderSide(),
+              ),
+            ),
+            keyboardType: TextInputType.name,
+            validator: (String? value) {
+              if (value!.isEmpty) {
+                return 'Location is required';
+              }
+              return null;
+            },
+            onSaved: (String? value) {
+              _state = value;
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildPhoneNumber() {
     return TextFormField(
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        _phoneNumberFormatter,
+      ],
+      maxLength: 14,
       decoration: InputDecoration(
-        labelText: 'Phone number',
         fillColor: Colors.white,
         border: new OutlineInputBorder(
-          borderRadius: new BorderRadius.circular(25.0),
+          // borderRadius: new BorderRadius.circular(25.0),
           borderSide: new BorderSide(),
         ),
       ),
@@ -125,7 +165,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
         return null;
       },
       onSaved: (String? value) {
-        _url = value;
+        _phoneNumber = value;
       },
     );
   }
@@ -133,7 +173,14 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   Widget _buildDescription() {
     return TextFormField(
       maxLines: 3,
-      decoration: InputDecoration(labelText: 'Description'),
+      maxLength: 400,
+      decoration: InputDecoration(
+        fillColor: Colors.white,
+        border: new OutlineInputBorder(
+          // borderRadius: new BorderRadius.circular(25.0),
+          borderSide: new BorderSide(),
+        ),
+      ),
       keyboardType: TextInputType.multiline,
       validator: (String? value) {
         if (value!.isEmpty) {
@@ -160,38 +207,51 @@ class BreederFormScreenState extends State<BreederFormScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 buildTitle(context, "Title"),
-                _buildName(),
-                SizedBox(height: 10),
+                _buildName(), //Title
+                // SizedBox(height: 10),
                 // buildTitle(context, "E"),
                 // _buildEmail(),
                 buildTitle(context, "Category"),
                 DirectSelect(
                     itemExtent: 50.0,
-                    selectedIndex: selectedIndex1,
+                    selectedIndex: _category,
                     backgroundColor: Colors.white,
                     child: MySelectionItem(
                       isForList: false,
-                      title: elements1[selectedIndex1],
+                      title: elements1[_category],
                     ),
                     onSelectedItemChanged: (index) {
                       setState(() {
-                        selectedIndex1 = index!;
+                        _category = index!;
                       });
                     },
                     items: _buildItems1()),
                 // _buildPassword(),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 buildTitle(context, "Website"),
                 _builURL(),
+
+                SizedBox(height: 10),
+                buildTitle(context, "Location"),
+                _builCity(),
+
                 SizedBox(height: 10),
                 buildTitle(context, "Phone"),
-                SizedBox(height: 10),
                 _buildPhoneNumber(),
+
                 SizedBox(height: 10),
                 buildTitle(context, "Description"),
                 _buildDescription(),
-                SizedBox(height: 50),
-                ElevatedButton(
+                SizedBox(height: 30),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: kWhiteColor,
+                    backgroundColor: Colors.brown,
+                    onSurface: Colors.grey,
+                    padding: EdgeInsets.all(20),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
                   child: Text(
                     'Submit',
                     style: TextStyle(color: kWhiteColor, fontSize: 16),
@@ -202,12 +262,15 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                     }
                     _formKey.currentState!.save();
                     print(_name);
-                    print(_email);
-                    print(_phoneNumber);
+                    print(_category);
                     print(_url);
-                    print(_password);
+                    print(_state);
+                    print(_city);
+                    print(_phoneNumber);
                     print(_description);
                     //Send to API
+                    // if response code == 200
+                    Navigator.pop(context, true);
                   },
                 )
               ],
@@ -259,7 +322,7 @@ class MySelectionItem extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
             )
           : Card(
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
               child: Stack(
                 children: <Widget>[
                   _buildItem(context),
@@ -278,6 +341,63 @@ class MySelectionItem extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       alignment: Alignment.center,
       child: Text(title),
+    );
+  }
+}
+
+class _NumberTextInputFormatter extends TextInputFormatter {
+  int _whichNumber;
+  _NumberTextInputFormatter(this._whichNumber);
+
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    final int newTextLength = newValue.text.length;
+    int selectionIndex = newValue.selection.end;
+    int usedSubstringIndex = 0;
+    final StringBuffer newText = StringBuffer();
+    switch (_whichNumber) {
+      case 1:
+        {
+          if (newTextLength >= 1) {
+            newText.write('(');
+            if (newValue.selection.end >= 1) selectionIndex++;
+          }
+          if (newTextLength >= 4) {
+            newText.write(
+                newValue.text.substring(0, usedSubstringIndex = 3) + ') ');
+            if (newValue.selection.end >= 3) selectionIndex += 2;
+          }
+          if (newTextLength >= 7) {
+            newText.write(
+                newValue.text.substring(3, usedSubstringIndex = 6) + '-');
+            if (newValue.selection.end >= 6) selectionIndex++;
+          }
+          if (newTextLength >= 11) {
+            newText.write(
+                newValue.text.substring(6, usedSubstringIndex = 10) + ' ');
+            if (newValue.selection.end >= 10) selectionIndex++;
+          }
+          break;
+        }
+      case 91:
+        {
+          if (newTextLength >= 5) {
+            newText.write(
+                newValue.text.substring(0, usedSubstringIndex = 5) + ' ');
+            if (newValue.selection.end >= 6) selectionIndex++;
+          }
+          break;
+        }
+    }
+    // Dump the rest.
+    if (newTextLength >= usedSubstringIndex)
+      newText.write(newValue.text.substring(usedSubstringIndex));
+    return TextEditingValue(
+      text: newText.toString(),
+      selection: TextSelection.collapsed(offset: selectionIndex),
     );
   }
 }

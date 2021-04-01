@@ -126,8 +126,16 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
                 _buildPassword(),
                 _builURL(),
                 _buildPhoneNumber(),
-                SizedBox(height: 100),
-                ElevatedButton(
+                SizedBox(height: 50),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: kWhiteColor,
+                    backgroundColor: Colors.brown,
+                    onSurface: Colors.grey,
+                    padding: EdgeInsets.all(20),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                  ),
                   child: Text(
                     'Submit',
                     style: TextStyle(color: kWhiteColor, fontSize: 16),

@@ -107,22 +107,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // Align(
-                  //   child: Container(
-                  //     width: 150,
-                  //     height: 7,
-                  //     decoration: BoxDecoration(
-                  //         color: Colors.red[50],
-                  //         borderRadius: BorderRadius.circular(10)),
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Text(
-                  //   "10 best interior ideas for your\nliving room",
-                  //   style: TextStyle(fontSize: 20, height: 1.5),
-                  // ),
                   SizedBox(
                     height: 20,
                   ),
@@ -204,13 +188,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     height: 20,
                   ),
                   Text(
-                    "Nobody wants to stare at a blank wall all day long, which is why wall art is such a crucial step in the decorating process. And once you start brainstorming, the rest is easy. From gallery walls to DIY pieces like framing your accessories and large-scale photography, we've got plenty of wall art ideas to spark your creativity. And where better to look for inspiration that interior designer-decorated walls",
-                    style: TextStyle(height: 1.6),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
                     "Information",
                     style: TextStyle(fontSize: 18),
                   ),
@@ -221,16 +198,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/dog0.png"),
-                                    fit: BoxFit.cover)),
+                        GestureDetector(
+                          onTap: () {
+                            print("success");
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Container(
+                              width: 150,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage("assets/images/dog0.png"),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                         ),
                         Padding(
@@ -259,7 +242,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         )
                       ],
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Description:",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  Text(
+                    "${breeder.description}",
+                    style: TextStyle(height: 1.6),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             ),

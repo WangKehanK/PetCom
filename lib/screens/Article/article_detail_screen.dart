@@ -135,56 +135,13 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Gallery",
-                    style: TextStyle(fontSize: 18),
-                  ),
+                  // Text(
+                  //   "Gallery",
+                  //   style: TextStyle(fontSize: 18),
+                  // ),
                   SizedBox(
                     height: 20,
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/dog0.png"),
-                                    fit: BoxFit.cover)),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/dog1.png"),
-                                    fit: BoxFit.cover)),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                    image: AssetImage("assets/images/dog2.png"),
-                                    fit: BoxFit.cover)),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
                 ],
               ),
             ),
