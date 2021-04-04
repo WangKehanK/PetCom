@@ -98,4 +98,16 @@ public class DiscussPostController {
         return CommunityUtil.getJSONString(200, "Post successfully, please waiting to be approved");
         // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
     }
+
+    @RequestMapping(path = "/search", method = RequestMethod.GET)
+    @ResponseBody
+    public String searchDiscussPost(@RequestParam(value = "searchKey") String searchKey){
+
+        List<DiscussPost> resultList = discussPostService.searchDiscussPost(searchKey);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("result", resultList);
+        //TODO: any other error
+        return CommunityUtil.getJSONString(200, "Success", resultMap);
+        // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
+    }
 }

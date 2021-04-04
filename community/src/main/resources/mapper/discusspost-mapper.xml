@@ -51,4 +51,10 @@
         values(#{userId},#{title},#{content},#{type},2,#{createTime},#{commentCount},#{score})
     </insert>
 
+    <select id="searchDiscussPost" resultType="DiscussPost">
+        select *
+        from discuss_post
+        where title like "%"#{searchKey}"%" or content like "%"#{searchKey}"%"
+    </select>
+
 </mapper>

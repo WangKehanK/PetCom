@@ -89,4 +89,17 @@ public class BreederController {
         return CommunityUtil.getJSONString(200, "Post successfully, please waiting to be approved");
         // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
     }
+
+    @RequestMapping(path = "/search", method = RequestMethod.GET)
+    @ResponseBody
+    // http://localhost:8080/community/api/breeder/search?searchKey=rescue
+    public String searchDiscussPost(@RequestParam(value = "searchKey") String searchKey){
+
+        List<Breeder> resultList = breederService.searchBreeder(searchKey);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("result", resultList);
+        //TODO: any other error
+        return CommunityUtil.getJSONString(200, "Success", resultMap);
+        // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
+    }
 }

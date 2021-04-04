@@ -49,4 +49,11 @@ public class DiscussPostService {
         return discussPostMapper.findPostById(id);
     }
 
+    public List<DiscussPost> searchDiscussPost(String searchKey) {
+        if (searchKey == null) {
+            throw new IllegalArgumentException("searchKey cannot be empty!");
+        }
+
+        return discussPostMapper.searchDiscussPost(searchKey);
+    }
 }

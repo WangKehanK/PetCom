@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petcom/constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:petcom/screens/Search/search_result.dart';
 
-class HeaderWithSearchBox extends StatelessWidget {
+class HeaderWithSearchBox extends StatefulWidget {
   const HeaderWithSearchBox({
     Key? key,
     required this.size,
@@ -11,11 +12,36 @@ class HeaderWithSearchBox extends StatelessWidget {
   final Size size;
 
   @override
+  _HeaderWithSearchBoxState createState() => _HeaderWithSearchBoxState();
+}
+
+class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
+  final myController = TextEditingController();
+  String? _text;
+
+  textListener() {
+    _text = myController.text;
+    // print("Current Text is ${myController.text}");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    myController.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    myController.addListener(textListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: kDefaultPadding * 1),
       // It will cover 20% of our total height
-      height: size.height * 0.2,
+      height: widget.size.height * 0.2,
       child: Stack(
         children: <Widget>[
           Container(
@@ -24,7 +50,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               right: 27,
               bottom: kDefaultPadding,
             ),
-            height: size.height * 0.2 - 27,
+            height: widget.size.height * 0.2 - 27,
             decoration: BoxDecoration(
               color: kPrimaryColor,
               gradient: LinearGradient(colors: [kPrimaryColor, kPrimaryColor]),
@@ -68,7 +94,10 @@ class HeaderWithSearchBox extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
-                      onChanged: (value) {},
+                      controller: myController,
+                      onChanged: (value) {
+                        // _text = value;
+                      },
                       decoration: InputDecoration(
                         hintText: "Search",
                         hintStyle: TextStyle(
@@ -82,7 +111,21 @@ class HeaderWithSearchBox extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Icon(CupertinoIcons.search),
+                  GestureDetector(
+                      onTap: () {
+                        print("$_text");
+                        if (_text == null) {
+                          print("enter something");
+                        } else {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return SearchResultScreen(
+                              searchText: _text!,
+                            );
+                          }));
+                        }
+                      },
+                      child: Icon(CupertinoIcons.search)),
                 ],
               ),
             ),

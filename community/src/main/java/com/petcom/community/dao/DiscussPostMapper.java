@@ -23,4 +23,6 @@ public interface DiscussPostMapper {
     List<DiscussPost> findFeaturedPosts();
 
     List<DiscussPost> findPostById(int id);
+
+    List<DiscussPost> searchDiscussPost(@Param("searchKey") String searchKey);
 }

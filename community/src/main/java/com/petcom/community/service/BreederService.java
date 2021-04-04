@@ -45,4 +45,12 @@ public class BreederService {
 
         return breederMapper.insertBreeder(breeder);
     }
+
+    public List<Breeder> searchBreeder(String searchKey) {
+        if (searchKey == null) {
+            throw new IllegalArgumentException("searchKey cannot be empty!");
+        }
+
+        return breederMapper.searchBreeder(searchKey);
+    }
 }

@@ -6,6 +6,7 @@ import 'package:petcom/screens/Article/article_list_screen.dart';
 import 'package:petcom/screens/Breeder/drawer_screen.dart';
 import 'package:petcom/screens/Breeder/pet_screen.dart';
 import 'package:petcom/screens/Home/home_screen.dart';
+import 'package:petcom/screens/Search/search_result.dart';
 import 'package:petcom/screens/main_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -21,5 +22,9 @@ final Map<String, WidgetBuilder> routes = {
   // Profile
   ProfileScreen.routeName: (context) => ProfileScreen(),
   BreederFormScreen.routeName: (context) => BreederFormScreen(),
-  ExperienceFormScreen.routeName: (context) => ExperienceFormScreen()
+  ExperienceFormScreen.routeName: (context) => ExperienceFormScreen(),
+  // Seach
+  SearchResultScreen.routeName: (context) => SearchResultScreen(
+        searchText: '',
+      ),
 };

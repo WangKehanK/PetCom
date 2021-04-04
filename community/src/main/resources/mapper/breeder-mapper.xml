@@ -48,5 +48,11 @@
         values(#{id},#{title},#{score},#{type},#{description},#{createTime},#{address},#{city},#{state},#{contact},#{website},2)
     </insert>
 
+    <select id="searchBreeder" resultType="Breeder">
+        select *
+        from breeder
+        where title like "%"#{searchKey}"%" or description like "%"#{searchKey}"%"
+    </select>
+
     
 </mapper>

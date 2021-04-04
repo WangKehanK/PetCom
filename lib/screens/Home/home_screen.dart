@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:petcom/model/Breeder.dart';
 import 'package:petcom/model/Post.dart';
-import 'package:petcom/screens/Article/article_detail_screen.dart';
 import 'package:petcom/screens/Article/article_list_screen.dart';
 import 'package:petcom/screens/Breeder/details_screen.dart';
 import 'package:petcom/screens/Home/components/square_banner_card.dart';
@@ -87,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     )
                   : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         HeaderWithSearchBox(size: size),
                         SizedBox(
