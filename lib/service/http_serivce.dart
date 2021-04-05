@@ -40,7 +40,7 @@ class HttpService {
   initializaInterceptors() {
     //https://pub.dev/documentation/dio/latest/dio/InterceptorsWrapper-class.html
     _dio.interceptors.add(InterceptorsWrapper(onError: (error, handler) {
-      print(error.message);
+      print("error" + error.message);
       handler.next(error);
     }, onRequest: (request, handler) {
       print("${request.method} ${request.path}");

@@ -26,5 +26,6 @@ final Map<String, WidgetBuilder> routes = {
   // Seach
   SearchResultScreen.routeName: (context) => SearchResultScreen(
         searchText: '',
+        type: 0,
       ),
 };

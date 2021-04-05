@@ -89,7 +89,7 @@ public class DiscussPostController {
 //        }
         DiscussPost post = new DiscussPost();
         Random random = new Random();
-        post.setUserId(random.nextInt(150));
+//        post.setUserId(random.nextInt(150));
         post.setTitle(title);
         post.setContent(content);
         post.setCreateTime(new Date());
@@ -104,10 +104,13 @@ public class DiscussPostController {
     public String searchDiscussPost(@RequestParam(value = "searchKey") String searchKey){
 
         List<DiscussPost> resultList = discussPostService.searchDiscussPost(searchKey);
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("result", resultList);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", 1);
+        map.put("total_page", 1);
+        map.put("current_page", 1);
+        map.put("post", resultList);
         //TODO: any other error
-        return CommunityUtil.getJSONString(200, "Success", resultMap);
+        return CommunityUtil.getJSONString(200, "success", map);
         // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
     }
 }

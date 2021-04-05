@@ -15,6 +15,34 @@ public class Breeder {
     private String contact;
     private String website;
 
+    public int getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "Breeder{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", score=" + score +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", createTime=" + createTime +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", contact='" + contact + '\'' +
+                ", website='" + website + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    private int status;
+
     public String getWebsite() {
         return website;
     }
@@ -101,23 +129,6 @@ public class Breeder {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Breeder{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", score=" + score +
-                ", type=" + type +
-                ", description='" + description + '\'' +
-                ", createTime=" + createTime +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", contact='" + contact + '\'' +
-                ", website='" + website + '\'' +
-                '}';
     }
 
 }

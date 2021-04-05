@@ -1,9 +1,34 @@
 import 'package:petcom/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:petcom/screens/Search/search_result.dart';
 
-class SearchBar extends StatelessWidget {
+class SearchBar extends StatefulWidget {
   const SearchBar({Key? key}) : super(key: key);
+
+  @override
+  _SearchBarState createState() => _SearchBarState();
+}
+
+class _SearchBarState extends State<SearchBar> {
+  final myController = TextEditingController();
+  String? _text;
+  textListener() {
+    _text = myController.text;
+    // print("Current Text is ${myController.text}");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    myController.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    myController.addListener(textListener);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,22 +41,41 @@ class SearchBar extends StatelessWidget {
         boxShadow: customShadow,
       ),
       child: Row(
-        children: [
-          Icon(CupertinoIcons.search),
+        children: <Widget>[
           Expanded(
             child: TextField(
-              autofocus: false,
+              controller: myController,
+              onChanged: (value) {
+                // _text = value;
+              },
               decoration: InputDecoration(
-                hintText: 'Search',
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
+                hintText: "Search",
+                hintStyle: TextStyle(
+                  color: kBlackColor,
                 ),
-                border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                // surffix isn't working properly  with SVG
+                // thats why we use row
+                // suffixIcon: SvgPicture.asset("assets/icons/search.svg"),
               ),
             ),
           ),
-          // Icon(CupertinoIcons.slider_horizontal_3),
+          GestureDetector(
+              onTap: () {
+                print("$_text");
+                if (_text == null) {
+                  print("enter something");
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SearchResultScreen(
+                      searchText: _text!,
+                      type: 1,
+                    );
+                  }));
+                }
+              },
+              child: Icon(CupertinoIcons.search)),
         ],
       ),
     );

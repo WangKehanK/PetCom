@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:petcom/constants.dart';
 import 'package:direct_select/direct_select.dart';
+import 'package:dio/dio.dart';
+import 'dart:convert';
+import 'package:petcom/service/http_serivce.dart';
 
 class BreederFormScreen extends StatefulWidget {
   static String routeName = "/breeder_form";
@@ -13,12 +16,36 @@ class BreederFormScreen extends StatefulWidget {
 }
 
 class BreederFormScreenState extends State<BreederFormScreen> {
+  late HttpService http;
+
   String? _name;
   String? _url;
   String? _phoneNumber;
   String? _description;
   String? _city;
   String? _state;
+
+  Future submitForm() async {
+    Response response;
+    bool _isLoading = false;
+
+    try {
+      //http://localhost:8080/community/api/breeder/add?title=This is a title~&type=1&description=This is description
+      _isLoading = true;
+      response = await http.postRequest("api/breeder/add?");
+      _isLoading = false;
+    } on Exception catch (e) {
+      _isLoading = false;
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    http = HttpService();
+    submitForm();
+    super.initState();
+  }
 
   final elements1 = [
     "Dog Breeder",
@@ -256,7 +283,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                     'Submit',
                     style: TextStyle(color: kWhiteColor, fontSize: 16),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (!_formKey.currentState!.validate()) {
                       return;
                     }
@@ -270,7 +297,11 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                     print(_description);
                     //Send to API
                     // if response code == 200
-                    Navigator.pop(context, true);
+                    //   late Dio _dio;
+
+                    await http.postRequest(
+                        "/api/breeder/add?title=${_name}&type=1&description=This");
+                    // Navigator.pop(context, true);
                   },
                 )
               ],

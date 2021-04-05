@@ -121,6 +121,7 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
                               MaterialPageRoute(builder: (context) {
                             return SearchResultScreen(
                               searchText: _text!,
+                              type: 0,
                             );
                           }));
                         }

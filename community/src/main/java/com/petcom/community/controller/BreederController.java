@@ -79,7 +79,7 @@ public class BreederController {
 //        }
         Breeder breeder = new Breeder();
         Random random = new Random();
-        breeder.setId(random.nextInt(150));
+//        breeder.setId(random.nextInt(150));
         breeder.setTitle(title);
         breeder.setType(type);
         breeder.setDescription(description);
@@ -96,10 +96,13 @@ public class BreederController {
     public String searchDiscussPost(@RequestParam(value = "searchKey") String searchKey){
 
         List<Breeder> resultList = breederService.searchBreeder(searchKey);
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("result", resultList);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", 1);
+        map.put("total_page", 1);
+        map.put("current_page", 1);
+        map.put("breeder", resultList);
         //TODO: any other error
-        return CommunityUtil.getJSONString(200, "Success", resultMap);
+        return CommunityUtil.getJSONString(200, "success", map);
         // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
     }
 }
