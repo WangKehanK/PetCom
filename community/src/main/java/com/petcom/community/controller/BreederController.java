@@ -7,10 +7,7 @@ import com.petcom.community.service.BreederService;
 import com.petcom.community.util.CommunityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -81,23 +78,22 @@ public class BreederController {
      * state = _state
      * website = _url
      */
-    public String addDiscussPost(String title, int type, String description, String city, String state, String contact, String website ){
+    public String addDiscussPost(@RequestBody Breeder breeder){
 //        User user = hostHolder.getUser();
 //        if(user == null || userId == 0) {
 //            return CommunityUtil.getJSONString(403, "You haven't login yet");
 //        }
-        Breeder breeder = new Breeder();
-        Random random = new Random();
+        Breeder newBreeder = new Breeder();
 //        breeder.setId(random.nextInt(150));
-        breeder.setTitle(title);
-        breeder.setType(type);
-        breeder.setDescription(description);
-        breeder.setCity(city);
-        breeder.setState(state);
-        breeder.setContact(contact);
-        breeder.setWebsite(website);
-        breeder.setCreateTime(new Date());
-        breederService.addBreeder(breeder);
+        newBreeder.setTitle(breeder.getTitle());
+        newBreeder.setType(breeder.getType());
+        newBreeder.setDescription(breeder.getDescription());
+        newBreeder.setCity(breeder.getCity());
+        newBreeder.setState(breeder.getState());
+        newBreeder.setContact(breeder.getContact());
+        newBreeder.setWebsite(breeder.getWebsite());
+        newBreeder.setCreateTime(new Date());
+        breederService.addBreeder(newBreeder);
         //TODO: any other error
         return CommunityUtil.getJSONString(200, "Post successfully, please waiting to be approved");
         // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured

@@ -292,10 +292,18 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                     print(_city);
                     print(_phoneNumber);
                     print(_description);
-                    final String _endPoint =
-                        "/api/breeder/add?title=${_name.toString()}&type=${_category.toString()}&description=${_description.toString()}&city=${_city.toString()}&state=${_state.toString()}&contact=${_phoneNumber.toString()}&website=${_url.toString()}";
-                    print(_endPoint);
-                    submitForm(_endPoint);
+                    var params = {
+                      "title": _name.toString(),
+                      "type": _category.toString(),
+                      "description": _description.toString(),
+                      "city": _city.toString(),
+                      "contact": _phoneNumber.toString(),
+                      "state": _state.toString(),
+                      "website": _url.toString()
+                    };
+                    print(jsonEncode(params));
+                    dio.post("http://10.0.2.2:8080/community/api/breeder/add",
+                        data: jsonEncode(params));
                   },
                 )
               ],
