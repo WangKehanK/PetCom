@@ -72,7 +72,16 @@ public class BreederController {
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public String addDiscussPost(String title, int type, String description){
+    /**
+     * title = _name
+     * type = _category
+     * description = _description
+     * contact = _phoneNumber
+     * city = _city
+     * state = _state
+     * website = _url
+     */
+    public String addDiscussPost(String title, int type, String description, String city, String state, String contact, String website ){
 //        User user = hostHolder.getUser();
 //        if(user == null || userId == 0) {
 //            return CommunityUtil.getJSONString(403, "You haven't login yet");
@@ -83,6 +92,10 @@ public class BreederController {
         breeder.setTitle(title);
         breeder.setType(type);
         breeder.setDescription(description);
+        breeder.setCity(city);
+        breeder.setState(state);
+        breeder.setContact(contact);
+        breeder.setWebsite(website);
         breeder.setCreateTime(new Date());
         breederService.addBreeder(breeder);
         //TODO: any other error

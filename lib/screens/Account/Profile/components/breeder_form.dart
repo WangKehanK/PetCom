@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:petcom/constants.dart';
 import 'package:direct_select/direct_select.dart';
 import 'package:dio/dio.dart';
+import 'package:petcom/model/FormResponse.dart';
 import 'dart:convert';
 import 'package:petcom/service/http_serivce.dart';
 
@@ -16,7 +17,7 @@ class BreederFormScreen extends StatefulWidget {
 }
 
 class BreederFormScreenState extends State<BreederFormScreen> {
-  late HttpService http;
+  var dio = Dio();
 
   String? _name;
   String? _url;
@@ -25,33 +26,23 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   String? _city;
   String? _state;
 
-  Future submitForm() async {
-    Response response;
-    bool _isLoading = false;
-
-    try {
-      //http://localhost:8080/community/api/breeder/add?title=This is a title~&type=1&description=This is description
-      _isLoading = true;
-      response = await http.postRequest("api/breeder/add?");
-      _isLoading = false;
-    } on Exception catch (e) {
-      _isLoading = false;
-      print(e);
-    }
-  }
-
-  @override
-  void initState() {
-    http = HttpService();
-    submitForm();
-    super.initState();
-  }
+  FormResponse? _formResponse;
 
   final elements1 = [
-    "Dog Breeder",
     "Cat Breeder",
     "Shelter",
+    "Dog Breeder",
   ];
+
+  Future submitForm(String _endPoint) async {
+    // late HttpService? http;
+    Response response;
+    response = await dio.post("http://10.0.2.2:8080/community" + _endPoint);
+    _formResponse = FormResponse.fromJson(jsonDecode(response.data));
+    if (_formResponse!.code == 200) {
+      Navigator.pop(context, true);
+    }
+  }
 
   int _category = 0;
 
@@ -222,6 +213,12 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // http = HttpService();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Submit the breeder/shelter")),
@@ -295,13 +292,10 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                     print(_city);
                     print(_phoneNumber);
                     print(_description);
-                    //Send to API
-                    // if response code == 200
-                    //   late Dio _dio;
-
-                    await http.postRequest(
-                        "/api/breeder/add?title=${_name}&type=1&description=This");
-                    // Navigator.pop(context, true);
+                    final String _endPoint =
+                        "/api/breeder/add?title=${_name.toString()}&type=${_category.toString()}&description=${_description.toString()}&city=${_city.toString()}&state=${_state.toString()}&contact=${_phoneNumber.toString()}&website=${_url.toString()}";
+                    print(_endPoint);
+                    submitForm(_endPoint);
                   },
                 )
               ],
