@@ -2,7 +2,7 @@ import 'package:petcom/constants.dart';
 import 'package:flutter/material.dart';
 
 class Rating extends StatelessWidget {
-  final double? score;
+  final int? score;
   const Rating({
     Key? key,
     this.score,
@@ -11,7 +11,7 @@ class Rating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
       decoration: BoxDecoration(
         color: kWhiteColor,
         borderRadius: BorderRadius.circular(16),
@@ -23,11 +23,11 @@ class Rating extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
         children: <Widget>[
           Icon(
-            Icons.star,
-            color: kIconColor,
+            Icons.visibility_rounded,
+            color: kShadowColor,
             size: 15,
           ),
           SizedBox(height: 5),

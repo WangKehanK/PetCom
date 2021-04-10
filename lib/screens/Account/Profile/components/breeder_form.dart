@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:petcom/constants.dart';
-import 'package:direct_select/direct_select.dart';
 import 'package:dio/dio.dart';
 import 'package:petcom/model/FormResponse.dart';
 import 'dart:convert';
-import 'package:petcom/service/http_serivce.dart';
+import 'package:material_dialogs/material_dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_button.dart';
+import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
+import 'package:direct_select/direct_select.dart';
 
 class BreederFormScreen extends StatefulWidget {
   static String routeName = "/breeder_form";
@@ -35,7 +38,6 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   ];
 
   Future submitForm(String _endPoint) async {
-    // late HttpService? http;
     Response response;
     response = await dio.post("http://10.0.2.2:8080/community" + _endPoint);
     _formResponse = FormResponse.fromJson(jsonDecode(response.data));
@@ -62,10 +64,8 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   Widget _buildName() {
     return TextFormField(
       decoration: InputDecoration(
-        // labelText: 'Enter here',
         fillColor: Colors.white,
         border: new OutlineInputBorder(
-          // borderRadius: new BorderRadius.circular(25.0),
           borderSide: new BorderSide(),
         ),
       ),
@@ -73,9 +73,8 @@ class BreederFormScreenState extends State<BreederFormScreen> {
       maxLines: 1,
       validator: (String? value) {
         if (value!.isEmpty) {
-          return 'Title is Required';
+          return 'Name is Required';
         }
-
         return null;
       },
       onSaved: (String? value) {
@@ -90,15 +89,11 @@ class BreederFormScreenState extends State<BreederFormScreen> {
       decoration: InputDecoration(
         fillColor: Colors.white,
         border: new OutlineInputBorder(
-          // borderRadius: new BorderRadius.circular(25.0),
           borderSide: new BorderSide(),
         ),
       ),
       keyboardType: TextInputType.url,
       validator: (String? value) {
-        if (value!.isEmpty) {
-          return 'URL is Required';
-        }
         return null;
       },
       onSaved: (String? value) {
@@ -118,7 +113,6 @@ class BreederFormScreenState extends State<BreederFormScreen> {
               labelText: "city",
               fillColor: Colors.white,
               border: new OutlineInputBorder(
-                // borderRadius: new BorderRadius.circular(25.0),
                 borderSide: new BorderSide(),
               ),
             ),
@@ -147,7 +141,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
             keyboardType: TextInputType.name,
             validator: (String? value) {
               if (value!.isEmpty) {
-                return 'Location is required';
+                return 'State is required';
               }
               return null;
             },
@@ -170,16 +164,11 @@ class BreederFormScreenState extends State<BreederFormScreen> {
       decoration: InputDecoration(
         fillColor: Colors.white,
         border: new OutlineInputBorder(
-          // borderRadius: new BorderRadius.circular(25.0),
           borderSide: new BorderSide(),
         ),
       ),
       keyboardType: TextInputType.phone,
       validator: (String? value) {
-        if (value!.isEmpty) {
-          return 'Phone number is Required';
-        }
-
         return null;
       },
       onSaved: (String? value) {
@@ -195,15 +184,11 @@ class BreederFormScreenState extends State<BreederFormScreen> {
       decoration: InputDecoration(
         fillColor: Colors.white,
         border: new OutlineInputBorder(
-          // borderRadius: new BorderRadius.circular(25.0),
           borderSide: new BorderSide(),
         ),
       ),
       keyboardType: TextInputType.multiline,
       validator: (String? value) {
-        if (value!.isEmpty) {
-          return 'Enter your description';
-        }
         return null;
       },
       onSaved: (String? value) {
@@ -215,7 +200,6 @@ class BreederFormScreenState extends State<BreederFormScreen> {
   @override
   void initState() {
     super.initState();
-    // http = HttpService();
   }
 
   @override
@@ -230,11 +214,31 @@ class BreederFormScreenState extends State<BreederFormScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                buildTitle(context, "Title"),
-                _buildName(), //Title
-                // SizedBox(height: 10),
-                // buildTitle(context, "E"),
-                // _buildEmail(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: RichText(
+                        text: TextSpan(
+                          style: Theme.of(context).textTheme.bodyText1,
+                          children: [
+                            TextSpan(
+                                text:
+                                    "(Scroll me) Only knows the name and city of breeder/shelter? Don't worry, we will collect the rest of information for you~"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+
+                buildTitle(context, "Name*"),
+                _buildName(),
                 buildTitle(context, "Category"),
                 DirectSelect(
                     itemExtent: 50.0,
@@ -256,7 +260,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                 _builURL(),
 
                 SizedBox(height: 10),
-                buildTitle(context, "Location"),
+                buildTitle(context, "Location*"),
                 _builCity(),
 
                 SizedBox(height: 10),
@@ -285,13 +289,6 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                       return;
                     }
                     _formKey.currentState!.save();
-                    print(_name);
-                    print(_category);
-                    print(_url);
-                    print(_state);
-                    print(_city);
-                    print(_phoneNumber);
-                    print(_description);
                     var params = {
                       "title": _name.toString(),
                       "type": _category.toString(),
@@ -301,9 +298,38 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                       "state": _state.toString(),
                       "website": _url.toString()
                     };
-                    print(jsonEncode(params));
-                    dio.post("http://10.0.2.2:8080/community/api/breeder/add",
-                        data: jsonEncode(params));
+
+                    Dialogs.materialDialog(
+                        msg: 'Are you sure ? The information will be submitted',
+                        title: "Submit",
+                        color: Colors.white,
+                        context: context,
+                        actions: [
+                          IconsOutlineButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            text: 'Cancel',
+                            iconData: Icons.cancel_outlined,
+                            textStyle: TextStyle(color: Colors.grey),
+                            iconColor: Colors.grey,
+                          ),
+                          IconsButton(
+                            onPressed: () async {
+                              await dio.post(
+                                  "http://10.0.2.2:8080/community/api/breeder/add",
+                                  data: jsonEncode(params));
+                              int count = 0;
+                              Navigator.of(context)
+                                  .popUntil((_) => count++ >= 2);
+                            },
+                            text: 'Submit',
+                            iconData: Icons.arrow_forward_ios_sharp,
+                            color: Colors.brown,
+                            textStyle: TextStyle(color: Colors.white),
+                            iconColor: Colors.white,
+                          ),
+                        ]);
                   },
                 )
               ],

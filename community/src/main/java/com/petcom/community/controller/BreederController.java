@@ -1,5 +1,6 @@
 package com.petcom.community.controller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.petcom.community.entity.Breeder;
 import com.petcom.community.entity.DiscussPost;
 import com.petcom.community.entity.Page;
@@ -109,6 +110,18 @@ public class BreederController {
         map.put("total", 1);
         map.put("total_page", 1);
         map.put("current_page", 1);
+        map.put("breeder", resultList);
+        //TODO: any other error
+        return CommunityUtil.getJSONString(200, "success", map);
+        // the status will be 2 here. 2 means unverified, 0 means verified, 1 means featured
+    }
+
+    @RequestMapping(path = "/name", method = RequestMethod.GET)
+    @ResponseBody
+    // http://localhost:8080/community/api/breeder/name
+    public String getBreederName(){
+        List<String> resultList = breederService.getBreederName();
+        Map<String, Object> map = new HashMap<>();
         map.put("breeder", resultList);
         //TODO: any other error
         return CommunityUtil.getJSONString(200, "success", map);

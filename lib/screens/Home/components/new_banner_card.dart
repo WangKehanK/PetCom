@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/screens/Article/article_detail_screen.dart';
+import 'package:petcom/screens/Article/components/article_detail_screen.dart';
 import 'package:petcom/util.dart';
 import '../../../constants.dart';
 
+// ignore: must_be_immutable
 class NewBannerCard extends StatelessWidget {
   int? commentCount;
   String? content;
   int? createTime;
   String? id;
-  double? score;
+  int? score;
   int? status;
   String? title;
   int? type;
@@ -66,13 +67,6 @@ class NewBannerCard extends StatelessWidget {
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10),
                 ),
-                // boxShadow: [
-                //   BoxShadow(
-                //     offset: Offset(0, 10),
-                //     blurRadius: 50,
-                //     color: Color(0xFFEAEAEA).withOpacity(1),
-                //   ),
-                // ],
               ),
               child: Row(
                 children: <Widget>[
@@ -82,12 +76,6 @@ class NewBannerCard extends StatelessWidget {
                         TextSpan(
                             text: "$title\n".toUpperCase(),
                             style: Theme.of(context).textTheme.button),
-                        // TextSpan(
-                        //   text: "Hello", //"$country".toUpperCase(),
-                        //   style: TextStyle(
-                        //     color: kPrimaryColor.withOpacity(0.5),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),

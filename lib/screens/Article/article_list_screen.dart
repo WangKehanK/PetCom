@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petcom/screens/Article/article_list_display.dart';
+import 'package:petcom/screens/Article/components/article_list_display.dart';
 
 class ArticleScreen extends StatefulWidget {
   static String routeName = "/articles";

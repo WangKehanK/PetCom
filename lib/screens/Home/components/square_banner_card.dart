@@ -1,127 +1,118 @@
 import 'package:petcom/constants.dart';
 import 'package:petcom/components/rating.dart';
-import 'package:petcom/components/two_side_rounded_button.dart';
+import 'package:petcom/screens/Home/components/two_side_rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:petcom/screens/Breeder/components/details_screen.dart';
+import 'package:petcom/util.dart';
 
-class SquareBannerCard extends StatelessWidget {
+class SquareBannerCard extends StatefulWidget {
+  final String? id;
   final String? image;
   final String? title;
-  final double? rating;
-  final Function? pressDetails;
-  final Function? pressRead;
+  final int? rating;
 
   const SquareBannerCard({
     Key? key,
+    this.id,
     this.image,
     this.title,
     this.rating,
-    this.pressDetails,
-    this.pressRead,
   }) : super(key: key);
 
   @override
+  _SquareBannerCardState createState() => _SquareBannerCardState();
+}
+
+class _SquareBannerCardState extends State<SquareBannerCard> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 15),
-            blurRadius: 10,
-            color: Color(0xFFEAEAEA).withOpacity(1),
-          ),
-        ],
-      ),
-      margin: EdgeInsets.only(left: 24, bottom: 40),
-      height: 245,
-      width: 202,
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 221,
-              decoration: BoxDecoration(
-                color: kWhiteColor,
+    return GestureDetector(
+      onTap: () =>
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return DetailsScreen(
+          id: widget.id,
+          color: randomColor(),
+        );
+      })),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 15),
+              blurRadius: 10,
+              color: Color(0xFFEAEAEA).withOpacity(1),
+            ),
+          ],
+        ),
+        margin: EdgeInsets.only(left: 24, bottom: 40),
+        height: 245,
+        width: 202,
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 221,
+                decoration: BoxDecoration(
+                  color: kWhiteColor,
+                ),
               ),
             ),
-          ),
-          Image.asset(
-            image!,
-            width: 150,
-          ),
-          Positioned(
-            top: 35,
-            right: 10,
-            child: Column(
-              children: <Widget>[
-                // IconButton(
-                //   icon: Icon(
-                //     Icons.favorite_border,
-                //   ),
-                //   onPressed: () {},
-                // ),
-                Rating(score: rating),
-              ],
+            Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  image: DecorationImage(
+                      image: AssetImage(
+                        widget.image!,
+                      ),
+                      fit: BoxFit.cover)),
             ),
-          ),
-          Positioned(
-            top: 160,
-            child: Container(
-              height: 85,
-              width: 202,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 24),
-                    child: RichText(
-                      maxLines: 2,
-                      text: TextSpan(
-                        style: TextStyle(color: kBlackColor),
-                        children: [
-                          TextSpan(
-                            text: "$title\n",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+            Positioned(
+              top: 160,
+              child: Container(
+                height: 85,
+                width: 202,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(left: 24),
+                      child: RichText(
+                        maxLines: 2,
+                        text: TextSpan(
+                          style: TextStyle(color: kBlackColor),
+                          children: [
+                            TextSpan(
+                              text: "${widget.title}\n",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          TextSpan(
-                            text: "",
-                            style: TextStyle(
-                              color: kLightBlackColor,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                  Row(
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Container(
-                          width: 101,
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.center,
-                          child: Text(""),
-                        ),
-                      ),
-                      Expanded(
-                        child: TwoSideRoundedButton(
-                          radious: 0,
-                          text: "Detail",
-                          press: pressDetails,
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                    Spacer(),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: TwoSideRoundedButton(
+                            radious: 10,
+                            text: "Detail",
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

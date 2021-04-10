@@ -1,9 +1,8 @@
 import 'package:petcom/constants.dart';
-import 'package:petcom/screens/Breeder/pet_category_display.dart';
-import 'package:petcom/components/search_bar.dart';
+import 'package:petcom/screens/Breeder/components/pet_category_display.dart';
+import 'package:petcom/screens/Breeder/components/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:petcom/screens/Breeder/drawer_screen.dart';
 
 class PetScreen extends StatefulWidget {
   static String routeName = "/breeder";
@@ -28,39 +27,23 @@ class _PetScreenState extends State<PetScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                    icon: Icon(CupertinoIcons.slider_horizontal_3),
-                    onPressed: () {
-                      Navigator.pushNamed(context, DrawerScreen.routeName);
-                    }),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      '  Location',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: primaryGreen,
-                          size: 16,
-                        ),
-                        // Text('Hello'),
-                        RichText(
-                          text: TextSpan(
-                            text: 'MA',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                    Center(
+                      child: Row(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: 'Where you can get your pet',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

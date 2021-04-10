@@ -38,3 +38,28 @@ const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
+
+List<String> imagePaths = [
+  "assets/images/dog1.png",
+  "assets/images/dog2.png",
+  "assets/images/dog4.png",
+  "assets/images/dog5.png",
+  "assets/images/dog6.png",
+  "assets/images/dog8.png",
+  "assets/images/dog10.png",
+];
+
+List<String> catPaths = [
+  "assets/images/cat-1.png",
+  // "assets/images/cat-2.png",
+  // "assets/images/cat-3.png",
+];
+
+List<String> dogPaths = [
+  "assets/images/dog-1.png",
+  // "assets/images/dog-2.png",
+];
+
+List<String> shelterPaths = [
+  "assets/images/dog-2.png",
+];

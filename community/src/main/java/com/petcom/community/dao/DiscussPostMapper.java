@@ -25,4 +25,6 @@ public interface DiscussPostMapper {
     List<DiscussPost> findPostById(int id);
 
     List<DiscussPost> searchDiscussPost(@Param("searchKey") String searchKey);
+
+    void AddScoreForPost(int id);
 }

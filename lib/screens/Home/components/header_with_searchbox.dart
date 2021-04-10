@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:material_dialogs/material_dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import 'package:petcom/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:petcom/screens/Search/search_result.dart';
@@ -18,10 +20,8 @@ class HeaderWithSearchBox extends StatefulWidget {
 class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
   final myController = TextEditingController();
   String? _text;
-
   textListener() {
     _text = myController.text;
-    // print("Current Text is ${myController.text}");
   }
 
   @override
@@ -66,8 +66,6 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
                   style: Theme.of(context).textTheme.headline5!.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
-                // Spacer(),
-                // Image.asset("assets/images/logo.png")
               ],
             ),
           ),
@@ -95,27 +93,35 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
                   Expanded(
                     child: TextField(
                       controller: myController,
-                      onChanged: (value) {
-                        // _text = value;
-                      },
+                      onChanged: (value) {},
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: "Search experience",
                         hintStyle: TextStyle(
                           color: kBlackColor,
                         ),
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
-                        // surffix isn't working properly  with SVG
-                        // thats why we use row
-                        // suffixIcon: SvgPicture.asset("assets/icons/search.svg"),
                       ),
                     ),
                   ),
                   GestureDetector(
                       onTap: () {
-                        print("$_text");
                         if (_text == null) {
-                          print("enter something");
+                          Dialogs.bottomMaterialDialog(
+                              msg: 'Please enter something',
+                              title: 'Note!',
+                              context: context,
+                              actions: [
+                                IconsOutlineButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  text: 'OK!',
+                                  iconData: Icons.done,
+                                  textStyle: TextStyle(color: Colors.grey),
+                                  iconColor: Colors.grey,
+                                ),
+                              ]);
                         } else {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {

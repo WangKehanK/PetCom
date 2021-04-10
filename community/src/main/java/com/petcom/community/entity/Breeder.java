@@ -1,11 +1,13 @@
 package com.petcom.community.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.util.Date;
+@JsonAutoDetect(fieldVisibility=JsonAutoDetect.Visibility.ANY, getterVisibility= JsonAutoDetect.Visibility.NONE)
 public class Breeder {
     private int id;
     private String title;
-    private double score;
+    private int score;
     private int type; // 0-Breeder, 1-Shelter
     private String description;
     private Date createTime;
@@ -99,11 +101,11 @@ public class Breeder {
         this.title = title;
     }
 
-    public double getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(int score) {
         this.score = score;
     }
 

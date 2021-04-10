@@ -18,7 +18,7 @@
         <if test="id!=0">
             and id = #{id}
         </if>
-        order by create_time desc
+        order by create_time desc , score desc
         limit #{offset}, #{limit}
     </select>
 
@@ -33,7 +33,7 @@
     <select id="findFeatureBreeder" resultType="Breeder">
         select <include refid="selectFields"></include>
         from breeder
-        where type = 1
+        where status = 1
         order by create_time desc
     </select>
 
@@ -42,6 +42,13 @@
         from breeder
         where id = #{id}
     </select>
+
+    <update id="AddScoreForBreeder">
+        update breeder
+        set score = score + 1
+        where id = #{id}
+    </update>
+
 
     <insert id="insertBreeder" parameterType="Breeder">
         insert into breeder(<include refid="insertFields"></include>)
@@ -54,5 +61,9 @@
         where title like "%"#{searchKey}"%" or description like "%"#{searchKey}"%"
     </select>
 
-    
+    <select id="getBreederName" resultType="String">
+        select title
+        from breeder
+    </select>
+
 </mapper>

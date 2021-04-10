@@ -46,6 +46,7 @@ public class DiscussPostService {
     }
 
     public List<DiscussPost> findPostById(int id){
+        discussPostMapper.AddScoreForPost(id);
         return discussPostMapper.findPostById(id);
     }
 

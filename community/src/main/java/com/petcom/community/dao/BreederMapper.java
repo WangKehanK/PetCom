@@ -21,5 +21,9 @@ public interface BreederMapper {
     int insertBreeder(Breeder breeder);
 
     List<Breeder> searchBreeder(@Param("searchKey") String searchKey);
+
+    List<String> getBreederName();
+
+    void AddScoreForBreeder(int id);
 }
 

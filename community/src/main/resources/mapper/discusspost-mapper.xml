@@ -28,7 +28,7 @@
         from discuss_post
         where status != 2
         and type = 1
-        order by create_time desc
+        order by create_time desc, score desc
     </select>
 
     <select id="findPostById" resultType="DiscussPost">
@@ -36,6 +36,13 @@
         from discuss_post
         where id = #{id}
     </select>
+
+    <update id="AddScoreForPost">
+        update discuss_post
+        set score = score + 1
+        where id = #{id}
+    </update>
+
 
     <select id="selectDiscussPostRows" resultType="int">
         select count(id)

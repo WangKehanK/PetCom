@@ -3,7 +3,6 @@ import 'package:petcom/screens/Account/Profile/components/breeder_form.dart';
 import 'package:petcom/screens/Account/Profile/components/experience_form.dart';
 import 'package:petcom/screens/Account/Profile/profile_screen.dart';
 import 'package:petcom/screens/Article/article_list_screen.dart';
-import 'package:petcom/screens/Breeder/drawer_screen.dart';
 import 'package:petcom/screens/Breeder/pet_screen.dart';
 import 'package:petcom/screens/Home/home_screen.dart';
 import 'package:petcom/screens/Search/search_result.dart';
@@ -18,7 +17,6 @@ final Map<String, WidgetBuilder> routes = {
   ArticleScreen.routeName: (context) => ArticleScreen(),
   // Breeder
   PetScreen.routeName: (context) => PetScreen(),
-  DrawerScreen.routeName: (context) => DrawerScreen(),
   // Profile
   ProfileScreen.routeName: (context) => ProfileScreen(),
   BreederFormScreen.routeName: (context) => BreederFormScreen(),

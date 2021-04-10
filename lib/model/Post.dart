@@ -50,7 +50,7 @@ class Post {
   String? content;
   int? createTime;
   int? id;
-  double? score;
+  int? score;
   int? status;
   String? title;
   int? type;

@@ -1,6 +1,7 @@
 package com.petcom.community.controller;
 
 
+import com.petcom.community.entity.Breeder;
 import com.petcom.community.entity.DiscussPost;
 import com.petcom.community.entity.Page;
 import com.petcom.community.entity.User;
@@ -9,10 +10,7 @@ import com.petcom.community.util.CommunityUtil;
 import com.petcom.community.util.HostHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -82,16 +80,19 @@ public class DiscussPostController {
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public String addDiscussPost(String title, String content){
+    public String addDiscussPost(@RequestBody DiscussPost discussPost){
 //        User user = hostHolder.getUser();
 //        if(user == null || userId == 0) {
 //            return CommunityUtil.getJSONString(403, "You haven't login yet");
 //        }
+        Map<String, Object> map = new HashMap<>();
+
         DiscussPost post = new DiscussPost();
         Random random = new Random();
-//        post.setUserId(random.nextInt(150));
-        post.setTitle(title);
-        post.setContent(content);
+        System.out.println(discussPost.getTitle());
+        post.setUserId(random.nextInt(150));
+        post.setTitle(discussPost.getTitle());
+        post.setContent(discussPost.getContent());
         post.setCreateTime(new Date());
         discussPostService.addDiscussPost(post);
         //TODO: any other error

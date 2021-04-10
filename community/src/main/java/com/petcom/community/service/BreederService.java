@@ -30,7 +30,10 @@ public class BreederService {
         return breederMapper.findFeatureBreeder();
     }
 
-    public List<Breeder> findBreederById(int id) {return breederMapper.findBreederById(id); }
+    public List<Breeder> findBreederById(int id) {
+        breederMapper.AddScoreForBreeder(id);
+        return breederMapper.findBreederById(id);
+    }
 
     public int addBreeder(Breeder breeder) {
         if (breeder == null) {
@@ -52,5 +55,9 @@ public class BreederService {
         }
 
         return breederMapper.searchBreeder(searchKey);
+    }
+
+    public List<String> getBreederName(){
+        return breederMapper.getBreederName();
     }
 }

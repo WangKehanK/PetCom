@@ -1,15 +1,14 @@
 import 'dart:convert';
+import 'package:petcom/components/build_title.dart';
 import 'package:petcom/model/Breeder.dart';
 import 'package:petcom/model/Post.dart';
 import 'package:petcom/screens/Article/article_list_screen.dart';
-import 'package:petcom/screens/Breeder/details_screen.dart';
 import 'package:petcom/screens/Home/components/square_banner_card.dart';
 import 'package:flutter/material.dart';
 import 'package:petcom/screens/Home/components/header_with_searchbox.dart';
 import 'package:petcom/screens/Home/components/new_banner_card.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:dio/dio.dart';
-import 'dart:math';
 
 import 'package:petcom/util.dart';
 
@@ -24,7 +23,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late HttpService? http;
-  Random _random = new Random();
   bool _isLoading = false;
 
   //json to dart
@@ -100,19 +98,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               NewBannerCard(
                                 id: _post[3].id.toString(),
-                                imagePath: "assets/images/banner3.png",
+                                imagePath: "assets/images/banner1.png",
                                 title: smallSentence(
                                     _post.elementAt(3).title ?? ""),
                               ),
                               NewBannerCard(
                                 id: _post[1].id.toString(),
-                                imagePath: "assets/images/banner3.png",
+                                imagePath: "assets/images/banner2.png",
                                 title: smallSentence(
                                     _post.elementAt(1).title ?? ""),
                               ),
                               NewBannerCard(
                                 id: _post[2].id.toString(),
-                                imagePath: "assets/images/banner4.png",
+                                imagePath: "assets/images/banner3.png",
                                 title: smallSentence(
                                     _post.elementAt(2).title ?? ""),
                               ),
@@ -125,43 +123,34 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                        buildTitle(context, " Recommend ", "Owners"),
+                        BuildTitle(" Recommend ", "Owners"),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: <Widget>[
                               SquareBannerCard(
-                                image: "assets/images/cat-1.png",
-                                title: smallSentence(
+                                id: _breeder.elementAt(0).id.toString(),
+                                image: getDesiredImagePath(
+                                    _breeder.elementAt(0).type.toString()),
+                                title: mediumSentence(
                                     _breeder.elementAt(0).title ?? ""),
-                                rating: 4.9,
-                                pressDetails: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return DetailsScreen(
-                                          id: _breeder
-                                              .elementAt(0)
-                                              .id
-                                              .toString(),
-                                        );
-                                      },
-                                    ),
-                                  );
-                                },
+                                rating: _breeder.elementAt(0).score!,
                               ),
                               SquareBannerCard(
-                                image: "assets/images/cat-1.png",
-                                title: smallSentence(
+                                id: _breeder.elementAt(1).id.toString(),
+                                image: getDesiredImagePath(
+                                    _breeder.elementAt(1).type.toString()),
+                                title: mediumSentence(
                                     _breeder.elementAt(1).title ?? ""),
-                                rating: 4.8,
+                                rating: _breeder.elementAt(1).score!,
                               ),
                               SquareBannerCard(
-                                image: "assets/images/cat-1.png",
-                                title: smallSentence(
+                                id: _breeder.elementAt(2).id.toString(),
+                                image: getDesiredImagePath(
+                                    _breeder.elementAt(2).type.toString()),
+                                title: mediumSentence(
                                     _breeder.elementAt(2).title ?? ""),
-                                rating: 4.8,
+                                rating: _breeder.elementAt(2).score!,
                               ),
                               SizedBox(width: 30),
                             ],
@@ -211,33 +200,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.black,
                     ),
             )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Padding buildTitle(BuildContext context, String s1, String s2) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[50],
-        ),
-        child: Row(
-          children: <Widget>[
-            RichText(
-              text: TextSpan(
-                style: Theme.of(context).textTheme.headline5,
-                children: [
-                  TextSpan(text: s1),
-                  TextSpan(
-                    text: s2,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ),

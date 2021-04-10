@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:petcom/constants.dart';
 import 'package:petcom/model/Breeder.dart';
-import 'package:petcom/screens/Breeder/pet_card.dart';
+import 'package:petcom/screens/Breeder/components/pet_card.dart';
 import 'package:petcom/service/http_serivce.dart';
-import 'package:petcom/screens/Article/article_card.dart';
+import 'package:petcom/screens/Article/components/article_card.dart';
 import 'package:petcom/model/Post.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 

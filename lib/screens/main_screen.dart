@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:petcom/screens/Home/home_screen.dart';
 import 'package:petcom/screens/Breeder/pet_screen.dart';
 import 'package:petcom/screens/Account/Profile/profile_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
 
 class MainScreen extends StatefulWidget {
   static String routeName = '/main_screen';
+  final int current = 0;
   @override
   _MainScreenState createState() => _MainScreenState();
 }

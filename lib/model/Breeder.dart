@@ -49,7 +49,7 @@ class Breeder {
   int? createTime;
   String? description;
   int? id;
-  double? score;
+  int? score;
   String? state;
   String? title;
   int? type;
@@ -100,6 +100,28 @@ class Breeder {
     data['type'] = this.type;
     data['website'] = this.website;
     data['status'] = this.status;
+    return data;
+  }
+}
+
+class BreederNameList {
+  String? msg;
+  int? code;
+  List<String>? breeder;
+
+  BreederNameList({this.msg, this.code, this.breeder});
+
+  BreederNameList.fromJson(Map<String, dynamic> json) {
+    msg = json['msg'];
+    code = json['code'];
+    breeder = json['breeder'].cast<String>();
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['msg'] = this.msg;
+    data['code'] = this.code;
+    data['breeder'] = this.breeder;
     return data;
   }
 }

@@ -1,7 +1,9 @@
 package com.petcom.community.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.util.Date;
+@JsonAutoDetect(fieldVisibility=JsonAutoDetect.Visibility.ANY, getterVisibility= JsonAutoDetect.Visibility.NONE)
 public class DiscussPost {
     private int id;
     private int userId;
@@ -11,7 +13,7 @@ public class DiscussPost {
     private int status;
     private Date createTime;
     private int commentCount;
-    private double score;
+    private int score;
 
     public int getId() {
         return id;
@@ -28,7 +30,6 @@ public class DiscussPost {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
     public String getTitle() {
         return title;
     }
@@ -36,7 +37,6 @@ public class DiscussPost {
     public void setTitle(String title) {
         this.title = title;
     }
-
     public String getContent() {
         return content;
     }
@@ -77,11 +77,11 @@ public class DiscussPost {
         this.commentCount = commentCount;
     }
 
-    public double getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
