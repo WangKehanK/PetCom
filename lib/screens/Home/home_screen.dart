@@ -97,10 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: <Widget>[
                               NewBannerCard(
-                                id: _post[3].id.toString(),
+                                id: _post[0].id.toString(),
                                 imagePath: "assets/images/banner1.png",
                                 title: smallSentence(
-                                    _post.elementAt(3).title ?? ""),
+                                    _post.elementAt(0).title ?? ""),
                               ),
                               NewBannerCard(
                                 id: _post[1].id.toString(),
@@ -135,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 title: mediumSentence(
                                     _breeder.elementAt(0).title ?? ""),
                                 rating: _breeder.elementAt(0).score!,
+                                type: _breeder.elementAt(0).type!,
                               ),
                               SquareBannerCard(
                                 id: _breeder.elementAt(1).id.toString(),
@@ -143,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 title: mediumSentence(
                                     _breeder.elementAt(1).title ?? ""),
                                 rating: _breeder.elementAt(1).score!,
+                                type: _breeder.elementAt(1).type!,
                               ),
                               SquareBannerCard(
                                 id: _breeder.elementAt(2).id.toString(),
@@ -151,6 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 title: mediumSentence(
                                     _breeder.elementAt(2).title ?? ""),
                                 rating: _breeder.elementAt(2).score!,
+                                type: _breeder.elementAt(2).type!,
                               ),
                               SizedBox(width: 30),
                             ],

@@ -56,21 +56,21 @@ String? randomPath() {
 }
 
 String? randomDogPath() {
-  String ranPath = "assets/images/dog-1.png";
+  String ranPath = "assets/images/dog.png";
   Random _random = new Random();
   ranPath = dogPaths[_random.nextInt(dogPaths.length)];
   return ranPath;
 }
 
 String? randomCatPath() {
-  String ranPath = "assets/images/cat-1.png";
+  String ranPath = "assets/images/cat.png";
   Random _random = new Random();
   ranPath = catPaths[_random.nextInt(catPaths.length)];
   return ranPath;
 }
 
 String? randomShelterPath() {
-  String ranPath = "assets/images/cat-1.png";
+  String ranPath = "assets/images/shelter.png";
   Random _random = new Random();
   ranPath = shelterPaths[_random.nextInt(shelterPaths.length)];
   return ranPath;

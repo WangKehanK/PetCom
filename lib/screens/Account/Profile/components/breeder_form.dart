@@ -274,7 +274,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                 TextButton(
                   style: TextButton.styleFrom(
                     primary: kWhiteColor,
-                    backgroundColor: Colors.brown,
+                    backgroundColor: Colors.orange[400],
                     onSurface: Colors.grey,
                     padding: EdgeInsets.all(20),
                     shape: RoundedRectangleBorder(
@@ -325,7 +325,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                             },
                             text: 'Submit',
                             iconData: Icons.arrow_forward_ios_sharp,
-                            color: Colors.brown,
+                            color: Colors.orange[400],
                             textStyle: TextStyle(color: Colors.white),
                             iconColor: Colors.white,
                           ),

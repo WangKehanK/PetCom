@@ -71,10 +71,11 @@ class NewBannerCard extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   RichText(
+                    maxLines: 2,
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: "$title\n".toUpperCase(),
+                            text: "$title\n",
                             style: Theme.of(context).textTheme.button),
                       ],
                     ),

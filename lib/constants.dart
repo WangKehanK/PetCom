@@ -12,7 +12,7 @@ final kPrimaryLightColor = Color(0xFFFFF8E1);
 final kWhiteColor = Colors.white;
 final kBlackColor = Color(0xFF393939);
 final kLightBlackColor = Color(0xFF8F8F8F);
-final kIconColor = Color(0xFFF48A37);
+final kIconColor = Colors.orange[500];
 final kProgressIndicator = Color(0xFFBE7066);
 final kTextColor = Color(0xFF3C4046);
 final kShadowColor = Color(0xFFD3D3D3).withOpacity(.84);
@@ -46,20 +46,16 @@ List<String> imagePaths = [
   "assets/images/dog5.png",
   "assets/images/dog6.png",
   "assets/images/dog8.png",
-  "assets/images/dog10.png",
 ];
 
 List<String> catPaths = [
-  "assets/images/cat-1.png",
-  // "assets/images/cat-2.png",
-  // "assets/images/cat-3.png",
+  "assets/images/cat.png",
 ];
 
 List<String> dogPaths = [
-  "assets/images/dog-1.png",
-  // "assets/images/dog-2.png",
+  "assets/images/dog.png",
 ];
 
 List<String> shelterPaths = [
-  "assets/images/dog-2.png",
+  "assets/images/shelter.png",
 ];

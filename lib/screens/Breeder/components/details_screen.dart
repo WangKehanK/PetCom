@@ -190,7 +190,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                   Text(
                     "Information:",
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 10,
@@ -229,10 +229,38 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
-                      SizedBox(
-                        width: 20,
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(3)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: GestureDetector(
+                              onTap: () {
+                                Clipboard.setData(
+                                    new ClipboardData(text: breeder.website));
+                                Dialogs.bottomMaterialDialog(
+                                    msg:
+                                        'The official site of ${breeder.title} <${breeder.website}> has been copied to your clipboard',
+                                    title: 'Copied!',
+                                    context: context,
+                                    actions: [
+                                      IconsOutlineButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        text: 'OK!',
+                                        iconData: Icons.done,
+                                        textStyle:
+                                            TextStyle(color: Colors.grey),
+                                        iconColor: Colors.grey,
+                                      ),
+                                    ]);
+                              },
+                              child: Text("Official Website")),
+                        ),
                       ),
                     ],
                   ),
@@ -241,7 +269,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                   Text(
                     "Description:",
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "${breeder.description}",
@@ -253,7 +281,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   Text("Number of Views: ${breeder.score!.toString()}",
                       style: TextStyle(fontSize: 10)),
                   Text(
-                      "Create at ${DateFormat.yMMMd().format(convertDate(breeder.createTime!))}",
+                      "In our database since ${DateFormat.yMMMd().format(convertDate(breeder.createTime!))}",
                       style: TextStyle(fontSize: 10)),
                 ],
               ),

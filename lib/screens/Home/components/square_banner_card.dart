@@ -10,14 +10,10 @@ class SquareBannerCard extends StatefulWidget {
   final String? image;
   final String? title;
   final int? rating;
-
-  const SquareBannerCard({
-    Key? key,
-    this.id,
-    this.image,
-    this.title,
-    this.rating,
-  }) : super(key: key);
+  final int? type;
+  const SquareBannerCard(
+      {Key? key, this.id, this.image, this.title, this.rating, this.type})
+      : super(key: key);
 
   @override
   _SquareBannerCardState createState() => _SquareBannerCardState();
@@ -50,18 +46,32 @@ class _SquareBannerCardState extends State<SquareBannerCard> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              bottom: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: 221,
+                  decoration: BoxDecoration(
+                    color: kWhiteColor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                  ),
+                )),
+            Positioned(
+              bottom: 95,
               left: 0,
               right: 0,
               child: Container(
-                height: 221,
+                height: 140,
                 decoration: BoxDecoration(
-                  color: kWhiteColor,
+                  color: randomColor(),
                 ),
               ),
             ),
             Container(
-              width: 150,
+              width: 200,
               height: 150,
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
@@ -80,14 +90,15 @@ class _SquareBannerCardState extends State<SquareBannerCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 24),
+                      padding: EdgeInsets.all(8),
                       child: RichText(
                         maxLines: 2,
                         text: TextSpan(
                           style: TextStyle(color: kBlackColor),
                           children: [
                             TextSpan(
-                              text: "${widget.title}\n",
+                              text:
+                                  "${getType(widget.type.toString())}: ${mediumSentence(widget.title!)}\n",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -102,7 +113,7 @@ class _SquareBannerCardState extends State<SquareBannerCard> {
                         Expanded(
                           child: TwoSideRoundedButton(
                             radious: 10,
-                            text: "Detail",
+                            text: "Click for more detail",
                           ),
                         )
                       ],
