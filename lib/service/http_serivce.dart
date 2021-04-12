@@ -3,7 +3,9 @@ import 'package:dio/dio.dart';
 class HttpService {
   late Dio _dio;
 
-  final String baseUrl = "http://10.0.2.2:8080/community";
+  // final String baseUrl = "http://10.0.2.2:8080/community";
+  final String baseUrl =
+      "http://ec2-3-16-186-105.us-east-2.compute.amazonaws.com:8080/community";
 
   HttpService() {
     _dio = Dio(BaseOptions(

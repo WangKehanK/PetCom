@@ -1,0 +1,21 @@
+version: "3"
+services:
+  community:
+    image: community
+    ports:
+      - "8080:8080"
+    networks:
+      - petcom-sql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    networks:
+      - petcom-sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=community
+
+networks:
+  employee-mysql: 

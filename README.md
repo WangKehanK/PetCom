@@ -48,7 +48,9 @@ How to convert json to dart list?
 Spring, MyBatis, Maven...
 
 Under /community folder
-
+```
+docker-compose up
+```
 
 ### Database
 

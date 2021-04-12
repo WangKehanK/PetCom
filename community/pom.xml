@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.petcom.community</groupId>
 	<artifactId>community</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>community</name>
 	<description>Petcom community server</description>
 	<properties>
@@ -86,7 +86,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- Docker maven plugin -->
 		</plugins>
+
+
 	</build>
+
+
 
 </project>
