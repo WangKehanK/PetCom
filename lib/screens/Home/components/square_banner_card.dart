@@ -84,7 +84,7 @@ class _SquareBannerCardState extends State<SquareBannerCard> {
             Positioned(
               top: 160,
               child: Container(
-                height: 85,
+                height: 90,
                 width: 202,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

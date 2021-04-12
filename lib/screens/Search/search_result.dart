@@ -56,7 +56,6 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
         response = await http
             .getRequest("/api/breeder/search?searchKey=${widget.searchText}");
         _breederResponse = BreederResponse.fromJson(jsonDecode(response.data));
-        print(_breederResponse!.breeder);
         if (_breederResponse!.code == 200) {
           setState(() {
             _breeder += _breederResponse!.breeder!;
@@ -85,7 +84,6 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(_breeder.toString());
     return Scaffold(
       appBar: AppBar(title: Text("Search Result of '${widget.searchText}'")),
       body: Container(
