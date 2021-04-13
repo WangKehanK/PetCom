@@ -92,6 +92,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         buildTitleWithPush(context, "Featured ", "Article",
                             ArticleScreen.routeName),
+                        SizedBox(
+                          height: size.height * 0.01,
+                        ),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -124,6 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         BuildTitle(" Recommend ", "Owners"),
+                        SizedBox(
+                          height: size.height * 0.01,
+                        ),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
