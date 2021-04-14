@@ -242,29 +242,32 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                 _buildName(),
 
                 Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Row(
-          children: <Widget>[
-            RichText(
-              maxLines: 2,
-              text: TextSpan(
-                style: Theme.of(context).textTheme.headline5,
-                children: [
-                  TextSpan(text: "What is category?"),
-                                  TextSpan(text: "(long press)",style: TextStyle(
-                  fontSize: 10,
-                ),),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        RichText(
+                          maxLines: 2,
+                          text: TextSpan(
+                            style: Theme.of(context).textTheme.headline5,
+                            children: [
+                              TextSpan(text: "What is category?"),
+                              TextSpan(
+                                text: "(long press)",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 DirectSelect(
                     itemExtent: 50.0,
                     selectedIndex: _category,

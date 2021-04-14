@@ -38,7 +38,6 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
       _isLoading = true;
       response = await http.getRequest("/api/breeder/name");
       _breederNameList = BreederNameList.fromJson(jsonDecode(response.data));
-      print(_breederNameList);
       if (_breederNameList!.code == 200) {
         setState(() {
           _breederNames += _breederNameList!.breeder!;
@@ -134,30 +133,33 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
                     children: <Widget>[
                       buildTitle(context, "Title*"),
                       _buildName(),
-                                      Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Row(
-          children: <Widget>[
-            RichText(
-              maxLines: 2,
-              text: TextSpan(
-                style: Theme.of(context).textTheme.headline5,
-                children: [
-                  TextSpan(text: "Find shelter/breeder"),
-                                  TextSpan(text: "(long press)",style: TextStyle(
-                  fontSize: 10,
-                ),),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              RichText(
+                                maxLines: 2,
+                                text: TextSpan(
+                                  style: Theme.of(context).textTheme.headline5,
+                                  children: [
+                                    TextSpan(text: "Find shelter/breeder"),
+                                    TextSpan(
+                                      text: "(long press)",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       DirectSelect(
                           itemExtent: 50.0,
                           selectedIndex: _category,
@@ -195,7 +197,7 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
 
                           _formKey.currentState!.save();
                           _description =
-                              "This is experience/article about ${_breederNames[_category]}. $_description";
+                              "This is experience/article about ${_breederNames[_category]}. \n$_description";
                           var params = {
                             "title": _name,
                             "content": _description,
