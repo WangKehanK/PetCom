@@ -9,6 +9,7 @@ import 'package:material_dialogs/material_dialogs.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import 'package:direct_select/direct_select.dart';
+import 'package:petcom/service/http_serivce.dart';
 
 class BreederFormScreen extends StatefulWidget {
   static String routeName = "/breeder_form";
@@ -39,7 +40,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
 
   Future submitForm(String _endPoint) async {
     Response response;
-    response = await dio.post("http://10.0.2.2:8080/community" + _endPoint);
+    response = await dio.post(HttpService().baseUrl + _endPoint);
     _formResponse = FormResponse.fromJson(jsonDecode(response.data));
     if (_formResponse!.code == 200) {
       Navigator.pop(context, true);
@@ -239,7 +240,31 @@ class BreederFormScreenState extends State<BreederFormScreen> {
 
                 buildTitle(context, "Name*"),
                 _buildName(),
-                buildTitle(context, "Category"),
+
+                Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Row(
+          children: <Widget>[
+            RichText(
+              maxLines: 2,
+              text: TextSpan(
+                style: Theme.of(context).textTheme.headline5,
+                children: [
+                  TextSpan(text: "What is category?"),
+                                  TextSpan(text: "(long press)",style: TextStyle(
+                  fontSize: 10,
+                ),),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
                 DirectSelect(
                     itemExtent: 50.0,
                     selectedIndex: _category,
@@ -317,7 +342,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                           IconsButton(
                             onPressed: () async {
                               await dio.post(
-                                  "http://10.0.2.2:8080/community/api/breeder/add",
+                                  "${HttpService().baseUrl}/api/breeder/add",
                                   data: jsonEncode(params));
                               int count = 0;
                               Navigator.of(context)
@@ -350,6 +375,7 @@ class BreederFormScreenState extends State<BreederFormScreen> {
         child: Row(
           children: <Widget>[
             RichText(
+              maxLines: 2,
               text: TextSpan(
                 style: Theme.of(context).textTheme.headline5,
                 children: [

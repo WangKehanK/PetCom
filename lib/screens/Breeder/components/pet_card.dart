@@ -69,7 +69,7 @@ class PetCard extends StatelessWidget {
                   Expanded(
                     child: Container(
                       margin:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,9 +87,6 @@ class PetCard extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              // Rating(
-                              //   score: score,
-                              // ),
                             ],
                           ),
                           Text(

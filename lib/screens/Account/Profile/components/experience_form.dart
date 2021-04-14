@@ -134,7 +134,30 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
                     children: <Widget>[
                       buildTitle(context, "Title*"),
                       _buildName(),
-                      buildTitle(context, "Category"),
+                                      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Row(
+          children: <Widget>[
+            RichText(
+              maxLines: 2,
+              text: TextSpan(
+                style: Theme.of(context).textTheme.headline5,
+                children: [
+                  TextSpan(text: "Find shelter/breeder"),
+                                  TextSpan(text: "(long press)",style: TextStyle(
+                  fontSize: 10,
+                ),),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
                       DirectSelect(
                           itemExtent: 50.0,
                           selectedIndex: _category,
@@ -197,7 +220,7 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
                                 IconsButton(
                                   onPressed: () async {
                                     await dio.post(
-                                        "http://10.0.2.2:8080/community/api/article/add",
+                                        "${HttpService().baseUrl}/api/article/add",
                                         data: params);
                                     int count = 0;
                                     Navigator.of(context)
@@ -230,6 +253,7 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
         child: Row(
           children: <Widget>[
             RichText(
+              maxLines: 2,
               text: TextSpan(
                 style: Theme.of(context).textTheme.headline5,
                 children: [
