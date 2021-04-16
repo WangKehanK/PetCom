@@ -114,8 +114,9 @@ class BNBCustomPainter extends CustomPainter {
     path.quadraticBezierTo(size.width * 0.80, 0, size.width, 0);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
-    path.lineTo(0, 20);
-    canvas.drawShadow(path.shift(Offset(0, -5)), Colors.black, 10, true);
+    path.lineTo(0, 0);
+    canvas.drawShadow(
+        path.shift(Offset(5, -5)), Colors.grey.shade300, 20, true);
     canvas.drawPath(path, paint);
   }
 

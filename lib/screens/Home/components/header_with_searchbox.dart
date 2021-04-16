@@ -50,7 +50,7 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
               right: 27,
               bottom: kDefaultPadding,
             ),
-            height: widget.size.height * 0.2 - 27,
+            height: widget.size.height * 0.2 - 5,
             decoration: BoxDecoration(
               color: kPrimaryColor,
               gradient: LinearGradient(colors: [kPrimaryColor, kPrimaryColor]),
@@ -93,7 +93,7 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
                   Expanded(
                     child: TextField(
                       textInputAction: TextInputAction.done,
-                      onSubmitted: (value){
+                      onSubmitted: (value) {
                         if (_text == null) {
                           Dialogs.bottomMaterialDialog(
                               msg: 'Please enter something',

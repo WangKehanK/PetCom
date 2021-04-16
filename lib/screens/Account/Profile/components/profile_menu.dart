@@ -29,7 +29,14 @@ class ProfileMenu extends StatelessWidget {
           children: [
             Icon(Icons.pets),
             SizedBox(width: 20),
-            Expanded(child: Text(text)),
+            Expanded(
+                child: Text(
+              text,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            )),
             Icon(Icons.arrow_forward_ios),
           ],
         ),
