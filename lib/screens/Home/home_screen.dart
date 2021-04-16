@@ -67,23 +67,21 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey[50],
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: _isLoading
-                  ? Center(
-                      child: Center(
-                        child: SizedBox(
-                          child: CircularProgressIndicator(),
-                          height: 24,
-                          width: 24,
-                        ),
-                      ),
-                    )
-                  : Column(
+      body: _isLoading
+          ? Center(
+              child: Center(
+                child: SizedBox(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         HeaderWithSearchBox(size: size),
@@ -167,10 +165,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
     );
   }
 

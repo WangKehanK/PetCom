@@ -9,6 +9,7 @@ import 'package:material_dialogs/material_dialogs.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import 'package:direct_select/direct_select.dart';
+import 'package:petcom/screens/Account/Profile/components/ok.dart';
 import 'package:petcom/service/http_serivce.dart';
 
 class BreederFormScreen extends StatefulWidget {
@@ -347,9 +348,10 @@ class BreederFormScreenState extends State<BreederFormScreen> {
                               await dio.post(
                                   "${HttpService().baseUrl}/api/breeder/add",
                                   data: jsonEncode(params));
-                              int count = 0;
-                              Navigator.of(context)
-                                  .popUntil((_) => count++ >= 2);
+                              // int count = 0;
+                              // Navigator.of(context)
+                              //     .popUntil((_) => count++ >= 2);
+                              Navigator.pushNamed(context, OKScreen.routeName);
                             },
                             text: 'Submit',
                             iconData: Icons.arrow_forward_ios_sharp,

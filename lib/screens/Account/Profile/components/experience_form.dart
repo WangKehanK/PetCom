@@ -7,6 +7,7 @@ import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import 'package:direct_select/direct_select.dart';
 import 'package:petcom/model/Breeder.dart';
+import 'package:petcom/screens/Account/Profile/components/ok.dart';
 import 'package:petcom/service/http_serivce.dart';
 
 class ExperienceFormScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
   // http request
   late HttpService http;
   List<String> _breederNames = [
-    "None",
+    "None or I want to share my experience",
   ];
   BreederNameList? _breederNameList;
   // helper
@@ -196,8 +197,12 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
                           }
 
                           _formKey.currentState!.save();
-                          _description =
-                              "This is experience/article about ${_breederNames[_category]}. \n$_description";
+                          if (_category == 0) {
+                            _description = "$_description";
+                          } else {
+                            _description =
+                                "This is experience/article about ${_breederNames[_category]}. \n$_description";
+                          }
                           var params = {
                             "title": _name,
                             "content": _description,
@@ -224,9 +229,8 @@ class ExperienceFormScreenState extends State<ExperienceFormScreen> {
                                     await dio.post(
                                         "${HttpService().baseUrl}/api/article/add",
                                         data: params);
-                                    int count = 0;
-                                    Navigator.of(context)
-                                        .popUntil((_) => count++ >= 2);
+                                    Navigator.pushNamed(
+                                        context, OKScreen.routeName);
                                   },
                                   text: 'Submit',
                                   iconData: Icons.arrow_forward_ios_sharp,
