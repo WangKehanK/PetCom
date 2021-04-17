@@ -1,5 +1,15 @@
 # PetCom
 
+<p align="center">
+  <img src="https://github.com/WangKehanK/PetCom/blob/main/1.png" width="250"/>
+  <img src="https://github.com/WangKehanK/PetCom/blob/main/2.png" width="250"/>
+  <img src="https://github.com/WangKehanK/PetCom/blob/main/3.png" width="250"/>
+  <img src="https://github.com/WangKehanK/PetCom/blob/main/4.png" width="250"/>
+  <img src="https://github.com/WangKehanK/PetCom/blob/main/5.png" width="250"/>
+  <img src="https://github.com/WangKehanK/PetCom/blob/main/6.png" width="250"/>
+</p>
+
+
 ## Tech Stack
 
 ### Front end
