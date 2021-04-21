@@ -32,9 +32,7 @@ Useful tools:
 Spring, MyBatis, Maven, Docker...
 
 Under /community folder
-```
-docker-compose up
-```
+
 Related articles:
 - [Docker with Spring](https://www.javainuse.com/devOps/docker/docker-mysql)
 
