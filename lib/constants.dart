@@ -48,6 +48,27 @@ List<String> imagePaths = [
   "assets/images/dog8.png",
 ];
 
+List<String> catImagePaths = [
+  "assets/images/cat1.png",
+  "assets/images/cat2.png",
+  "assets/images/cat3.png",
+  "assets/images/cat4.png",
+  "assets/images/cat5.png",
+];
+
+List<String> totalPaths = [
+  "assets/images/dog1.png",
+  "assets/images/dog2.png",
+  "assets/images/dog4.png",
+  "assets/images/dog5.png",
+  "assets/images/dog6.png",
+  "assets/images/dog8.png",
+  "assets/images/cat1.png",
+  "assets/images/cat2.png",
+  "assets/images/cat3.png",
+  "assets/images/cat4.png",
+  "assets/images/cat5.png",
+];
 List<String> catPaths = [
   "assets/images/cat.png",
 ];

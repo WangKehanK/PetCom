@@ -69,7 +69,7 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
             height: size.height * 0.5,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(randomPath()!), fit: BoxFit.contain),
+                  image: AssetImage(randomPath(4)!), fit: BoxFit.contain),
               color: widget.color,
             ),
             child: SafeArea(

@@ -66,6 +66,10 @@ class _SquareBannerCardState extends State<SquareBannerCard> {
               child: Container(
                 height: 140,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
                   color: randomColor(),
                 ),
               ),

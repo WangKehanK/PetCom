@@ -38,40 +38,40 @@ class _SearchBarState extends State<SearchBar> {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: kWhiteColor,
+        borderRadius: BorderRadius.circular(10),
         boxShadow: customShadow,
       ),
       child: Row(
         children: <Widget>[
           Expanded(
             child: TextField(
-                      textInputAction: TextInputAction.done,
-                      onSubmitted: (value){
-                        if (_text == null) {
-                          Dialogs.bottomMaterialDialog(
-                              msg: 'Please enter something',
-                              title: 'Note!',
-                              context: context,
-                              actions: [
-                                IconsOutlineButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  text: 'OK!',
-                                  iconData: Icons.done,
-                                  textStyle: TextStyle(color: Colors.grey),
-                                  iconColor: Colors.grey,
-                                ),
-                              ]);
-                        } else {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return SearchResultScreen(
-                              searchText: _text!,
-                              type: 1,
-                            );
-                          }));
-                        }
-                      },
+              textInputAction: TextInputAction.done,
+              onSubmitted: (value) {
+                if (_text == null) {
+                  Dialogs.bottomMaterialDialog(
+                      msg: 'Please enter something',
+                      title: 'Note!',
+                      context: context,
+                      actions: [
+                        IconsOutlineButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          text: 'OK!',
+                          iconData: Icons.done,
+                          textStyle: TextStyle(color: Colors.grey),
+                          iconColor: Colors.grey,
+                        ),
+                      ]);
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SearchResultScreen(
+                      searchText: _text!,
+                      type: 1,
+                    );
+                  }));
+                }
+              },
               controller: myController,
               onChanged: (value) {},
               decoration: InputDecoration(

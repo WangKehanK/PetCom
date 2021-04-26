@@ -115,31 +115,62 @@ class PetCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: kWhiteColor,
                 boxShadow: customShadow,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
               ),
             ),
-            Container(
-              width: size.width * 0.48,
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: randomColor(),
-                      boxShadow: customShadow,
-                      // borderRadius: BorderRadius.circular(22),
+            type == 2
+                ? Container(
+                    width: size.width * 0.48,
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: randomColor(),
+                            boxShadow: customShadow,
+                            // borderRadius: BorderRadius.circular(22),
+                          ),
+                          margin: EdgeInsets.only(top: 50),
+                        ),
+                        Align(
+                          child: Hero(
+                            tag: id.toString(),
+                            child: Image.asset(
+                              imagePaths[_random.nextInt(imagePaths.length)],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    margin: EdgeInsets.only(top: 50),
-                  ),
-                  Align(
-                    child: Hero(
-                      tag: id.toString(),
-                      child: Image.asset(
-                        imagePaths[_random.nextInt(imagePaths.length)],
-                      ),
+                  )
+                : Container(
+                    width: size.width * 0.48,
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: randomColor(),
+                            boxShadow: customShadow,
+                            // borderRadius: BorderRadius.circular(22),
+                          ),
+                          margin: EdgeInsets.only(top: 50),
+                        ),
+                        Align(
+                          child: Hero(
+                            tag: id.toString(),
+                            child: Image.asset(
+                              catImagePaths[
+                                  _random.nextInt(catImagePaths.length)],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            )
+                  )
           ],
         ),
       ),

@@ -17,6 +17,10 @@ class TwoSideRoundedButton extends StatelessWidget {
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(40),
+            bottomRight: Radius.circular(40),
+          ),
           color: Colors.white,
         ),
         child: RichText(

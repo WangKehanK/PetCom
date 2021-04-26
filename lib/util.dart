@@ -48,11 +48,21 @@ String getType(String type) {
   return result;
 }
 
-String? randomPath() {
-  String ranPath = "assets/images/dog1.png";
+String? randomPath(type) {
   Random _random = new Random();
-  ranPath = imagePaths[_random.nextInt(imagePaths.length)];
-  return ranPath;
+  if (type == 2) {
+    String ranPath = "assets/images/dog1.png";
+    ranPath = imagePaths[_random.nextInt(imagePaths.length)];
+    return ranPath;
+  } else if (type == 4 || type == 1) {
+    String ranPath = "assets/images/dog1.png";
+    ranPath = totalPaths[_random.nextInt(totalPaths.length)];
+    return ranPath;
+  } else {
+    String ranPath = "assets/images/cat1.png";
+    ranPath = catImagePaths[_random.nextInt(catImagePaths.length)];
+    return ranPath;
+  }
 }
 
 String? randomDogPath() {

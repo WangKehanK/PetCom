@@ -80,6 +80,7 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
               height: 54,
               decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                     offset: Offset(0, 10),

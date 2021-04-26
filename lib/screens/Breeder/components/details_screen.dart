@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:petcom/components/rating.dart';
 import 'package:petcom/model/Breeder.dart';
-import 'package:petcom/screens/Home/home_screen.dart';
-import 'package:petcom/screens/main_screen.dart';
 import 'package:petcom/service/http_serivce.dart';
 import 'package:petcom/util.dart';
 
@@ -75,7 +73,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
-                    randomPath()!,
+                    randomPath(breeder.type)!,
                   ),
                   fit: BoxFit.contain),
               color: widget.color,
