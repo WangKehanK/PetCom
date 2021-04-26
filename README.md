@@ -1,5 +1,9 @@
 # PetCom
 
+[IOS Download here](https://testflight.apple.com/join/pi5bpsBl)
+
+We are solving the problem for any pet owners or pet lovers to gather and discuss their pets. Also, we want to provide opportunities for people who want to raise a pet to chat with other pet owners and experts for advice and see comments or even ratings of specific breeders.
+
 <p align="center">
   <img src="https://github.com/WangKehanK/PetCom/blob/main/1.png" width="250"/>
   <img src="https://github.com/WangKehanK/PetCom/blob/main/2.png" width="250"/>
@@ -28,9 +32,7 @@ Useful tools:
 Spring, MyBatis, Maven, Docker...
 
 Under /community folder
-```
-docker-compose up
-```
+
 Related articles:
 - [Docker with Spring](https://www.javainuse.com/devOps/docker/docker-mysql)
 
