@@ -18,7 +18,7 @@ class ProfileMenu extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           primary: kWhiteColor,
-          backgroundColor: Colors.orange[500],
+          backgroundColor: kPrimaryColor,
           onSurface: Colors.grey,
           padding: EdgeInsets.all(20),
           shape:
